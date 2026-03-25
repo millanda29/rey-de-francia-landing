@@ -16,6 +16,7 @@
     "leaflet": "^1.9.4"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.1",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2"
