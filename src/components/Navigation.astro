@@ -1,0 +1,343 @@
+---
+// Componente: Navigation - Header responsivo
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = "inicio" } = Astro.props;
+---
+
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <a href="/" class="logo">
+        <span class="logo-kicker">Hostal y Piscinas</span>
+        <span class="logo-text">Manantial Rey de Francia</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#servicios" class:list={["nav-link", { active: currentPage === "servicios" }]}>
+          Servicios
+        </a>
+        <a href="#combos" class:list={["nav-link", { active: currentPage === "combos" }]}>
+          Combos
+        </a>
+        <a href="#instalaciones" class:list={["nav-link", { active: currentPage === "instalaciones" }]}>
+          Instalaciones
+        </a>
+        <a href="#faq" class:list={["nav-link", { active: currentPage === "faq" }]}>
+          FAQ
+        </a>
+        <a href="#reservas" class="nav-link cta-link">
+          Agenda tu visita
+        </a>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="#servicios">Servicios</a>
+    <a href="#combos">Combos</a>
+    <a href="#instalaciones">Instalaciones</a>
+    <a href="#faq">FAQ</a>
+    <a href="#reservas" class="cta-link">Agenda tu visita</a>
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px) saturate(1.15);
+    border-bottom: 1px solid rgba(11, 31, 54, 0.09);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(11, 31, 54, 0.1);
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 84px;
+  }
+
+  .logo {
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.05;
+    gap: 0.2rem;
+  }
+
+  .logo-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-lighter);
+    font-weight: 700;
+  }
+
+  .logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .nav-link {
+    color: var(--color-text-light);
+    font-size: 0.93rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    position: relative;
+    transition: color var(--transition-standard), transform var(--transition-standard);
+    padding: 0.2rem 0;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-standard);
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .nav-link.active {
+    color: var(--color-accent-dark);
+    font-weight: 600;
+  }
+
+  .nav-link.cta-link {
+    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 52%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: 0.72rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 12px 26px rgba(11, 79, 73, 0.26);
+  }
+
+  .nav-link.cta-link:hover {
+    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-secondary) 100%);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 16px 32px rgba(11, 79, 73, 0.3);
+  }
+
+  .nav-link.cta-link::after {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    transition: transform var(--transition-standard), opacity var(--transition-standard);
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+    background: rgba(246, 249, 253, 0.98);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobile-menu a {
+    color: var(--color-text);
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+  }
+
+  .mobile-menu a:hover {
+    background: rgba(6, 126, 255, 0.12);
+  }
+
+  .mobile-menu .cta-link {
+    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    text-align: center;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .navbar-content {
+      height: 74px;
+    }
+
+    .logo-kicker {
+      font-size: 0.66rem;
+    }
+
+    .logo-text {
+      font-size: 1.24rem;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .container {
+      padding: 0 0.75rem;
+    }
+
+    .navbar-content {
+      height: 66px;
+    }
+
+    .logo {
+      gap: 0.12rem;
+      max-width: calc(100% - 54px);
+    }
+
+    .logo-kicker {
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text {
+      font-size: 1.01rem;
+      line-height: 1.05;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-menu {
+      padding: 0.6rem 0.75rem 0.85rem;
+    }
+
+    .mobile-menu a {
+      padding: 0.62rem;
+      font-size: 0.92rem;
+    }
+  }
+
+  @media (max-width: 260px) {
+    .container {
+      padding: 0 0.45rem;
+    }
+
+    .navbar-content {
+      height: 58px;
+    }
+
+    .logo {
+      max-width: calc(100% - 46px);
+    }
+
+    .logo-kicker {
+      font-size: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text {
+      font-size: 0.84rem;
+    }
+
+    .menu-toggle span {
+      width: 20px;
+    }
+
+    .mobile-menu {
+      padding: 0.5rem;
+      gap: 0.25rem;
+    }
+
+    .mobile-menu a {
+      padding: 0.5rem;
+      font-size: 0.82rem;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+    });
+
+    // Cerrar menú al hacer click en un link
+    document.querySelectorAll(".mobile-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu?.classList.remove("active");
+        menuToggle.classList.remove("active");
+      });
+    });
+  }
+</script>
+
+

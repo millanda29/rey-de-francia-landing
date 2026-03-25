@@ -1,0 +1,228 @@
+---
+import Icono from "./Icono.astro";
+
+export interface Combo {
+  name: string;
+  price: string;
+  iconName: string;
+  featured?: boolean;
+  features: string[];
+}
+
+export const combos: Combo[] = [
+  {
+    name: "Combo baño de cajón",
+    price: "$15.00",
+    iconName: "sauna",
+    features: [
+      "Sesión de masaje Ceragem para relajar el cuerpo",
+      "Baño de cajón para una experiencia térmica tradicional",
+      "Ayuda a liberar tensiones y reducir el estrés",
+      "Ideal para complementar tu rutina de bienestar",
+      "Ambiente cómodo y enfocado en la relajación",
+    ],
+  }, 
+  {
+    name: "Combo 1: Habitación + piscina",
+    price: "$25.00",
+    iconName: "pareja",
+    featured: true,
+    features: [
+      "Plan para parejas",
+      "Habitación privada + acceso a piscina",
+      "Servicios compartidos: piscina, sauna, turco, hidromasaje y chorros",
+      "Tiempo de uso: 4 horas 30 minutos",
+      "Reserva con al menos 2 días de anticipación",
+    ],
+  },
+  {
+    name: "Combo 2: Combo Completo",
+    price: "$37.00",
+    iconName: "estrella",
+    features: [
+      "Plan para parejas",
+      "Habitación privada + acceso a piscina",
+      "Incluye masaje Ceragem + baño de cajón",
+      "Servicios compartidos: piscina, sauna, turco, hidromasaje y chorros",
+      "Tiempo de uso: 4 horas 30 minutos",
+      "Reserva con al menos 2 días de anticipación",
+    ],
+  },
+  {
+    name: "Combo Decoración",
+    price: "Desde $35.00",
+    iconName: "descuento",
+    features: [
+      "Habitación decorada privada con temática especial",
+      "Variedad de opciones para personalizar tu experiencia (romántica, cumpleaños, aniversario, etc.)",
+      "Incluye acceso a piscina, sauna, turco, hidromasaje y chorros",
+      "Tiempo de uso: 4 horas 30 minutos",
+      "Reserva previa con 1 o 2 días de anticipación",
+    ],
+  },
+];
+---
+
+<section id="combos" class="combos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-kicker">Combos recomendados</span>
+      <h2>Planes listos para elegir y disfrutar</h2>
+      <p>Opciones para parejas y celebraciones, con alternativas desde $35. Reserva en minutos.</p>
+    </div>
+
+    <div class="combos-grid">
+      {
+        combos.map((combo) => (
+          <article class:list={["combo-card", { featured: combo.featured }]}>
+            {combo.featured && <div class="badge">Más solicitado</div>}
+            <div class="combo-icon"><Icono name={combo.iconName} size="40" /></div>
+            <h3>{combo.name}</h3>
+            <div class="combo-price">{combo.price}</div>
+            <ul class="features">
+              {combo.features.map((feature) => (
+                <li>
+                  <span class="check"><Icono name="check" size="18" /></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href="#reservas" class="btn-combo">Reserva tu visita</a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .combos { padding: var(--spacing-2xl) 0; background: linear-gradient(135deg, #f3f8ff 0%, #f7fbff 100%); }
+  .container { max-width: 1520px; margin: 0 auto; padding: 0 clamp(1rem, 2.5vw, 2rem); }
+  .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
+  .section-header h2 { color: var(--color-primary); margin: var(--spacing-md) auto; max-width: 760px; }
+  .section-header p { font-size: 1.1rem; color: var(--color-text-light); }
+
+  .combos-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.95rem, 1.4vw, 1.4rem);
+  }
+
+  .combo-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(15, 23, 42, 0.09);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    grid-column: span 3;
+  }
+
+  .combo-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(6, 126, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.13);
+  }
+
+  .combo-card.featured {
+    border-color: rgba(6, 126, 255, 0.45);
+    box-shadow: 0 20px 42px rgba(6, 126, 255, 0.2);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+
+  .combo-icon {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(6, 126, 255, 0.18), rgba(72, 185, 255, 0.2));
+  }
+
+  .combo-card h3 { color: var(--color-primary); margin-bottom: var(--spacing-md); font-size: 1.32rem; }
+  .combo-price { font-family: var(--font-serif); font-size: 2rem; color: var(--color-accent-dark); font-weight: 700; margin-bottom: var(--spacing-md); }
+
+  .features { list-style: none; margin-bottom: var(--spacing-lg); flex-grow: 1; }
+  .features li { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); color: var(--color-text-light); line-height: 1.6; }
+  .check { color: var(--color-success); flex-shrink: 0; display: inline-flex; margin-top: 2px; }
+
+  .btn-combo {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-combo:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(6, 126, 255, 0.3); }
+
+  @media (max-width: 768px) {
+    .combos { padding: var(--spacing-xl) 0; }
+    .combos-grid { grid-template-columns: 1fr; }
+    .combo-card { grid-column: auto; }
+  }
+
+  @media (min-width: 769px) and (max-width: 1100px) {
+    .combo-card {
+      grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 260px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .combo-card {
+      padding: 0.75rem;
+      border-radius: 0.9rem;
+    }
+
+    .combo-icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 0.5rem;
+    }
+
+    .combo-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .combo-price {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .features li {
+      font-size: 0.8rem;
+      line-height: 1.42;
+      gap: 0.4rem;
+    }
+
+    .btn-combo {
+      font-size: 0.82rem;
+      padding: 0.68rem;
+    }
+  }
+</style>

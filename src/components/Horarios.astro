@@ -1,0 +1,273 @@
+---
+import Icono from "./Icono.astro";
+---
+
+<section class="horarios" id="horarios">
+  <div class="container">
+    <h2>Estamos listos para recibirte</h2>
+
+    <div class="horarios-grid">
+      <div class="card horarios-card">
+        <h3><Icono name="reloj" size="28" /> Horarios para tu visita</h3>
+
+        <div class="horario-item">
+          <span class="dia">Jueves y Viernes</span>
+          <span class="hora">10:00 a 18:00</span>
+        </div>
+
+        <div class="promo-horario" role="note" aria-label="Promocion vigente entre semana">
+          <p class="promo-horario-title">Promocion entre semana: 2x1 en entradas de adultos</p>
+          <p class="promo-horario-copy">Valida unicamente jueves y viernes. No aplica en feriados, dias festivos ni fines de semana.</p>
+        </div>
+
+        <div class="horario-item festivo">
+          <span class="dia">Sábados, Domingos y Feriados</span>
+          <span class="hora">8:30 a 18:00</span>
+        </div>
+
+        <p class="nota-horario">Consulta promociones vigentes para feriados antes de reservar.</p>
+      </div>
+
+      <div class="card contacto-card">
+        <h3><Icono name="ubicacion" size="28" /> Estamos ubicados</h3>
+
+        <div class="contacto-item">
+          <Icono name="ubicacion" size="24" />
+          <div>
+            <p class="label">Encuéntranos en</p>
+            <p class="valor">Calle Rafael García S33-239 y Ramón Cabrera, Chillogallo - Quito</p>
+          </div>
+        </div>
+
+        <div class="contacto-item">
+          <Icono name="maps" size="24" />
+          <div>
+            <p class="label">Cómo llegar</p>
+            <a href="https://maps.app.goo.gl/RonmVdkj88GZvvw57" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+          </div>
+        </div>
+
+        <div class="contacto-item">
+          <Icono name="telefono" size="24" />
+          <div>
+            <p class="label">Llámanos</p>
+            <p class="valor">(02)303 5551 / 0992 577 409</p>
+          </div>
+        </div>
+
+        <div class="contacto-item">
+          <Icono name="whatsapp" size="24" />
+          <div>
+            <p class="label">WhatsApp</p>
+            <p class="valor">0992 577 409</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card redes-card">
+        <h3><Icono name="compartir" size="28" /> Síguenos</h3>
+
+        <div class="redes-grid">
+          <a href="https://www.facebook.com/hostalreydefrancia" target="_blank" class="red-link facebook" rel="noopener noreferrer">
+            <Icono name="facebook" size="32" />
+            <span>Facebook</span>
+          </a>
+
+          <a href="https://www.instagram.com/manantialreydefrancia" target="_blank" class="red-link instagram" rel="noopener noreferrer">
+            <Icono name="instagram" size="32" />
+            <span>Instagram</span>
+          </a>
+
+          <a href="https://www.tiktok.com/@manantialreydefra" target="_blank" class="red-link tiktok" rel="noopener noreferrer">
+            <Icono name="tiktok" size="32" />
+            <span>TikTok</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .horarios { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-2xl); }
+
+  .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--spacing-xl); }
+
+  .card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    transition: all 0.3s ease;
+    animation: slideUp 0.6s ease-out;
+  }
+  .card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15); }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card h3 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: var(--spacing-md); }
+  .card h3 :global(svg) { color: var(--color-accent); }
+
+  .horario-item { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) 0; border-bottom: 1px solid var(--color-border); gap: var(--spacing-md); }
+  .horario-item:last-of-type { border-bottom: none; }
+
+  .horario-item.festivo {
+    background: rgba(14, 165, 233, 0.05);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+  }
+
+  .horario-item .dia { font-weight: 600; color: var(--color-primary); }
+  .horario-item .hora { color: var(--color-accent); font-weight: 700; }
+  .nota-horario {
+    margin-top: var(--spacing-md);
+    padding: 0.65rem 0.8rem;
+    border-radius: var(--radius-md);
+    background: #fff7ed;
+    color: #9a3412;
+    border-left: 4px solid #f97316;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .promo-horario {
+    margin-top: var(--spacing-md);
+    padding: 0.72rem 0.85rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1px solid #fdba74;
+    border-left: 4px solid #ea580c;
+    box-shadow: 0 10px 18px rgba(234, 88, 12, 0.12);
+  }
+
+  .promo-horario-title {
+    margin: 0;
+    color: #9a3412;
+    font-size: 0.94rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .promo-horario-copy {
+    margin: 0.25rem 0 0;
+    color: #b45309;
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .contacto-item { display: flex; gap: var(--spacing-md); padding: var(--spacing-md) 0; border-bottom: 1px solid var(--color-border); }
+  .contacto-item:last-child { border-bottom: none; }
+  .contacto-item :global(svg) { color: var(--color-accent); flex-shrink: 0; margin-top: 4px; }
+  .contacto-item .label { font-size: 0.9rem; color: var(--color-text-lighter); font-weight: 600; margin-bottom: 2px; }
+  .contacto-item .valor { color: var(--color-primary); font-weight: 500; }
+
+  .redes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
+
+  .red-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-white);
+    transition: all 0.3s ease;
+  }
+
+  .red-link:hover { transform: scale(1.05); }
+  .red-link :global(svg) { width: 32px; height: 32px; }
+  .red-link.facebook { background: linear-gradient(135deg, #1877f2 0%, #0a66c2 100%); }
+  .red-link.instagram { background: linear-gradient(135deg, #feda75 0%, #fa7e1e 50%, #d92e7f 100%); }
+  .red-link.tiktok { background: linear-gradient(135deg, #111827 0%, #1f2937 55%, #000000 100%); }
+
+  .red-link span { font-size: 0.9rem; }
+
+  @media (max-width: 768px) {
+    .horarios h2 { font-size: 1.875rem; }
+    .horarios-grid { grid-template-columns: 1fr; }
+    .card h3 { font-size: 1.3rem; }
+    .redes-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 460px) {
+    .horarios {
+      padding: var(--spacing-xl) 0.8rem;
+    }
+
+    .card {
+      padding: 1rem;
+    }
+
+    .horarios h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      gap: 0.5rem;
+    }
+
+    .horario-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    .redes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .red-link {
+      padding: 0.9rem;
+    }
+  }
+
+  @media (max-width: 260px) {
+    .horarios {
+      padding: var(--spacing-lg) 0.5rem;
+    }
+
+    .card {
+      padding: 0.72rem;
+    }
+
+    .card h3 {
+      font-size: 0.94rem;
+    }
+
+    .horario-item .dia,
+    .horario-item .hora,
+    .contacto-item .label,
+    .contacto-item .valor,
+    .nota-horario,
+    .red-link span {
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .promo-horario {
+      padding: 0.58rem 0.62rem;
+    }
+
+    .promo-horario-title,
+    .promo-horario-copy {
+      font-size: 0.76rem;
+      line-height: 1.32;
+    }
+
+    .red-link {
+      padding: 0.7rem;
+    }
+  }
+</style>

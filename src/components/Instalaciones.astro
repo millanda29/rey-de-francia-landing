@@ -1,0 +1,456 @@
+---
+// Componente: Carrusel de imágenes
+---
+
+<section class="carrusel-section" id="instalaciones">
+  <div class="container">
+    <h2>Conoce nuestros espacios</h2>
+    <p class="subtitle">Mira el ambiente que te espera en tu próxima visita.</p>
+    
+    <div class="carrusel-wrapper">
+      <div class="carrusel">
+        <div class="slide">
+          <img src="/piscina.webp" alt="Piscina recreativa de Manantial Rey de Francia" loading="lazy" />
+          <p class="slide-caption">Piscinas temperadas para toda la familia</p>
+        </div>
+
+        <div class="slide">
+          <img src="/habitaciones.webp" alt="Habitaciones de confort" loading="lazy" />
+          <p class="slide-caption">Habitaciones cómodas para tu descanso</p>
+        </div>
+
+        <div class="slide">
+          <img src="/sauna.webp" alt="Sauna de calor seco" loading="lazy" />
+          <p class="slide-caption">Sauna para soltar tensión</p>
+        </div>
+
+        <div class="slide">
+          <img src="/sauna.webp" alt="Turco de vapor húmedo" loading="lazy" />
+          <p class="slide-caption">Turco para renovar energía</p>
+        </div>
+
+        <div class="slide">
+          <img src="/bdc.webp" alt="Baños de cajón" loading="lazy" />
+          <p class="slide-caption">Baños de cajón y contraste</p>
+        </div>
+
+        <div class="slide">
+          <img src="/chorros.webp" alt="Chorros de agua" loading="lazy" />
+          <p class="slide-caption">Chorros de agua para relajación</p>
+        </div>
+
+        <div class="slide">
+          <img src="/hidromasaje.webp" alt="Hidromasaje" loading="lazy" />
+          <p class="slide-caption">Hidromasaje para aliviar el estrés</p>
+        </div>
+      </div>
+      
+      <button class="carrusel-btn prev" aria-label="Anterior">‹</button>
+      <button class="carrusel-btn next" aria-label="Siguiente">›</button>
+      
+      <div class="carrusel-dots">
+        <button class="dot active" aria-label="Slide 1"></button>
+        <button class="dot" aria-label="Slide 2"></button>
+        <button class="dot" aria-label="Slide 3"></button>
+        <button class="dot" aria-label="Slide 4"></button>
+        <button class="dot" aria-label="Slide 5"></button>
+        <button class="dot" aria-label="Slide 6"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .carrusel-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .carrusel-section h2 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .carrusel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background-color: #1e3266;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%231e3266'%3e%3c/rect%3e%3cpath d='M1536 560L0 560 L0 321.75Q77 278.75%2c 120 355.74Q127.23 290.97%2c 192 298.19Q243.19 229.38%2c 312 280.57Q361.93 258.5%2c 384 308.43Q471.63 276.06%2c 504 363.68Q522.62 310.3%2c 576 328.91Q628.88 261.79%2c 696 314.67Q777.69 276.37%2c 816 358.06Q884.33 306.39%2c 936 374.72Q980.9 299.62%2c 1056 344.52Q1089.46 257.98%2c 1176 291.44Q1242.94 238.38%2c 1296 305.33Q1376.41 265.75%2c 1416 346.16Q1449.26 259.42%2c 1536 292.68z' fill='%23182f5d'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 400.8Q65.44 346.24%2c 120 411.68Q193.56 365.24%2c 240 438.8Q294.38 373.19%2c 360 427.57Q372.11 367.68%2c 432 379.79Q504.69 332.48%2c 552 405.16Q602.46 383.62%2c 624 434.08Q646.25 336.32%2c 744 358.57Q785.91 328.49%2c 816 370.4Q908.59 342.99%2c 936 435.57Q966.13 393.69%2c 1008 423.82Q1023.84 367.65%2c 1080 383.49Q1101.28 332.76%2c 1152 354.04Q1193.79 323.83%2c 1224 365.61Q1293.32 314.93%2c 1344 384.25Q1405.59 373.84%2c 1416 435.43Q1462.44 361.88%2c 1536 408.32z' fill='%2325467d'%3e%3c/path%3e%3cpath d='M1464 560L0 560 L0 462.84Q72.23 415.07%2c 120 487.3Q129.82 425.12%2c 192 434.94Q235.04 405.98%2c 264 449.01Q355.88 420.89%2c 384 512.77Q420.87 429.64%2c 504 466.51Q548.78 439.29%2c 576 484.08Q628.37 464.45%2c 648 516.82Q661.97 458.79%2c 720 472.76Q754.04 386.81%2c 840 420.85Q908.1 368.95%2c 960 437.04Q1018.19 423.24%2c 1032 481.43Q1107.2 436.63%2c 1152 511.83Q1154.44 442.27%2c 1224 444.72Q1289.74 390.46%2c 1344 456.2Q1424.19 416.39%2c 1464 496.59z' fill='%23356cb1'%3e%3c/path%3e%3cpath d='M1464 560L0 560 L0 526.4Q58.45 512.85%2c 72 571.29Q99.34 526.63%2c 144 553.96Q195.43 533.39%2c 216 584.82Q223.99 520.81%2c 288 528.8Q340.43 461.23%2c 408 513.67Q498.55 484.22%2c 528 574.78Q555.82 530.6%2c 600 558.41Q642.6 481.01%2c 720 523.61Q785.24 468.85%2c 840 534.08Q855.31 477.39%2c 912 492.71Q977.45 438.16%2c 1032 503.62Q1118.95 470.58%2c 1152 557.53Q1191.39 476.92%2c 1272 516.32Q1314.9 487.23%2c 1344 530.13Q1388.81 454.93%2c 1464 499.74z' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
+    isolation: isolate;
+  }
+
+  .carrusel-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 38%);
+    transform: translateX(-120%);
+    animation: sheen 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .carrusel {
+    display: flex;
+    transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    scroll-behavior: smooth;
+    will-change: transform;
+  }
+
+  .slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 3 / 2;
+    position: relative;
+  }
+
+  .slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.58) 0%, rgba(2, 6, 23, 0.1) 42%, rgba(2, 6, 23, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.01);
+    filter: saturate(0.95) contrast(1.02);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 520ms ease;
+  }
+
+  .slide img.portrait {
+    object-fit: contain;
+    background: transparent;
+  }
+
+  .slide.active img {
+    transform: scale(1.08);
+    filter: saturate(1.08) contrast(1.05);
+  }
+
+  .slide-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(6, 15, 30, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 2;
+    box-shadow: 0 16px 28px rgba(2, 6, 23, 0.35);
+    opacity: 0.86;
+    transition: transform 450ms ease, opacity 450ms ease, box-shadow 450ms ease;
+  }
+
+  .slide.active .slide-caption {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 18px 34px rgba(2, 6, 23, 0.46);
+  }
+
+  .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.84);
+    backdrop-filter: blur(6px);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.22);
+  }
+
+  .carrusel-btn:hover {
+    background: var(--color-accent);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.3);
+  }
+
+  .carrusel-btn.prev {
+    left: 20px;
+  }
+
+  .carrusel-btn.next {
+    right: 20px;
+  }
+
+  .carrusel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: transform 0.3s ease, width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .dot.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.1);
+    width: 26px;
+    border-radius: 999px;
+  }
+
+  .dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  @keyframes sheen {
+    0%,
+    18% {
+      transform: translateX(-120%);
+    }
+    28%,
+    100% {
+      transform: translateX(120%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carrusel-wrapper::before,
+    .slide img,
+    .slide-caption,
+    .carrusel,
+    .dot,
+    .carrusel-btn {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carrusel-section h2 {
+      font-size: 1.875rem;
+    }
+
+    .slide-caption {
+      font-size: 0.9rem;
+      padding: var(--spacing-md);
+      white-space: normal;
+      max-width: 80%;
+    }
+
+    .carrusel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+
+    .carrusel-btn.prev {
+      left: 10px;
+    }
+
+    .carrusel-btn.next {
+      right: 10px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .carrusel-section {
+      padding: var(--spacing-xl) 0.8rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .slide {
+      aspect-ratio: 4 / 3;
+    }
+
+    .slide-caption {
+      font-size: 0.8rem;
+      bottom: 10px;
+      max-width: 88%;
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.5rem;
+    }
+
+    .carrusel-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 1.2rem;
+    }
+
+    .carrusel-dots {
+      bottom: 8px;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+    }
+  }
+
+  @media (max-width: 260px) {
+    .carrusel-section {
+      padding: var(--spacing-lg) 0.5rem;
+    }
+
+    .carrusel-section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 0.78rem;
+      margin-bottom: 0.65rem;
+      line-height: 1.35;
+    }
+
+    .slide-caption {
+      font-size: 0.7rem;
+      max-width: 94%;
+      padding: 0.34rem 0.45rem;
+      bottom: 6px;
+    }
+
+    .carrusel-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+    }
+
+    .carrusel-btn.prev {
+      left: 5px;
+    }
+
+    .carrusel-btn.next {
+      right: 5px;
+    }
+  }
+</style>
+
+<script>
+  const carrusel = document.querySelector('.carrusel') as HTMLElement;
+  const slides = document.querySelectorAll('.slide');
+  const slideImages = document.querySelectorAll('.slide img') as NodeListOf<HTMLImageElement>;
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.carrusel-btn.prev') as HTMLButtonElement;
+  const nextBtn = document.querySelector('.carrusel-btn.next') as HTMLButtonElement;
+
+  let currentIndex = 0;
+
+  function updateCarrusel() {
+    const offset = -currentIndex * 100;
+    carrusel.style.transform = `translateX(${offset}%)`;
+
+    slides.forEach((slide, index) => {
+      if (index === currentIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+    
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarrusel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarrusel();
+  }
+
+  prevBtn?.addEventListener('click', prevSlide);
+  nextBtn?.addEventListener('click', nextSlide);
+
+  // Ajusta automaticamente imagenes verticales para evitar recortes agresivos.
+  slideImages.forEach((img) => {
+    const setOrientationClass = () => {
+      if (img.naturalHeight > img.naturalWidth) {
+        img.classList.add('portrait');
+      } else {
+        img.classList.remove('portrait');
+      }
+    };
+
+    if (img.complete) {
+      setOrientationClass();
+    } else {
+      img.addEventListener('load', setOrientationClass, { once: true });
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateCarrusel();
+    });
+  });
+
+  updateCarrusel();
+
+  // Auto-play
+  setInterval(() => {
+    nextSlide();
+  }, 5000);
+</script>
+

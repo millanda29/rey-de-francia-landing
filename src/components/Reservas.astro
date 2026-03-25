@@ -1,0 +1,403 @@
+---
+import Icono from "./Icono.astro";
+---
+
+<section id="reservas" class="reservas">
+  <div class="container">
+    <div class="reservas-content">
+      <div class="reservas-text">
+        <span class="section-kicker">Reserva en minutos</span>
+        <h2>Agenda fácil, confirma rápido y vive tu experiencia sin complicaciones</h2>
+        <p>
+          Reserva por WhatsApp o con este formulario. Nuestro equipo te responde con disponibilidad, recomendaciones y confirmación en el menor tiempo posible.
+        </p>
+        <div class="contacto-info">
+          <div class="info-item">
+            <span class="info-icon"><Icono name="whatsapp" size="24" /></span>
+            <div>
+              <p class="info-title">WhatsApp</p>
+              <a href="https://wa.me/593992577409" target="_blank" rel="noopener noreferrer">Asesoría inmediata: +593 99 257 7409</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon"><Icono name="telefono" size="24" /></span>
+            <div>
+              <p class="info-title">Teléfonos</p>
+              <p>Línea fija y móvil: (02) 303 5551 / 0992 577 409</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon"><Icono name="ubicacion" size="24" /></span>
+            <div>
+              <p class="info-title">Ubicación</p>
+              <p>Calle Rafael García S33-239 y Ramón Cabrera, Chillogallo, Quito</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reservas-form">
+        <h3>Solicitud de reserva</h3>
+        <p class="form-helper">Completa estos pasos y te abrimos WhatsApp con tu solicitud lista para enviar.</p>
+
+        <div class="form-steps" aria-label="Pasos para reservar">
+          <span class="step-chip">1. Tus datos</span>
+          <span class="step-chip">2. Detalles de reserva</span>
+          <span class="step-chip">3. Confirmación por WhatsApp</span>
+        </div>
+
+        <form id="reserva-form" class="form">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Andrea Pérez" />
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono de contacto</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 0992 577 409" />
+          </div>
+
+          <div class="form-group">
+            <label for="combo">Servicio o combo de interés</label>
+            <select id="combo" name="combo" required>
+              <option value="">-- Selecciona una opción --</option>
+              <option value="entrada-general">Entrada General ($7.00)</option>
+              <option value="tarifa-preferencial">Tarifa Preferencial ($4.00)</option>
+              <option value="combo-bano-cajon">Combo baño de cajón ($15.00)</option>
+              <option value="combo-1-parejas">Combo 1: Habitación + piscina (parejas) ($25.00)</option>
+              <option value="combo-2-completo">Combo 2: Combo Completo (parejas) ($37.00)</option>
+              <option value="combo-decoracion">Combo Decoración (desde $35.00)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fecha">Fecha deseada</label>
+            <input type="date" id="fecha" name="fecha" required />
+          </div>
+
+          <div class="form-group">
+            <label for="personas">Número de personas</label>
+            <input type="number" id="personas" name="personas" min="1" max="20" required placeholder="Ej: 4" />
+          </div>
+
+          <div class="form-group">
+            <label for="notas">Notas adicionales (opcional)</label>
+            <textarea id="notas" name="notas" placeholder="Cuéntanos si celebras una ocasión especial" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar solicitud por WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reservas {
+    padding: var(--spacing-2xl) 0;
+    background:
+      radial-gradient(860px 560px at 4% 16%, rgba(6, 126, 255, 0.22), transparent),
+      radial-gradient(780px 520px at 95% 84%, rgba(72, 185, 255, 0.2), transparent),
+      linear-gradient(135deg, #0d1f35 0%, #0c2239 46%, #142b46 100%);
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .reservas-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+  }
+
+  .reservas-text h2 {
+    color: var(--color-white);
+    margin: var(--spacing-md) 0;
+  }
+
+  .reservas-text .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, rgba(6, 126, 255, 0.36), rgba(72, 185, 255, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    color: #f8fafc;
+    text-shadow: 0 1px 2px rgba(2, 6, 23, 0.6);
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.24);
+  }
+
+  .reservas-text p {
+    color: #d2deec;
+    font-size: 1.06rem;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+  }
+
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .info-item {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    flex-shrink: 0;
+    color: #78f0dd;
+    display: flex;
+    align-items: center;
+  }
+
+  .info-title {
+    color: #a9f8ea;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+  }
+
+  .info-item p { margin: 0; color: #e2e8f0; }
+
+  .info-item a {
+    color: #f8fafc;
+    font-weight: 600;
+  }
+
+  .info-item a:hover { color: #5eead4; }
+
+  .reservas-form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 30px 56px rgba(6, 17, 31, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .reservas-form h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.45rem;
+    letter-spacing: 0.01em;
+  }
+
+  .form-helper {
+    color: var(--color-text-light);
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .form-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .step-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.34rem 0.62rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0f172a;
+    background: linear-gradient(120deg, rgba(6, 126, 255, 0.2), rgba(72, 185, 255, 0.24));
+    border: 1px solid rgba(11, 31, 54, 0.12);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .form-group label {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: var(--spacing-md);
+    border: 1px solid rgba(11, 31, 54, 0.18);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color var(--transition-standard), box-shadow var(--transition-standard), background-color var(--transition-standard);
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(6, 126, 255, 0.16);
+    background: #fff;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 52%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform var(--transition-standard), box-shadow var(--transition-standard), filter var(--transition-standard);
+    margin-top: var(--spacing-sm);
+    border: none;
+    box-shadow: 0 14px 32px rgba(11, 79, 73, 0.24);
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 38px rgba(11, 79, 73, 0.32);
+    filter: saturate(1.05);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .reservas {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .reservas-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .reservas-form {
+      padding: var(--spacing-lg);
+    }
+  }
+
+  @media (max-width: 260px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+
+    .reservas-text p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .reservas-text .section-kicker {
+      font-size: 0.72rem;
+      padding: 0.32rem 0.52rem;
+    }
+
+    .info-title,
+    .info-item p,
+    .info-item a {
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .reservas-form {
+      padding: 0.75rem;
+      border-radius: 0.9rem;
+    }
+
+    .reservas-form h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .form-helper {
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .step-chip {
+      font-size: 0.7rem;
+      padding: 0.28rem 0.48rem;
+    }
+
+    .form {
+      gap: 0.6rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.6rem;
+      font-size: 0.82rem;
+    }
+
+    .btn-submit {
+      font-size: 0.82rem;
+      padding: 0.7rem;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById("reserva-form") as HTMLFormElement | null;
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nombre = (form.querySelector("#nombre") as HTMLInputElement).value;
+      const telefono = (form.querySelector("#telefono") as HTMLInputElement).value;
+      const comboSelect = form.querySelector("#combo") as HTMLSelectElement;
+      const combo = comboSelect.value;
+      const comboLabel = comboSelect.options[comboSelect.selectedIndex]?.text || combo;
+      const fecha = (form.querySelector("#fecha") as HTMLInputElement).value;
+      const personas = (form.querySelector("#personas") as HTMLInputElement).value;
+      const notas = (form.querySelector("#notas") as HTMLTextAreaElement).value;
+
+      const fechaFormateada = fecha
+        ? new Date(`${fecha}T00:00:00`).toLocaleDateString("es-EC", {
+            weekday: "long",
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          })
+        : "No especificada";
+
+      const message = encodeURIComponent(
+        `*Nueva solicitud de reserva* 📩\n\n` +
+          `*1) Datos de contacto*\n` +
+          `• Nombre: ${nombre}\n` +
+          `• Teléfono: ${telefono}\n\n` +
+          `*2) Detalles de reserva*\n` +
+          `• Servicio/Combo: ${comboLabel}\n` +
+          `• Fecha deseada: ${fechaFormateada}\n` +
+          `• Número de personas: ${personas}\n\n` +
+          `*3) Comentarios*\n` +
+            `• ${notas || "Sin notas adicionales"}`
+      );
+
+      window.open(`https://wa.me/593992577409?text=${message}`, "_blank");
+    });
+  }
+</script>

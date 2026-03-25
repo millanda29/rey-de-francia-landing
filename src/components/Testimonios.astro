@@ -1,0 +1,219 @@
+---
+import Icono from "./Icono.astro";
+
+// Componente: Testimonios - Opiniones de clientes
+interface Testimonial {
+  name: string;
+  role: string;
+  comment: string;
+  rating: number;
+  avatarChar: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Andrea M.",
+    role: "Visita en pareja",
+    comment:
+      "Nos encantó porque todo fue claro desde la reserva. Llegamos, disfrutamos la habitación y el tiempo se aprovechó al máximo.",
+    rating: 5,
+    avatarChar: "A",
+  },
+  {
+    name: "Carlos P.",
+    role: "Plan familiar",
+    comment:
+      "Fuimos con niños y adultos, y todos encontraron algo para disfrutar. El lugar está bien organizado y la atención fue muy amable.",
+    rating: 5,
+    avatarChar: "C",
+  },
+  {
+    name: "Paola R.",
+    role: "Cliente frecuente",
+    comment:
+      "Lo mejor es que las tarifas son claras y justas. Siempre sé cuánto voy a pagar y el servicio mantiene buena calidad.",
+    rating: 5,
+    avatarChar: "P",
+  },
+  {
+    name: "Luis F.",
+    role: "Escapada de fin de semana",
+    comment:
+      "Tomamos un combo para pareja y valió totalmente la pena. El ambiente fue cómodo, privado y perfecto para desconectarnos.",
+    rating: 5,
+    avatarChar: "L",
+  },
+  {
+    name: "Valeria T.",
+    role: "Celebracion especial",
+    comment:
+      "Reservamos por aniversario y todo salió excelente. La decoración y los detalles hicieron que fuera un momento inolvidable.",
+    rating: 5,
+    avatarChar: "V",
+  },
+  {
+    name: "Roberto G.",
+    role: "Primera visita",
+    comment:
+      "Me gustó que no hubo sorpresas: horarios, tiempos y condiciones bien explicados. Eso da mucha confianza para volver.",
+    rating: 5,
+    avatarChar: "R",
+  },
+];
+---
+
+<section class="testimonios">
+  <div class="container">
+    <div class="section-header">
+      <h2>Clientes que ya lo vivieron</h2>
+      <p>Experiencias reales para complementar lo que viste en servicios, combos y tarifas.</p>
+    </div>
+
+    <div class="testimonios-grid">
+      {
+        testimonials.map((testimonial) => (
+          <div class="testimonial-card">
+            <div class="rating">
+              {Array.from({ length: testimonial.rating }).map(() => (
+                <Icono name="estrella" size="16" />
+              ))}
+            </div>
+            <p class="comment">"{testimonial.comment}"</p>
+            <div class="author">
+              <div class="avatar">{testimonial.avatarChar}</div>
+              <div>
+                <h4>{testimonial.name}</h4>
+                <p class="role">{testimonial.role}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios {
+    padding: var(--spacing-2xl) 0;
+    background:
+      radial-gradient(860px 320px at 8% 12%, rgba(6, 126, 255, 0.18), transparent),
+      radial-gradient(760px 300px at 92% 88%, rgba(72, 185, 255, 0.16), transparent),
+      linear-gradient(135deg, #eef5ff 0%, #f8fbff 100%);
+  }
+
+  .container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 2.5vw, 2rem);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .section-header h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.95rem, 1.4vw, 1.4rem);
+  }
+
+  .testimonial-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border-left: 4px solid var(--color-accent);
+    transition: all 0.3s ease;
+    grid-column: span 4;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(31, 41, 55, 0.1);
+  }
+
+  .rating {
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+    display: flex;
+    gap: 4px;
+    color: var(--color-accent);
+  }
+
+  .comment {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    font-style: italic;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .avatar {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .author h4 {
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .role {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 4px 0 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .testimonios {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      grid-column: auto;
+    }
+
+    .section-header {
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1100px) {
+    .testimonial-card {
+      grid-column: span 6;
+    }
+  }
+</style>
