@@ -1,0 +1,439 @@
+---
+type ServiceBenefit = {
+  title: string;
+  subtitle: string;
+  image: string;
+  alt: string;
+  tag: string;
+  points: string[];
+};
+
+const services: ServiceBenefit[] = [
+  {
+    title: "Piscina temperada",
+    tag: "Recreación",
+    subtitle:
+      "Un espacio ideal para disfrutar, relajarte y compartir momentos agradables en un ambiente seguro.",
+    image: "/piscina.webp",
+    alt: "Piscinas temperadas en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Temperatura ideal para relajarte en cualquier momento del día.",
+      "Ambiente seguro y cómodo para todas las edades.",
+      "Perfecto para compartir en familia, pareja o amigos.",
+      "Reduce el estrés de forma natural mientras disfrutas del agua.",
+      "Favorece la relajación muscular sin esfuerzo.",
+      "Ideal para desconectar de la rutina diaria.",
+      "Espacio amplio para recreación y descanso.",
+    ],
+  },
+  {
+    title: "Sauna de calor seco",
+    tag: "Relajación",
+    subtitle:
+      "Perfecto para soltar tensiones y regalarte una pausa de bienestar después de la rutina.",
+    image: "/sauna.webp",
+    alt: "Zona de sauna en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Relaja profundamente los músculos tensos.",
+      "Ayuda a liberar el estrés acumulado.",
+      "Favorece la sensación de ligereza corporal.",
+      "Promueve un descanso físico inmediato.",
+      "Ideal después de actividad física o trabajo intenso.",
+      "Ambiente tranquilo para desconexión total.",
+      "Mejora la sensación general de bienestar.",
+    ],
+  },
+  {
+    title: "Turco de vapor húmedo",
+    tag: "Bienestar",
+    subtitle:
+      "Un ambiente cálido y envolvente para relajarte, respirar mejor y sentirte renovado.",
+    image: "/sauna.webp",
+    alt: "Área de turco en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Ambiente húmedo que favorece la relajación total.",
+      "Ayuda a mejorar la respiración.",
+      "Promueve limpieza natural de la piel.",
+      "Genera sensación de frescura al salir.",
+      "Reduce la tensión física y mental.",
+      "Ideal para complementar sauna o hidromasaje.",
+      "Te deja renovado y con más energía.",
+    ],
+  },
+  {
+    title: "Hidromasaje",
+    tag: "Relax Premium",
+    subtitle:
+      "Chorros de agua diseñados para brindarte una experiencia profunda de relajación y descanso.",
+    image: "/hidromasaje.webp",
+    alt: "Zona de hidromasaje en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Masajea el cuerpo con chorros de agua a presión.",
+      "Reduce tensión muscular acumulada.",
+      "Mejora la circulación sanguínea.",
+      "Brinda relajación profunda en pocos minutos.",
+      "Ideal para aliviar el cansancio físico.",
+      "Complementa cualquier circuito de bienestar.",
+      "Sensación inmediata de descanso total.",
+    ],
+  },
+  {
+    title: "Chorros de agua (contraste)",
+    tag: "Energía",
+    subtitle:
+      "Estimula tu cuerpo con cambios de temperatura que revitalizan y activan tu energía.",
+    image: "/chorros.webp",
+    alt: "Chorros de agua en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Activa la circulación con cambios de temperatura.",
+      "Genera sensación de energía inmediata.",
+      "Ayuda a revitalizar el cuerpo.",
+      "Ideal para cerrar sesiones de relajación.",
+      "Estimula el sistema corporal de forma natural.",
+      "Refresca y despeja la mente.",
+      "Te deja listo para continuar el día.",
+    ],
+  },
+  {
+    title: "Baños de cajón",
+    tag: "Tradicional",
+    subtitle:
+      "Una experiencia tradicional de calor que complementa tu rutina de relajación.",
+    image: "/bdc.webp",
+    alt: "Área de baños de cajón en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Experiencia tradicional de bienestar.",
+      "Favorece la relajación profunda.",
+      "Ayuda a liberar tensiones acumuladas.",
+      "Complemento ideal del sauna o turco.",
+      "Promueve descanso físico progresivo.",
+      "Ambiente íntimo y relajante.",
+      "Ideal para completar tu circuito de relajación.",
+    ],
+  },
+  {
+    title: "Habitaciones",
+    tag: "Hospedaje",
+    subtitle:
+      "Espacios privados y confortables para descansar, celebrar o vivir una experiencia especial.",
+    image: "/habitaciones.webp",
+    alt: "Habitaciones en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Privacidad total para momentos especiales.",
+      "Ambiente cómodo y acogedor.",
+      "Ideal para escapadas de pareja.",
+      "Perfecto para celebraciones o descanso.",
+      "Espacios limpios y bien equipados.",
+      "Disponibilidad por horas.",
+      "Complemento ideal a la experiencia del lugar.",
+    ],
+  },
+  {
+    title: "Restaurante",
+    tag: "Gastronomía",
+    subtitle:
+      "Disfruta de una variedad de platos y bebidas sin salir del lugar.",
+    image: "/piscina.webp",
+    alt: "Restaurante en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Variedad de platos para todos los gustos.",
+      "Opciones de bebidas y snacks.",
+      "Ideal para recargar energía después de actividades.",
+      "Servicio cómodo dentro del mismo lugar.",
+      "Perfecto para compartir en grupo.",
+      "Complementa tu experiencia sin salir.",
+      "Ambiente agradable para disfrutar.",
+    ],
+  },
+  {
+    title: "Parqueadero",
+    tag: "Comodidad",
+    subtitle:
+      "Comodidad y seguridad para tu vehículo durante toda tu visita.",
+    image: "/piscina.webp",
+    alt: "Parqueadero en Manantial Rey de Francia - Hostal y Piscinas",
+    points: [
+      "Espacio amplio y organizado.",
+      "Seguridad durante toda tu estadía.",
+      "Acceso rápido a las instalaciones.",
+      "Comodidad al llegar y salir.",
+      "Ideal para visitas familiares o grupales.",
+      "Evita preocupaciones por tu vehículo.",
+      "Facilita una experiencia sin estrés.",
+    ],
+  },
+];
+---
+
+<section class="beneficios-detallados" id="beneficios-detallados">
+  <div class="container">
+    <div class="section-header">
+      <h2>Beneficios detallados por servicio</h2>
+      <p>Lo esencial de cada experiencia para que elijas mejor tu visita.</p>
+    </div>
+
+    <div class="cards-wrap">
+      {
+        services.map((service, index) => (
+          <article class:list={["beneficio-card", { reverse: index % 2 !== 0 }]}>
+            <figure class="beneficio-imagen">
+              <img src={service.image} alt={service.alt} loading="lazy" />
+            </figure>
+
+            <div class="beneficio-contenido">
+              <span class="beneficio-tag">{service.tag}</span>
+              <h3>{service.title}</h3>
+              <p class="definicion">{service.subtitle}</p>
+
+              <ul class="beneficios-lista">
+                {service.points.map((point) => <li>{point}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .beneficios-detallados {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background:
+      radial-gradient(700px 400px at 7% 10%, rgba(6, 126, 255, 0.1), transparent 70%),
+      radial-gradient(700px 400px at 93% 90%, rgba(72, 185, 255, 0.1), transparent 70%),
+      linear-gradient(135deg, #f8fafc 0%, #eef3f8 100%);
+  }
+
+  .container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 2.5vw, 2rem);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .section-header h2 {
+    font-size: 2.6rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .cards-wrap {
+    display: grid;
+    gap: clamp(1.25rem, 2vw, 2rem);
+  }
+
+  .beneficio-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 430px;
+    width: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(11, 31, 54, 0.08);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 22px 48px rgba(11, 31, 54, 0.14);
+    animation: fadeInUp 0.8s ease-out;
+    isolation: isolate;
+  }
+
+  .beneficio-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 140px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      rgba(13, 31, 53, 0) 0%,
+      rgba(13, 31, 53, 0.36) 52%,
+      rgba(13, 31, 53, 0) 100%
+    );
+    filter: blur(16px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .beneficio-card.reverse {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .beneficio-card.reverse .beneficio-imagen {
+    order: 2;
+  }
+
+  .beneficio-card.reverse .beneficio-contenido {
+    order: 1;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .beneficio-imagen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .beneficio-imagen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(13, 31, 53, 0.04) 0%, rgba(13, 31, 53, 0.48) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .beneficio-card.reverse .beneficio-imagen::after {
+    background: linear-gradient(270deg, rgba(13, 31, 53, 0.04) 0%, rgba(13, 31, 53, 0.48) 100%);
+  }
+
+  .beneficio-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 900ms ease;
+  }
+
+  .beneficio-card:hover .beneficio-imagen img {
+    transform: scale(1.07);
+  }
+
+  .beneficio-contenido {
+    position: relative;
+    z-index: 3;
+    padding: clamp(1.4rem, 2.6vw, 2.6rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:
+      radial-gradient(130% 130% at 100% 0%, rgba(6, 126, 255, 0.46) 0%, rgba(6, 126, 255, 0) 40%),
+      radial-gradient(135% 120% at 0% 100%, rgba(72, 185, 255, 0.36) 0%, rgba(72, 185, 255, 0) 42%),
+      linear-gradient(155deg, rgba(255, 255, 255, 0.95) 0%, rgba(215, 237, 255, 0.98) 46%, rgba(206, 245, 228, 0.96) 100%);
+    border-left: 1px solid rgba(6, 126, 255, 0.45);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+      inset 0 18px 42px rgba(6, 126, 255, 0.14),
+      inset 0 -14px 36px rgba(72, 185, 255, 0.14);
+    backdrop-filter: blur(14px) saturate(1.15);
+  }
+
+  .beneficio-tag {
+    display: inline-flex;
+    width: fit-content;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, rgba(6, 126, 255, 0.18), rgba(72, 185, 255, 0.22));
+    margin-bottom: 0.85rem;
+  }
+
+  .beneficio-contenido h3 {
+    font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .definicion {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+
+  .beneficios-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .beneficios-lista li {
+    position: relative;
+    padding-left: 1.45rem;
+    color: var(--color-text-light);
+    line-height: 1.62;
+    font-size: 0.98rem;
+  }
+
+  .beneficios-lista li::before {
+    content: "";
+    position: absolute;
+    top: 0.52rem;
+    left: 0;
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    box-shadow: 0 0 0 4px rgba(6, 126, 255, 0.16);
+  }
+
+  @media (max-width: 768px) {
+    .beneficios-detallados {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .beneficio-card,
+    .beneficio-card.reverse {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .beneficio-card::before {
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 42%;
+      width: 100%;
+      height: 64px;
+      transform: none;
+      background: linear-gradient(180deg, rgba(13, 31, 53, 0) 0%, rgba(13, 31, 53, 0.44) 60%, rgba(13, 31, 53, 0) 100%);
+    }
+
+    .beneficio-card.reverse .beneficio-imagen,
+    .beneficio-card.reverse .beneficio-contenido {
+      order: initial;
+    }
+
+    .beneficio-imagen {
+      min-height: 270px;
+    }
+
+    .beneficio-imagen::after,
+    .beneficio-card.reverse .beneficio-imagen::after {
+      background: linear-gradient(180deg, rgba(13, 31, 53, 0.08) 0%, rgba(13, 31, 53, 0.46) 100%);
+    }
+
+    .section-header h2 {
+      font-size: 1.95rem;
+    }
+  }
+</style>
+

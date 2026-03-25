@@ -1,0 +1,73 @@
+---
+// Componente: Icono (Icon Font)
+interface Props {
+  name: string;
+  size?: string;
+  class?: string;
+}
+
+const { name, size = "24", class: className = "" } = Astro.props;
+
+// Mapeo de nombres internos a clases de Bootstrap Icons.
+const icons: Record<string, string> = {
+  hotel: "bi-building",
+  restaurant: "bi-egg-fried",
+  comida: "bi-egg-fried",
+  car: "bi-car-front",
+  maps: "bi-map",
+  piscina: "bi-water",
+  bebidas: "bi-cup-hot",
+  sauna: "bi-thermometer-half",
+  familia: "bi-people",
+  pareja: "bi-heart",
+  day: "bi-clock",
+  ninos: "bi-emoji-smile",
+  seguridad: "bi-shield-check",
+  comodidad: "bi-emoji-laughing",
+  atencion: "bi-chat-dots",
+  precio: "bi-cash-coin",
+  check: "bi-check2",
+  estrella: "bi-star-fill",
+  reserva: "bi-calendar-check",
+  ubicacion: "bi-geo-alt",
+  telefono: "bi-telephone",
+  email: "bi-envelope",
+  whatsapp: "bi-whatsapp",
+  menu: "bi-list",
+  cerrar: "bi-x-lg",
+  flecha: "bi-arrow-right",
+  reloj: "bi-clock-history",
+  compartir: "bi-share",
+  descuento: "bi-percent",
+  calendario: "bi-calendar3",
+  cumpleaños: "bi-gift",
+  facebook: "bi-facebook",
+  instagram: "bi-instagram",
+  tiktok: "bi-tiktok",
+  youtube: "bi-youtube",
+  cascada: "bi-droplet",
+};
+
+const iconClass = icons[name] || icons.check;
+const normalizedSize = /^\d+(\.\d+)?$/.test(size) ? `${size}px` : size;
+---
+
+<span class:list={["icono", className]} style={`--icon-size: ${normalizedSize};`}>
+  <i class:list={["bi", iconClass]} aria-hidden="true"></i>
+</span>
+
+<style>
+  .icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
+    line-height: 1;
+  }
+
+  .icono :global(.bi) {
+    font-size: var(--icon-size, 1em);
+    line-height: 1;
+    display: inline-flex;
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQ[] = [
+  {
+    question: "¿Qué debo llevar para ingresar?",
+    answer: "Terno de baño de licra, gorro de cabello y sandalias para disfrutar tu visita sin contratiempos.",
+  },
+  {
+    question: "¿Cómo aplico a la tarifa preferencial?",
+    answer: "Debes presentar tu cédula física original y vigente en recepción para validar el beneficio.",
+  },
+  {
+    question: "¿Hay parqueadero disponible?",
+    answer: "Sí, contamos con parqueadero privado para mayor comodidad durante tu estadía.",
+  },
+  {
+    question: "¿Puedo usar todos los servicios si tengo una condición médica?",
+    answer: "Te recomendamos consultar con tu médico antes de usar servicios de calor o contraste, para vivir la experiencia con seguridad.",
+  },
+  {
+    question: "¿Necesito reservar con anticipación?",
+    answer: "Sí, para habitaciones y combos especiales te recomendamos reservar con 1 o 2 días de anticipación para asegurar disponibilidad.",
+  },
+  {
+    question: "¿Cuál es el horario de atención?",
+    answer: "Atendemos jueves y viernes de 10:00 a 18:00, y sábados, domingos y feriados de 8:30 a 18:00.",
+  },
+  {
+    question: "¿Qué formas de pago aceptan?",
+    answer: "Aceptamos efectivo, transferencias bancarias para tu comodidad, próximamente habilitaremos pagos con tarjetas y plataformas digitales.",
+  },
+  {
+    question: "¿Los servicios son privados o compartidos?",
+    answer: "La habitación en combos aplica como espacio privado según el plan elegido, mientras que piscinas y áreas de bienestar son servicios compartidos.",
+  },
+  {
+    question: "¿Cuánto tiempo dura la experiencia en habitaciones y combos?",
+    answer: "En los planes de habitación y combos especiales, el tiempo referencial de uso es de 4 horas y 30 minutos.",
+  },
+];
+---
+
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Preguntas Frecuentes</h2>
+      <p>Todo lo que necesitas saber antes de venir.</p>
+    </div>
+
+    <div class="faq-container">
+      {
+        faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <span class="icon">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq { padding: var(--spacing-2xl) 0; background: var(--color-white); }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+  .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
+  .section-header h2 { color: var(--color-primary); margin-bottom: var(--spacing-md); }
+  .section-header p { font-size: 1.1rem; color: var(--color-text-light); }
+
+  .faq-container { display: flex; flex-direction: column; gap: var(--spacing-md); }
+
+  .faq-item { border: 2px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s ease; }
+  .faq-item[open] { border-color: var(--color-accent); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2); }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    background: var(--color-bg);
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: background 0.3s ease;
+  }
+
+  .faq-item[open] .faq-question { background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%); color: var(--color-white); }
+  .faq-question:hover { background: var(--color-border); }
+
+  .faq-question .icon { font-size: 1.5rem; transition: transform 0.3s ease; }
+  .faq-item[open] .faq-question .icon { transform: rotate(45deg); }
+
+  .faq-answer { padding: var(--spacing-lg); background: var(--color-white); border-top: 2px solid var(--color-border); animation: slideDown 0.3s ease; }
+
+  @keyframes slideDown {
+    from { opacity: 0; max-height: 0; }
+    to { opacity: 1; max-height: 500px; }
+  }
+
+  .faq-answer p { color: var(--color-text-light); line-height: 1.8; margin: 0; }
+
+  @media (max-width: 768px) {
+    .faq { padding: var(--spacing-xl) 0; }
+    .section-header { margin-bottom: var(--spacing-xl); }
+    .faq-question { padding: var(--spacing-md); font-size: 0.95rem; }
+    .faq-answer { padding: var(--spacing-md); }
+  }
+</style>
+
+<script>
+  const details = document.querySelectorAll("details");
+  details.forEach((detail) => {
+    detail.addEventListener("click", () => {
+      details.forEach((otherDetail) => {
+        if (otherDetail !== detail) {
+          otherDetail.removeAttribute("open");
+        }
+      });
+    });
+  });
+</script>

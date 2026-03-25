@@ -1,0 +1,238 @@
+---
+import Icono from "./Icono.astro";
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Manantial Rey de Francia - Hostal y Piscinas</h4>
+        <p>
+          Centro de piscinas temperadas y hostal familiar en el sur de Quito. Creamos experiencias de descanso con
+          atención cálida, espacios seguros y servicios diseñados para renovar cuerpo y mente.
+        </p>
+
+        <div class="social-links" aria-label="Redes sociales">
+          <a href="https://www.facebook.com/hostalreydefrancia" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+            <Icono name="facebook" size="20" />
+          </a>
+          <a href="https://www.instagram.com/manantialreydefrancia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+            <Icono name="instagram" size="20" />
+          </a>
+          <a href="https://www.tiktok.com/@manantialreydefra" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+            <Icono name="tiktok" size="20" />
+          </a>
+          <a href="https://wa.me/593992577409" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+            <Icono name="whatsapp" size="20" />
+          </a>
+          <a href="https://maps.app.goo.gl/RonmVdkj88GZvvw57" target="_blank" rel="noopener noreferrer" aria-label="Maps" title="Maps">
+            <Icono name="ubicacion" size="20" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#combos">Combos</a></li>
+          <li><a href="#tarifas">Tarifas</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Información útil</h4>
+        <ul>
+          <li><a href="#horarios">Ver horarios de atención</a></li>
+          <li><a href="#ubicacion">Ver ubicación y mapa</a></li>
+          <li><a href="#reservas">Reservar por WhatsApp o formulario</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Ingreso y recomendaciones</h4>
+        <p>Para mayor seguridad y comodidad: terno de baño de licra, gorro de cabello y sandalias.</p>
+        <a
+          href="https://maps.app.goo.gl/RonmVdkj88GZvvw57"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-ubicacion"
+        >Ver ubicación en Google Maps</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Manantial Rey de Francia - Hostal y Piscinas. Bienestar, hospitalidad y calidad en cada visita.</p>
+      <div class="footer-links">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="whatsapp-btn" class="whatsapp-btn" title="Contactar por WhatsApp">
+  <Icono name="whatsapp" size="28" />
+</button>
+
+<style>
+  .footer {
+    background:
+      radial-gradient(820px 340px at 7% 16%, rgba(6, 126, 255, 0.18), transparent),
+      radial-gradient(760px 320px at 93% 84%, rgba(72, 185, 255, 0.14), transparent),
+      linear-gradient(135deg, #0b1f36 0%, #0f253f 44%, #112d4c 100%);
+    color: #d4dee9;
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+  .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-2xl); margin-bottom: var(--spacing-2xl); }
+
+  .footer-section h4 { color: #b2ffef; font-family: var(--font-serif); font-size: 1.22rem; margin-bottom: var(--spacing-md); }
+  .footer-section p { line-height: 1.76; font-size: 0.96rem; }
+  .footer-section ul { list-style: none; }
+  .footer-section ul li { margin-bottom: var(--spacing-sm); font-size: 0.95rem; line-height: 1.55; }
+
+  .footer-section a { color: #d6deea; transition: color var(--transition-standard), transform var(--transition-standard); }
+  .footer-section a:hover { color: #b2ffef; }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.72rem;
+    margin-top: var(--spacing-md);
+  }
+
+  .social-links a {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #f5f9ff;
+    box-shadow: 0 10px 22px rgba(4, 14, 28, 0.24);
+    transition: transform var(--transition-standard), background-color var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard), color var(--transition-standard);
+  }
+
+  .social-links a:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(6, 126, 255, 0.26) 0%, rgba(72, 185, 255, 0.22) 100%);
+    border-color: rgba(178, 255, 239, 0.66);
+    color: #ffffff;
+    box-shadow: 0 16px 30px rgba(4, 14, 28, 0.32);
+  }
+
+  .btn-ubicacion {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 52%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: var(--spacing-md);
+    box-shadow: 0 12px 26px rgba(11, 79, 73, 0.26);
+  }
+
+  .btn-ubicacion:hover { transform: translateY(-3px); box-shadow: 0 18px 32px rgba(11, 79, 73, 0.34); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(72, 185, 255, 0.28);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .footer-bottom p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+  .footer-links { display: flex; gap: var(--spacing-lg); }
+  .footer-links a { font-size: 0.9rem; color: #d6deea; }
+
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+    transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+    z-index: 50;
+  }
+
+  .whatsapp-btn:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 18px 36px rgba(37, 211, 102, 0.52); }
+  .whatsapp-btn:active { transform: scale(0.95); }
+
+  @media (max-width: 768px) {
+    .footer { padding: var(--spacing-xl) 0 var(--spacing-md); }
+    .footer-content { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .whatsapp-btn { width: 52px; height: 52px; bottom: 20px; right: 20px; }
+  }
+
+  @media (max-width: 260px) {
+    .footer {
+      padding: var(--spacing-lg) 0.5rem var(--spacing-sm);
+    }
+
+    .container {
+      padding: 0;
+    }
+
+    .footer-content {
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-section p,
+    .footer-section ul li,
+    .footer-bottom p,
+    .footer-links a {
+      font-size: 0.76rem;
+      line-height: 1.35;
+    }
+
+    .social-links a {
+      width: 1.9rem;
+      height: 1.9rem;
+    }
+
+    .btn-ubicacion {
+      font-size: 0.75rem;
+      padding: 0.46rem 0.58rem;
+    }
+
+    .footer-links {
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .whatsapp-btn {
+      width: 42px;
+      height: 42px;
+      right: 8px;
+      bottom: 8px;
+    }
+  }
+</style>
