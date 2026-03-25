@@ -1,0 +1,147 @@
+---
+import Icono from "./Icono.astro";
+---
+
+<section class="tarifas" id="tarifas">
+  <div class="container">
+    <span class="section-kicker">Tarifas transparentes</span>
+    <h2>Precios claros para que reserves con confianza</h2>
+    <p class="subtitle">Elige la opción ideal para tu visita y disfruta sin sorpresas.</p>
+
+    <div class="tarifas-grid">
+      <article class="tarifa-card featured">
+        <div class="badge">ENTRADA GENERAL</div>
+        <div class="tarifa-header">
+          <h3>Entrada General</h3>
+          <p class="description">Tu pase completo para vivir la experiencia</p>
+        </div>
+
+        <div class="price">
+          <span class="amount">$7.00</span>
+          <span class="period">por persona</span>
+        </div>
+
+        <ul class="features">
+          <li><Icono name="check" size="20" /> Piscina recreativa</li>
+          <li><Icono name="check" size="20" /> Sauna y turco</li>
+          <li><Icono name="check" size="20" /> Hidromasaje</li>
+          <li><Icono name="check" size="20" /> Chorros de contraste</li>
+          <li><Icono name="check" size="20" /> Áreas familiares</li>
+        </ul>
+
+        <a href="#reservas" class="btn btn-primary">Reservar ahora</a>
+      </article>
+
+      <article class="tarifa-card">
+        <div class="tarifa-header">
+          <h3>Tarifa Preferencial</h3>
+          <p class="description">Para niños, adultos mayores y personas con discapacidad</p>
+        </div>
+
+        <div class="price">
+          <span class="amount">$4.00</span>
+          <span class="period">por persona</span>
+        </div>
+
+        <ul class="features">
+          <li><Icono name="check" size="20" /> Mismos accesos de la entrada general</li>
+          <li><Icono name="check" size="20" /> Aplicable en horario regular</li>
+          <li><Icono name="check" size="20" /> Atención prioritaria en recepción</li>
+        </ul>
+
+        <div class="alerta-cedula" role="alert">
+          ⚠ Para aplicar al beneficio presenta cédula física original y vigente en recepción.
+        </div>
+
+        <a href="#reservas" class="btn btn-outline">Consultar disponibilidad</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tarifas { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #eff8ff 0%, #ecfeff 100%); }
+  .container { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .tarifas h2 { font-size: 2.5rem; color: var(--color-primary); margin: var(--spacing-md) 0; }
+  .subtitle { font-size: 1.1rem; color: var(--color-text-light); margin-bottom: var(--spacing-2xl); }
+
+  .tarifas-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: var(--spacing-xl); text-align: left; }
+
+  .tarifa-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  }
+
+  .tarifa-card:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14); }
+  .tarifa-card.featured { border-color: rgba(6, 126, 255, 0.35); box-shadow: 0 20px 36px rgba(6, 126, 255, 0.2); }
+
+  .badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+
+  .tarifa-header h3 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: var(--spacing-sm); }
+  .tarifa-header .description { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: var(--spacing-lg); }
+
+  .price { display: flex; align-items: baseline; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--color-border); }
+  .price .amount { font-size: 2.5rem; font-weight: 700; color: var(--color-accent-dark); }
+  .price .period { color: var(--color-text-light); font-size: 0.95rem; }
+
+  .features { list-style: none; flex-grow: 1; margin-bottom: var(--spacing-lg); }
+  .features li { display: flex; align-items: center; gap: var(--spacing-md); padding: 0.45rem 0; color: var(--color-text-light); font-size: 0.95rem; }
+  .features :global(svg) { color: var(--color-success); flex-shrink: 0; }
+
+  .alerta-cedula {
+    border-left: 4px solid #dc2626;
+    background: #fef2f2;
+    color: #7f1d1d;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .btn {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
+
+  .btn-outline { background: var(--color-white); color: var(--color-primary); border: 2px solid var(--color-border); }
+  .btn-outline:hover { background: var(--color-primary); color: var(--color-white); transform: translateY(-2px); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    color: var(--color-white);
+    box-shadow: 0 10px 24px rgba(6, 126, 255, 0.28);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(6, 126, 255, 0.34); }
+
+  @media (max-width: 768px) {
+    .tarifas h2 { font-size: 1.875rem; }
+    .tarifas-grid { grid-template-columns: 1fr; }
+  }
+</style>
