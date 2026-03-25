@@ -4,9 +4,76 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  keywords?: string;
+  noindex?: boolean;
+  type?: "website" | "article";
 }
 
-const { title, description = "Manantial Rey de Francia - Hostal y Piscinas en Quito: piscina temperada, sauna, turco, hidromasaje y reservas por WhatsApp" } = Astro.props;
+const {
+  title,
+  description = "Manantial Rey de Francia - Hostal y Piscinas en Quito: piscina temperada, sauna, turco, hidromasaje y reservas por WhatsApp.",
+  image = "/assets/images/piscina.webp",
+  keywords = "hostal en quito, piscina temperada quito, sauna quito, turco quito, hidromasaje quito, manantial rey de francia, hostal chillogallo",
+  noindex = false,
+  type = "website",
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "");
+const pageUrl = siteUrl ? new URL(Astro.url.pathname, siteUrl).toString() : undefined;
+const imageUrl = siteUrl ? new URL(image, siteUrl).toString() : image;
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Manantial Rey de Francia",
+  ...(siteUrl ? { url: siteUrl } : {}),
+  inLanguage: "es-EC",
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "Manantial Rey de Francia",
+  description,
+  ...(siteUrl ? { url: siteUrl } : {}),
+  ...(imageUrl ? { image: imageUrl } : {}),
+  telephone: ["+593223035551", "+593992577409"],
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Calle Rafael Garcia S33-239 y Ramon Cabrera, Chillogallo",
+    addressLocality: "Quito",
+    addressCountry: "EC",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "-0.291044",
+    longitude: "-78.554826",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Thursday", "Friday"],
+      opens: "10:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "08:30",
+      closes: "18:00",
+    },
+  ],
+  sameAs: [
+    "https://www.facebook.com/hostalreydefrancia",
+    "https://www.instagram.com/manantialreydefrancia",
+    "https://www.tiktok.com/@manantialreydefra",
+  ],
+};
 ---
 
 <!doctype html>
@@ -18,7 +85,29 @@ const { title, description = "Manantial Rey de Francia - Hostal y Piscinas en Qu
 		<link rel="icon" href="/assets/favicon.webp" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content={robotsContent} />
     <meta name="theme-color" content="#0e2e5d" />
+    <meta name="author" content="Manantial Rey de Francia" />
+
+    {pageUrl && <link rel="canonical" href={pageUrl} />}
+
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Manantial Rey de Francia" />
+    {pageUrl && <meta property="og:url" content={pageUrl} />}
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta property="og:image:alt" content="Instalaciones de Manantial Rey de Francia en Quito" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     
     <!-- Preconnect para mejor rendimiento -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
