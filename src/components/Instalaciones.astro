@@ -10,38 +10,58 @@
     <div class="carrusel-wrapper">
       <div class="carrusel">
         <div class="slide">
-          <img src="/piscina.webp" alt="Piscina recreativa de Manantial Rey de Francia" loading="lazy" />
-          <p class="slide-caption">Piscinas temperadas para toda la familia</p>
+          <img src="/assets/images/piscina.webp" alt="Piscina recreativa de Manantial Rey de Francia" loading="lazy" />
+          <p class="slide-caption">Piscina temperada para toda la familia</p>
         </div>
 
         <div class="slide">
-          <img src="/habitaciones.webp" alt="Habitaciones de confort" loading="lazy" />
+          <img src="/assets/images/habitaciones.webp" alt="Habitaciones de confort" loading="lazy" />
           <p class="slide-caption">Habitaciones cómodas para tu descanso</p>
         </div>
 
         <div class="slide">
-          <img src="/sauna.webp" alt="Sauna de calor seco" loading="lazy" />
+          <img src="/assets/images/sauna.webp" alt="Sauna de calor seco" loading="lazy" />
           <p class="slide-caption">Sauna para soltar tensión</p>
         </div>
 
         <div class="slide">
-          <img src="/sauna.webp" alt="Turco de vapor húmedo" loading="lazy" />
+          <img src="/assets/images/turco.webp" alt="Turco de vapor húmedo" loading="lazy" />
           <p class="slide-caption">Turco para renovar energía</p>
         </div>
 
         <div class="slide">
-          <img src="/bdc.webp" alt="Baños de cajón" loading="lazy" />
-          <p class="slide-caption">Baños de cajón y contraste</p>
-        </div>
-
-        <div class="slide">
-          <img src="/chorros.webp" alt="Chorros de agua" loading="lazy" />
+          <img src="/assets/images/chorros.webp" alt="Chorros de agua" loading="lazy" />
           <p class="slide-caption">Chorros de agua para relajación</p>
         </div>
 
         <div class="slide">
-          <img src="/hidromasaje.webp" alt="Hidromasaje" loading="lazy" />
+          <img src="/assets/images/hidromasaje.webp" alt="Hidromasaje" loading="lazy" />
           <p class="slide-caption">Hidromasaje para aliviar el estrés</p>
+        </div>
+
+        <div class="slide">
+          <img src="/assets/images/fachada.webp" alt="Fachada principal de Manantial Rey de Francia" loading="lazy" />
+          <p class="slide-caption">Fachada principal y acceso</p>
+        </div>
+
+        <div class="slide">
+          <img src="/assets/images/piscina.webp" alt="Área de piscina para descanso" loading="lazy" />
+          <p class="slide-caption">Más espacio para disfrutar el agua</p>
+        </div>
+
+        <div class="slide">
+          <img src="/assets/images/habitaciones2.webp" alt="Área de habitaciones para huéspedes" loading="lazy" />
+          <p class="slide-caption">Opciones adicionales de hospedaje</p>
+        </div>
+
+        <div class="slide">
+          <img src="/assets/images/bdc.webp" alt="Baños de cajón" loading="lazy" />
+          <p class="slide-caption">Baños de cajón y contraste</p>
+        </div>
+
+        <div class="slide">
+          <img src="/assets/images/restaurante.webp" alt="Área de relajación" loading="lazy" />
+          <p class="slide-caption">Menú de platos variados</p>
         </div>
       </div>
       
@@ -55,6 +75,11 @@
         <button class="dot" aria-label="Slide 4"></button>
         <button class="dot" aria-label="Slide 5"></button>
         <button class="dot" aria-label="Slide 6"></button>
+        <button class="dot" aria-label="Slide 7"></button>
+        <button class="dot" aria-label="Slide 8"></button>
+        <button class="dot" aria-label="Slide 9"></button>
+        <button class="dot" aria-label="Slide 10"></button>
+        <button class="dot" aria-label="Slide 11"></button>
       </div>
     </div>
   </div>
@@ -278,11 +303,44 @@
       font-size: 1.875rem;
     }
 
+    .carrusel {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .slide {
+      width: 100%;
+      min-width: 100%;
+      aspect-ratio: auto;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      min-height: clamp(250px, 64vw, 430px);
+      padding: 0.6rem 0.6rem 4rem;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transform: scale(1);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 0.8rem;
+    }
+
+    .slide.active img {
+      transform: scale(1.02);
+    }
+
     .slide-caption {
       font-size: 0.9rem;
       padding: var(--spacing-md);
       white-space: normal;
-      max-width: 80%;
+      text-align: center;
+      max-width: 86%;
     }
 
     .carrusel-btn {
@@ -311,15 +369,20 @@
     }
 
     .slide {
-      aspect-ratio: 4 / 3;
+      min-height: clamp(220px, 72vw, 360px);
+      padding: 0.5rem 0.5rem 3.5rem;
     }
 
     .slide-caption {
       font-size: 0.8rem;
       bottom: 10px;
-      max-width: 88%;
+      max-width: 90%;
       padding: 0.45rem 0.6rem;
       border-radius: 0.5rem;
+    }
+
+    .slide img {
+      border-radius: 0.65rem;
     }
 
     .carrusel-btn {
