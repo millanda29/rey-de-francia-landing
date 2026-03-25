@@ -16,14 +16,20 @@ const { currentPage = "inicio" } = Astro.props;
       </a>
 
       <nav class="nav-menu">
+        <a href="#instalaciones" class:list={["nav-link", { active: currentPage === "instalaciones" }]}>
+          Instalaciones
+        </a>
         <a href="#servicios" class:list={["nav-link", { active: currentPage === "servicios" }]}>
           Servicios
         </a>
         <a href="#combos" class:list={["nav-link", { active: currentPage === "combos" }]}>
           Combos
         </a>
-        <a href="#instalaciones" class:list={["nav-link", { active: currentPage === "instalaciones" }]}>
-          Instalaciones
+        <a href="#tarifas" class:list={["nav-link", { active: currentPage === "tarifas" }]}>
+          Tarifas
+        </a>
+        <a href="#ubicacion" class:list={["nav-link", { active: currentPage === "ubicacion" }]}>
+          Ubicación
         </a>
         <a href="#faq" class:list={["nav-link", { active: currentPage === "faq" }]}>
           FAQ
@@ -42,9 +48,11 @@ const { currentPage = "inicio" } = Astro.props;
   </div>
 
   <nav class="mobile-menu" id="mobile-menu">
+    <a href="#instalaciones">Instalaciones</a>
     <a href="#servicios">Servicios</a>
     <a href="#combos">Combos</a>
-    <a href="#instalaciones">Instalaciones</a>
+    <a href="#tarifas">Tarifas</a>
+    <a href="#ubicacion">Ubicación</a>
     <a href="#faq">FAQ</a>
     <a href="#reservas" class="cta-link">Agenda tu visita</a>
   </nav>
