@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Manantial Rey de Francia - Hostal y Piscinas en Quito: piscinas temperadas, sauna, turco, hidromasaje y reservas por WhatsApp" } = Astro.props;
+const { title, description = "Manantial Rey de Francia - Hostal y Piscinas en Quito: piscina temperada, sauna, turco, hidromasaje y reservas por WhatsApp" } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,8 +14,8 @@ const { title, description = "Manantial Rey de Francia - Hostal y Piscinas en Qu
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/webp" href="/favicon.webp" />
-		<link rel="icon" href="/favicon.webp" />
+    <link rel="icon" type="image/webp" href="/assets/favicon.webp" />
+		<link rel="icon" href="/assets/favicon.webp" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0e2e5d" />
