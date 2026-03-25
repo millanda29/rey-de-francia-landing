@@ -1,6 +1,6 @@
 # 🏨 Manantial Rey de Francia - Hostal y Piscinas
 
-Landing page institucional construida con Astro para promocionar servicios de piscinas temperadas, bienestar y hospedaje.
+Landing page institucional construida con Astro para promocionar servicios de piscina temperada, bienestar y hospedaje.
 
 ## ✨ Resumen
 
