@@ -96,7 +96,13 @@ export const combos: Combo[] = [
 </section>
 
 <style>
-  .combos { padding: var(--spacing-2xl) 0; background: linear-gradient(135deg, #f3f8ff 0%, #f7fbff 100%); }
+  .combos {
+    padding: var(--spacing-2xl) 0;
+    background:
+      radial-gradient(700px 380px at 5% 15%, rgba(86, 177, 227, 0.1), transparent),
+      radial-gradient(600px 340px at 95% 85%, rgba(207, 169, 75, 0.08), transparent),
+      var(--color-bg);
+  }
   .container { max-width: 1520px; margin: 0 auto; padding: 0 clamp(1rem, 2.5vw, 2rem); }
   .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
   .section-header h2 { color: var(--color-primary); margin: var(--spacing-md) auto; max-width: 760px; }
@@ -112,24 +118,24 @@ export const combos: Combo[] = [
     background: var(--color-white);
     padding: var(--spacing-xl);
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(26, 62, 122, 0.1);
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
     position: relative;
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    box-shadow: var(--shadow-soft);
     grid-column: span 3;
   }
 
   .combo-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(6, 126, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.13);
+    border-color: rgba(86, 177, 227, 0.35);
+    box-shadow: var(--shadow-elevated);
   }
 
   .combo-card.featured {
-    border-color: rgba(6, 126, 255, 0.45);
-    box-shadow: 0 20px 42px rgba(6, 126, 255, 0.2);
+    border-color: rgba(207, 169, 75, 0.45);
+    box-shadow: var(--shadow-gold);
   }
 
   .badge {
@@ -137,7 +143,7 @@ export const combos: Combo[] = [
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-gold);
     color: var(--color-white);
     padding: 0.45rem 0.95rem;
     border-radius: 999px;
@@ -154,27 +160,28 @@ export const combos: Combo[] = [
     width: 60px;
     height: 60px;
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(6, 126, 255, 0.18), rgba(72, 185, 255, 0.2));
+    background: linear-gradient(135deg, rgba(86, 177, 227, 0.14), rgba(207, 169, 75, 0.14));
+    color: var(--color-gold-dark);
   }
 
   .combo-card h3 { color: var(--color-primary); margin-bottom: var(--spacing-md); font-size: 1.32rem; }
-  .combo-price { font-family: var(--font-serif); font-size: 2rem; color: var(--color-accent-dark); font-weight: 700; margin-bottom: var(--spacing-md); }
+  .combo-price { font-family: var(--font-serif); font-size: 2rem; color: var(--color-gold-dark); font-weight: 700; margin-bottom: var(--spacing-md); }
 
   .features { list-style: none; margin-bottom: var(--spacing-lg); flex-grow: 1; }
   .features li { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); color: var(--color-text-light); line-height: 1.6; }
   .check { color: var(--color-success); flex-shrink: 0; display: inline-flex; margin-top: 2px; }
 
   .btn-combo {
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-blue);
     color: var(--color-white);
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-lg);
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.3s ease;
     text-align: center;
   }
 
-  .btn-combo:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(6, 126, 255, 0.3); }
+  .btn-combo:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26, 62, 122, 0.28); }
 
   @media (max-width: 768px) {
     .combos { padding: var(--spacing-xl) 0; }

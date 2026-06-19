@@ -1,5 +1,4 @@
 ---
-// Componente: Navigation - Header responsivo
 interface Props {
   currentPage?: string;
 }
@@ -11,16 +10,19 @@ const { currentPage = "inicio" } = Astro.props;
   <div class="container">
     <div class="navbar-content">
       <a href="/" class="logo">
-        <span class="logo-kicker">Hostal y Piscinas</span>
-        <span class="logo-text">Manantial Rey de Francia</span>
+        <img src="/favicon.png" alt="Rey de Francia - Piscinas Hostal" class="logo-img" width="46" height="46" />
+        <span class="logo-text-wrap">
+          <span class="logo-kicker">Piscinas - Hostal</span>
+          <span class="logo-text">Rey de Francia</span>
+        </span>
       </a>
 
-      <nav class="nav-menu">
-        <a href="#instalaciones" class:list={["nav-link", { active: currentPage === "instalaciones" }]}>
-          Instalaciones
-        </a>
+      <nav class="nav-menu" aria-label="Navegación principal">
         <a href="#servicios" class:list={["nav-link", { active: currentPage === "servicios" }]}>
           Servicios
+        </a>
+        <a href="#instalaciones" class:list={["nav-link", { active: currentPage === "instalaciones" }]}>
+          Instalaciones
         </a>
         <a href="#combos" class:list={["nav-link", { active: currentPage === "combos" }]}>
           Combos
@@ -34,12 +36,18 @@ const { currentPage = "inicio" } = Astro.props;
         <a href="#faq" class:list={["nav-link", { active: currentPage === "faq" }]}>
           FAQ
         </a>
-        <a href="#reservas" class="nav-link cta-link">
-          Agenda tu visita
+        <a
+          href="#reservas"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-link cta-link"
+        >
+          <i class="bi bi-whatsapp"></i>
+          Reserva ahora
         </a>
       </nav>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Menú">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -47,79 +55,111 @@ const { currentPage = "inicio" } = Astro.props;
     </div>
   </div>
 
-  <nav class="mobile-menu" id="mobile-menu">
-    <a href="#instalaciones">Instalaciones</a>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil">
     <a href="#servicios">Servicios</a>
+    <a href="#instalaciones">Instalaciones</a>
     <a href="#combos">Combos</a>
     <a href="#tarifas">Tarifas</a>
     <a href="#ubicacion">Ubicación</a>
     <a href="#faq">FAQ</a>
-    <a href="#reservas" class="cta-link">Agenda tu visita</a>
+    <a href="#reservas" class="nav-secondary-link">Formulario de reserva</a>
+    <a
+      href="https://wa.me/593992577409?text=Hola,%20me%20gustaría%20reservar%20en%20Rey%20de%20Francia"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta-link"
+    >
+      <i class="bi bi-whatsapp"></i>
+      Reserva por WhatsApp
+    </a>
   </nav>
 </header>
 
 <style>
   .navbar {
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(14px) saturate(1.15);
-    border-bottom: 1px solid rgba(11, 31, 54, 0.09);
+    background: rgba(245, 242, 232, 0.78);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border-bottom: 1px solid rgba(26, 62, 122, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 10px 30px rgba(11, 31, 54, 0.1);
+    box-shadow: 0 4px 24px rgba(11, 29, 58, 0.06);
   }
 
   .container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 clamp(1rem, 3vw, 2rem);
+    min-width: 0;
   }
 
   .navbar-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 84px;
+    height: 80px;
+    gap: 0.75rem;
+    min-width: 0;
   }
 
   .logo {
     flex-shrink: 0;
     display: inline-flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
     line-height: 1.05;
-    gap: 0.2rem;
+    text-decoration: none;
+  }
+
+  .logo-img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+
+    filter:
+      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.20));
+  }
+
+  .logo-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
   }
 
   .logo-kicker {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-text-lighter);
+    color: var(--color-gold-dark);
     font-weight: 700;
   }
 
   .logo-text {
     font-family: var(--font-serif);
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-deep);
     letter-spacing: 0.02em;
   }
 
   .nav-menu {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
     align-items: center;
+    min-width: 0;
   }
 
   .nav-link {
-    color: var(--color-text-light);
-    font-size: 0.93rem;
+    color: var(--color-stone-600);
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.01em;
     position: relative;
     transition: color var(--transition-standard), transform var(--transition-standard);
     padding: 0.2rem 0;
+    white-space: nowrap;
   }
 
   .nav-link::after {
@@ -129,14 +169,14 @@ const { currentPage = "inicio" } = Astro.props;
     bottom: -0.35rem;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+    background: var(--gradient-gold);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform var(--transition-standard);
   }
 
   .nav-link:hover {
-    color: var(--color-primary);
+    color: var(--color-royal);
     transform: translateY(-1px);
   }
 
@@ -147,28 +187,31 @@ const { currentPage = "inicio" } = Astro.props;
   }
 
   .nav-link.active {
-    color: var(--color-accent-dark);
-    font-weight: 600;
+    color: var(--color-royal);
+    font-weight: 700;
   }
 
   .nav-link.cta-link {
-    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 52%, var(--color-secondary) 100%);
+    background: var(--gradient-whatsapp);
     color: var(--color-white);
-    padding: 0.72rem 1.15rem;
+    padding: 0.58rem 1.05rem;
     border-radius: 999px;
     font-weight: 700;
-    box-shadow: 0 12px 26px rgba(11, 79, 73, 0.26);
+    font-size: 0.86rem;
+    box-shadow: var(--shadow-green);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
+
+  .nav-link.cta-link i { font-size: 16px; }
 
   .nav-link.cta-link:hover {
-    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-secondary) 100%);
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 16px 32px rgba(11, 79, 73, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(37, 211, 102, 0.42);
   }
 
-  .nav-link.cta-link::after {
-    display: none;
-  }
+  .nav-link.cta-link::after { display: none; }
 
   .menu-toggle {
     display: none;
@@ -177,23 +220,22 @@ const { currentPage = "inicio" } = Astro.props;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 0.25rem;
   }
 
   .menu-toggle span {
     width: 24px;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-deep);
     transition: transform var(--transition-standard), opacity var(--transition-standard);
+    border-radius: 2px;
   }
 
   .menu-toggle.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
 
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
 
   .menu-toggle.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
@@ -202,129 +244,60 @@ const { currentPage = "inicio" } = Astro.props;
   .mobile-menu {
     display: none;
     flex-direction: column;
-    gap: 0.4rem;
-    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
-    background: rgba(246, 249, 253, 0.98);
-    border-top: 1px solid var(--color-border);
+    gap: 0.25rem;
+    padding: 0.75rem clamp(1rem, 3vw, 2rem) 1.25rem;
+    background: rgba(245, 242, 232, 0.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(26, 62, 122, 0.1);
   }
 
   .mobile-menu a {
-    color: var(--color-text);
+    color: var(--color-stone-800);
     font-weight: 600;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
+    padding: 0.72rem 0.85rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
   }
 
   .mobile-menu a:hover {
-    background: rgba(6, 126, 255, 0.12);
+    background: rgba(86, 177, 227, 0.12);
+    color: var(--color-royal);
+  }
+
+  .mobile-menu .nav-secondary-link {
+    color: var(--color-stone-500);
+    font-size: 0.88rem;
+    font-weight: 600;
   }
 
   .mobile-menu .cta-link {
-    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-whatsapp);
     color: var(--color-white);
     text-align: center;
     border-radius: var(--radius-lg);
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.35rem;
+    box-shadow: var(--shadow-green);
   }
 
-  @media (max-width: 768px) {
-    .nav-menu {
-      display: none;
-    }
+  .mobile-menu .cta-link i { font-size: 18px; }
 
-    .menu-toggle {
-      display: flex;
-    }
-
-    .mobile-menu.active {
-      display: flex;
-    }
-
-    .navbar-content {
-      height: 74px;
-    }
-
-    .logo-kicker {
-      font-size: 0.66rem;
-    }
-
-    .logo-text {
-      font-size: 1.24rem;
-    }
+  @media (max-width: 900px) {
+    .nav-menu { display: none; }
+    .menu-toggle { display: flex; }
+    .mobile-menu.active { display: flex; }
+    .navbar-content { height: 72px; }
   }
 
   @media (max-width: 460px) {
-    .container {
-      padding: 0 0.75rem;
-    }
-
-    .navbar-content {
-      height: 66px;
-    }
-
-    .logo {
-      gap: 0.12rem;
-      max-width: calc(100% - 54px);
-    }
-
-    .logo-kicker {
-      font-size: 0.58rem;
-      letter-spacing: 0.06em;
-    }
-
-    .logo-text {
-      font-size: 1.01rem;
-      line-height: 1.05;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .mobile-menu {
-      padding: 0.6rem 0.75rem 0.85rem;
-    }
-
-    .mobile-menu a {
-      padding: 0.62rem;
-      font-size: 0.92rem;
-    }
-  }
-
-  @media (max-width: 260px) {
-    .container {
-      padding: 0 0.45rem;
-    }
-
-    .navbar-content {
-      height: 58px;
-    }
-
-    .logo {
-      max-width: calc(100% - 46px);
-    }
-
-    .logo-kicker {
-      font-size: 0.5rem;
-      letter-spacing: 0.04em;
-    }
-
-    .logo-text {
-      font-size: 0.84rem;
-    }
-
-    .menu-toggle span {
-      width: 20px;
-    }
-
-    .mobile-menu {
-      padding: 0.5rem;
-      gap: 0.25rem;
-    }
-
-    .mobile-menu a {
-      padding: 0.5rem;
-      font-size: 0.82rem;
-    }
+    .navbar-content { height: 66px; }
+    .logo { max-width: calc(100% - 54px); }
+    .logo-kicker { font-size: 0.58rem; }
+    .logo-text { font-size: 1.05rem; }
   }
 </style>
 
@@ -332,20 +305,21 @@ const { currentPage = "inicio" } = Astro.props;
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
 
-  if (menuToggle) {
+  if (menuToggle && mobileMenu) {
     menuToggle.addEventListener("click", () => {
-      mobileMenu?.classList.toggle("active");
-      menuToggle.classList.toggle("active");
+      const isOpen = mobileMenu.classList.toggle("active");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
     });
 
-    // Cerrar menú al hacer click en un link
     document.querySelectorAll(".mobile-menu a").forEach((link) => {
       link.addEventListener("click", () => {
-        mobileMenu?.classList.remove("active");
+        mobileMenu.classList.remove("active");
         menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
       });
     });
   }
 </script>
-
-

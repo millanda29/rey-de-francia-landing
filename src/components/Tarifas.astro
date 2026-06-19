@@ -60,7 +60,13 @@ import Icono from "./Icono.astro";
 </section>
 
 <style>
-  .tarifas { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #eff8ff 0%, #ecfeff 100%); }
+  .tarifas {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background:
+      radial-gradient(700px 380px at 10% 20%, rgba(86, 177, 227, 0.12), transparent),
+      radial-gradient(600px 320px at 90% 80%, rgba(207, 169, 75, 0.08), transparent),
+      var(--color-bg);
+  }
   .container { max-width: 1100px; margin: 0 auto; text-align: center; }
   .tarifas h2 { font-size: 2.5rem; color: var(--color-primary); margin: var(--spacing-md) 0; }
   .subtitle { font-size: 1.1rem; color: var(--color-text-light); margin-bottom: var(--spacing-2xl); }
@@ -71,35 +77,33 @@ import Icono from "./Icono.astro";
     background: var(--color-white);
     padding: var(--spacing-xl);
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(15, 23, 42, 0.1);
+    border: 1px solid rgba(26, 62, 122, 0.1);
+    box-shadow: var(--shadow-soft);
     position: relative;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   }
 
-  .tarifa-card:hover { transform: translateY(-8px); box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14); }
-  .tarifa-card.featured { border-color: rgba(6, 126, 255, 0.35); box-shadow: 0 20px 36px rgba(6, 126, 255, 0.2); }
+  .tarifa-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-elevated); }
+  .tarifa-card.featured { border-color: rgba(207, 169, 75, 0.45); box-shadow: var(--shadow-gold); }
 
   .badge {
     position: absolute;
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-gold);
     color: var(--color-white);
     padding: 0.45rem 1.1rem;
     border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.78rem;
   }
 
   .tarifa-header h3 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: var(--spacing-sm); }
   .tarifa-header .description { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: var(--spacing-lg); }
 
   .price { display: flex; align-items: baseline; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--color-border); }
-  .price .amount { font-size: 2.5rem; font-weight: 700; color: var(--color-accent-dark); }
+  .price .amount { font-size: 2.5rem; font-weight: 700; color: var(--color-gold-dark); }
   .price .period { color: var(--color-text-light); font-size: 0.95rem; }
 
   .features { list-style: none; flex-grow: 1; margin-bottom: var(--spacing-lg); }
@@ -133,12 +137,12 @@ import Icono from "./Icono.astro";
   .btn-outline:hover { background: var(--color-primary); color: var(--color-white); transform: translateY(-2px); }
 
   .btn-primary {
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+    background: var(--gradient-gold);
     color: var(--color-white);
-    box-shadow: 0 10px 24px rgba(6, 126, 255, 0.28);
+    box-shadow: var(--shadow-gold);
   }
 
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(6, 126, 255, 0.34); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(207, 169, 75, 0.38); }
 
   @media (max-width: 768px) {
     .tarifas h2 { font-size: 1.875rem; }
