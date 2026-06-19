@@ -2,118 +2,196 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animaciones personalizadas */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-25px);
-  }
-}
+/* ── Rey de Francia Brand System ──
+   Psicología: Azul Piscina = relajación · Azul Profundo = confianza
+   Azul Real = estabilidad · Oro = lujo · Marfil = hospitalidad
+   WhatsApp verde = conversión (uso exclusivo en contacto directo)
+*/
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Estilos globales */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  @apply font-sans text-slate-900 bg-white;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-serif font-bold;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--color-deep);
 }
 
-a {
-  @apply transition-all duration-300 ease-out;
+a { transition: all var(--transition-standard); }
+
+/* Fondos de sección */
+.section-bg-ivory {
+  background:
+    radial-gradient(700px 400px at 8% 12%, rgba(86, 177, 227, 0.1), transparent),
+    radial-gradient(600px 360px at 92% 88%, rgba(207, 169, 75, 0.08), transparent),
+    var(--color-bg);
 }
 
-/* Estilos de botones reutilizables */
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-xl;
-  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 45%, var(--color-secondary) 100%);
-  box-shadow: 0 14px 34px rgba(8, 84, 197, 0.28);
-  transition: transform var(--transition-standard), box-shadow var(--transition-standard), filter var(--transition-standard);
+.section-bg-white { background: var(--color-white); }
+
+.section-bg-blue-soft {
+  background:
+    radial-gradient(800px 420px at 10% 20%, rgba(86, 177, 227, 0.14), transparent),
+    radial-gradient(700px 380px at 90% 80%, rgba(26, 62, 122, 0.08), transparent),
+    linear-gradient(160deg, var(--color-primary-50) 0%, var(--color-ivory) 100%);
 }
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-slate-900 border-2 font-semibold rounded-xl;
-  border-color: var(--color-border);
-  box-shadow: 0 10px 28px rgba(11, 31, 54, 0.1);
-  transition: transform var(--transition-standard), box-shadow var(--transition-standard), color var(--transition-standard), background-color var(--transition-standard), border-color var(--transition-standard);
-}
-
-.btn-outline {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-slate-900 border-2 font-semibold rounded-xl;
-  border-color: var(--color-border);
-  transition: transform var(--transition-standard), box-shadow var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard), background-color var(--transition-standard);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(8, 84, 197, 0.34);
-  filter: saturate(1.08);
-}
-
-.btn-secondary:hover,
-.btn-outline:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-accent);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+.section-bg-deep {
+  background:
+    radial-gradient(900px 400px at 15% 0%, rgba(86, 177, 227, 0.18), transparent),
+    radial-gradient(700px 360px at 85% 100%, rgba(207, 169, 75, 0.1), transparent),
+    var(--gradient-blue);
   color: var(--color-white);
-  box-shadow: 0 14px 32px rgba(11, 31, 54, 0.24);
 }
 
-.surface-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(11, 31, 54, 0.1);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-soft);
+.section-bg-deep h2,
+.section-bg-deep h3,
+.section-bg-deep h4 { color: var(--color-white); }
+
+.section-bg-deep p { color: rgba(255, 255, 255, 0.82); }
+
+/* Encabezados de sección */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header h2 {
+  color: var(--color-deep);
+  margin: var(--spacing-md) auto;
+  max-width: 760px;
+  line-height: 1.18;
+}
+
+.section-header p {
+  font-size: 1.08rem;
+  color: var(--color-text-light);
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.75;
 }
 
 .section-kicker {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.35rem 0.8rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(6, 126, 255, 0.16) 0%, rgba(72, 185, 255, 0.2) 100%);
-  color: var(--color-accent-dark);
+  background: rgba(26, 62, 122, 0.08);
+  color: var(--color-royal);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  border: 1px solid rgba(26, 62, 122, 0.14);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 45%, var(--color-secondary) 100%);
+  background: var(--gradient-blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Botones de marca */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-gold);
+  box-shadow: var(--shadow-gold);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard), filter var(--transition-standard);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  background: var(--color-white);
+  color: var(--color-deep);
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(11, 29, 58, 0.14);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard), background var(--transition-standard), color var(--transition-standard);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  background: var(--color-white);
+  color: var(--color-royal);
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(26, 62, 122, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard), background var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  background: var(--gradient-whatsapp);
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  border: none;
+  box-shadow: var(--shadow-green);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(207, 169, 75, 0.38);
+  filter: saturate(1.06);
+}
+
+.btn-secondary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px);
+  background: var(--gradient-blue);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 14px 32px rgba(26, 62, 122, 0.28);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.48);
+}
+
+.surface-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 62, 122, 0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
 }
 
 .elevated-hover {
@@ -123,4 +201,10 @@ a {
 .elevated-hover:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-elevated);
+}
+
+.container-brand {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
 }
