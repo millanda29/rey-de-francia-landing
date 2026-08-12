@@ -89,7 +89,12 @@ import Icono from "./Icono.astro";
 </section>
 
 <style>
-  .horarios { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+  .horarios {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background:
+      radial-gradient(700px 360px at 5% 20%, rgba(86, 177, 227, 0.1), transparent),
+      var(--color-white);
+  }
   .container { max-width: 1280px; margin: 0 auto; }
   .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-2xl); }
 
@@ -117,7 +122,7 @@ import Icono from "./Icono.astro";
   .horario-item:last-of-type { border-bottom: none; }
 
   .horario-item.festivo {
-    background: rgba(14, 165, 233, 0.05);
+    background: rgba(86, 177, 227, 0.06);
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     margin-top: var(--spacing-md);
@@ -129,9 +134,9 @@ import Icono from "./Icono.astro";
     margin-top: var(--spacing-md);
     padding: 0.65rem 0.8rem;
     border-radius: var(--radius-md);
-    background: #fff7ed;
-    color: #9a3412;
-    border-left: 4px solid #f97316;
+    background: var(--color-amber-50);
+    color: var(--color-gold-dark);
+    border-left: 4px solid var(--color-gold);
     font-size: 0.9rem;
     font-weight: 600;
   }
@@ -140,15 +145,15 @@ import Icono from "./Icono.astro";
     margin-top: var(--spacing-md);
     padding: 0.72rem 0.85rem;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-    border: 1px solid #fdba74;
-    border-left: 4px solid #ea580c;
-    box-shadow: 0 10px 18px rgba(234, 88, 12, 0.12);
+    background: linear-gradient(135deg, var(--color-amber-50) 0%, var(--color-amber-100) 100%);
+    border: 1px solid rgba(207, 169, 75, 0.35);
+    border-left: 4px solid var(--color-gold);
+    box-shadow: var(--shadow-gold);
   }
 
   .promo-horario-title {
     margin: 0;
-    color: #9a3412;
+    color: var(--color-gold-dark);
     font-size: 0.94rem;
     font-weight: 700;
     line-height: 1.45;
@@ -156,15 +161,16 @@ import Icono from "./Icono.astro";
 
   .promo-horario-copy {
     margin: 0.25rem 0 0;
-    color: #b45309;
+    color: var(--color-gold-dark);
     font-size: 0.84rem;
     font-weight: 600;
     line-height: 1.45;
+    opacity: 0.85;
   }
 
   .contacto-item { display: flex; gap: var(--spacing-md); padding: var(--spacing-md) 0; border-bottom: 1px solid var(--color-border); }
   .contacto-item:last-child { border-bottom: none; }
-  .contacto-item :global(svg) { color: var(--color-accent); flex-shrink: 0; margin-top: 4px; }
+  .contacto-item :global(svg) { color: var(--color-gold); flex-shrink: 0; margin-top: 4px; }
   .contacto-item .label { font-size: 0.9rem; color: var(--color-text-lighter); font-weight: 600; margin-bottom: 2px; }
   .contacto-item .valor { color: var(--color-primary); font-weight: 500; }
 

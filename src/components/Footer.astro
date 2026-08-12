@@ -5,8 +5,14 @@ import Icono from "./Icono.astro";
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
-      <div class="footer-section">
-        <h4>Manantial Rey de Francia - Hostal y Piscinas</h4>
+      <div class="footer-section footer-brand">
+        <div class="footer-logo">
+          <img src="/favicon.png" alt="Rey de Francia" width="52" height="52" />
+          <div>
+            <h4>Rey de Francia</h4>
+            <span class="footer-tagline">Piscinas - Hostal</span>
+          </div>
+        </div>
         <p>
           Centro de piscina temperada y hostal familiar en el sur de Quito. Creamos experiencias de descanso con
           atención cálida, espacios seguros y servicios diseñados para renovar cuerpo y mente.
@@ -64,7 +70,7 @@ import Icono from "./Icono.astro";
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Manantial Rey de Francia - Hostal y Piscinas. Bienestar, hospitalidad y calidad en cada visita.</p>
+      <p>&copy; 2026 Rey de Francia - Piscina y Hostal. Bienestar, hospitalidad y calidad en cada visita.</p>
       <div class="footer-links">
         <a href="#">Política de privacidad</a>
         <a href="#">Términos y condiciones</a>
@@ -73,31 +79,64 @@ import Icono from "./Icono.astro";
   </div>
 </footer>
 
-<button id="whatsapp-btn" class="whatsapp-btn" title="Contactar por WhatsApp">
-  <Icono name="whatsapp" size="28" />
-</button>
-
 <style>
   .footer {
     background:
-      radial-gradient(820px 340px at 7% 16%, rgba(6, 126, 255, 0.18), transparent),
-      radial-gradient(760px 320px at 93% 84%, rgba(72, 185, 255, 0.14), transparent),
-      linear-gradient(135deg, #0b1f36 0%, #0f253f 44%, #112d4c 100%);
-    color: #d4dee9;
+      radial-gradient(820px 340px at 7% 16%, rgba(86, 177, 227, 0.14), transparent),
+      radial-gradient(760px 320px at 93% 84%, rgba(207, 169, 75, 0.1), transparent),
+      linear-gradient(135deg, var(--color-deep) 0%, var(--color-royal) 55%, #153266 100%);
+    color: rgba(255, 255, 255, 0.82);
     padding: var(--spacing-2xl) 0 var(--spacing-lg);
     margin-top: var(--spacing-2xl);
   }
 
-  .container { max-width: 1280px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
   .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-2xl); margin-bottom: var(--spacing-2xl); }
 
-  .footer-section h4 { color: #b2ffef; font-family: var(--font-serif); font-size: 1.22rem; margin-bottom: var(--spacing-md); }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-logo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem; /* separación entre título y subtítulo */
+  }
+
+  .footer-logo h4 {
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 1.28rem;
+    line-height: 1.1;
+  }
+
+  .footer-tagline {
+    margin: 0;
+    display: block;
+    color: var(--color-gold-light);
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .footer-tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    font-weight: 700;
+  }
+
+  .footer-section h4 { color: var(--color-gold-light); font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: var(--spacing-md); }
   .footer-section p { line-height: 1.76; font-size: 0.96rem; }
   .footer-section ul { list-style: none; }
   .footer-section ul li { margin-bottom: var(--spacing-sm); font-size: 0.95rem; line-height: 1.55; }
 
-  .footer-section a { color: #d6deea; transition: color var(--transition-standard), transform var(--transition-standard); }
-  .footer-section a:hover { color: #b2ffef; }
+  .footer-section a { color: rgba(255, 255, 255, 0.78); transition: color var(--transition-standard), transform var(--transition-standard); }
+  .footer-section a:hover { color: var(--color-gold-light); }
 
   .social-links {
     display: flex;
@@ -114,125 +153,52 @@ import Icono from "./Icono.astro";
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #f5f9ff;
-    box-shadow: 0 10px 22px rgba(4, 14, 28, 0.24);
-    transition: transform var(--transition-standard), background-color var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard), color var(--transition-standard);
+    border: 1px solid rgba(207, 169, 75, 0.3);
+    color: var(--color-white);
+    box-shadow: 0 8px 20px rgba(11, 29, 58, 0.28);
+    transition: transform var(--transition-standard), background var(--transition-standard), border-color var(--transition-standard);
   }
 
   .social-links a:hover {
     transform: translateY(-3px);
-    background: linear-gradient(135deg, rgba(6, 126, 255, 0.26) 0%, rgba(72, 185, 255, 0.22) 100%);
-    border-color: rgba(178, 255, 239, 0.66);
-    color: #ffffff;
-    box-shadow: 0 16px 30px rgba(4, 14, 28, 0.32);
+    background: rgba(207, 169, 75, 0.22);
+    border-color: var(--color-gold);
+    color: var(--color-white);
   }
 
   .btn-ubicacion {
     display: inline-block;
-    background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 52%, var(--color-secondary) 100%);
-    color: var(--color-white);
+    background: var(--gradient-gold);
+    color: var(--color-deep);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-md);
     font-weight: 700;
     font-size: 0.9rem;
     margin-top: var(--spacing-md);
-    box-shadow: 0 12px 26px rgba(11, 79, 73, 0.26);
+    box-shadow: var(--shadow-gold);
   }
 
-  .btn-ubicacion:hover { transform: translateY(-3px); box-shadow: 0 18px 32px rgba(11, 79, 73, 0.34); }
+  .btn-ubicacion:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(207, 169, 75, 0.38); color: var(--color-deep); }
 
   .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: var(--spacing-lg);
-    border-top: 1px solid rgba(72, 185, 255, 0.28);
+    border-top: 1px solid rgba(86, 177, 227, 0.25);
     flex-wrap: wrap;
     gap: var(--spacing-md);
   }
 
-  .footer-bottom p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+  .footer-bottom p { margin: 0; font-size: 0.9rem; line-height: 1.6; color: rgba(255, 255, 255, 0.65); }
   .footer-links { display: flex; gap: var(--spacing-lg); }
-  .footer-links a { font-size: 0.9rem; color: #d6deea; }
-
-  .whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25d366;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
-    transition: transform var(--transition-standard), box-shadow var(--transition-standard);
-    z-index: 50;
-  }
-
-  .whatsapp-btn:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 18px 36px rgba(37, 211, 102, 0.52); }
-  .whatsapp-btn:active { transform: scale(0.95); }
+  .footer-links a { font-size: 0.9rem; color: rgba(255, 255, 255, 0.65); }
+  .footer-links a:hover { color: var(--color-gold-light); }
 
   @media (max-width: 768px) {
     .footer { padding: var(--spacing-xl) 0 var(--spacing-md); }
     .footer-content { grid-template-columns: 1fr; gap: var(--spacing-lg); }
     .footer-bottom { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; }
-    .whatsapp-btn { width: 52px; height: 52px; bottom: 20px; right: 20px; }
-  }
-
-  @media (max-width: 260px) {
-    .footer {
-      padding: var(--spacing-lg) 0.5rem var(--spacing-sm);
-    }
-
-    .container {
-      padding: 0;
-    }
-
-    .footer-content {
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .footer-section h4 {
-      font-size: 1rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .footer-section p,
-    .footer-section ul li,
-    .footer-bottom p,
-    .footer-links a {
-      font-size: 0.76rem;
-      line-height: 1.35;
-    }
-
-    .social-links a {
-      width: 1.9rem;
-      height: 1.9rem;
-    }
-
-    .btn-ubicacion {
-      font-size: 0.75rem;
-      padding: 0.46rem 0.58rem;
-    }
-
-    .footer-links {
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .whatsapp-btn {
-      width: 42px;
-      height: 42px;
-      right: 8px;
-      bottom: 8px;
-    }
   }
 </style>

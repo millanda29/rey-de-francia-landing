@@ -7,7 +7,7 @@
 
     <div class="map-wrapper">
       <iframe
-        title="Ubicación Manantial Rey de Francia en Google Maps"
+        title="Ubicación Rey de Francia en Google Maps"
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d31918.1347647633!2d-78.554826!3d-0.291044!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598b1cc7d0d77%3A0x747671b3475ed43e!2sManantial%20Rey%20de%20Francia!5e0!3m2!1ses-419!2sus!4v1774273098360!5m2!1ses-419!2sus"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
@@ -18,17 +18,23 @@
 </section>
 
 <style>
-  .ubicacion { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+  .ubicacion {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background:
+      radial-gradient(900px 400px at 15% 0%, rgba(86, 177, 227, 0.15), transparent),
+      radial-gradient(700px 360px at 85% 100%, rgba(207, 169, 75, 0.08), transparent),
+      var(--gradient-blue);
+  }
   .container { max-width: 1280px; margin: 0 auto; }
   .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
   .section-header h2 { font-size: 2.5rem; color: var(--color-white); margin-bottom: var(--spacing-sm); }
-  .section-header p { color: #cbd5e1; font-size: 1.1rem; }
+  .section-header p { color: rgba(255, 255, 255, 0.82); font-size: 1.1rem; }
 
   .map-wrapper {
     overflow: hidden;
     border-radius: var(--radius-xl);
-    border: 3px solid var(--color-accent);
-    box-shadow: 0 14px 35px rgba(2, 6, 23, 0.45);
+    border: 3px solid rgba(207, 169, 75, 0.55);
+    box-shadow: 0 14px 35px rgba(11, 29, 58, 0.45);
     margin-bottom: var(--spacing-xl);
   }
 
