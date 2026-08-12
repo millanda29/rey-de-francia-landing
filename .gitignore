@@ -30,3 +30,7 @@ pnpm-debug.log*
 public/*.jpg
 public/*.png
 public/*.jpeg
+
+# PWA / favicon icons (must be tracked for deploy)
+!public/apple-touch-icon.png
+!public/favicon-32x32.png
