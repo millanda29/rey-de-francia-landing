@@ -32,5 +32,6 @@ public/*.png
 public/*.jpeg
 
 # PWA / favicon icons (must be tracked for deploy)
+!public/favicon.png
 !public/apple-touch-icon.png
 !public/favicon-32x32.png
