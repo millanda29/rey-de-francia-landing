@@ -12,9 +12,9 @@ interface Props {
 
 const {
   title,
-  description = "Manantial Rey de Francia - Hostal y Piscinas en Quito: piscina temperada, sauna, turco, hidromasaje y reservas por WhatsApp.",
-  image = "/assets/images/piscina.webp",
-  keywords = "hostal en quito, piscina temperada quito, sauna quito, turco quito, hidromasaje quito, manantial rey de francia, hostal chillogallo",
+  description = "Rey de Francia - Piscina y Hostal en Quito: piscina temperada, sauna, turco, hidromasaje y reservas por WhatsApp.",
+  image = "/assets/images/og-image.webp",
+  keywords = "hostal en quito, piscina temperada quito, sauna quito, turco quito, hidromasaje quito, manantial rey de francia, hostal chillogallo, piscina chillogallo, piscina y hostal rey de francia",
   noindex = false,
   type = "website",
 } = Astro.props;
@@ -29,7 +29,7 @@ const robotsContent = noindex
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Manantial Rey de Francia",
+  name: "Rey de Francia - Piscina y Hostal",
   ...(siteUrl ? { url: siteUrl } : {}),
   inLanguage: "es-EC",
 };
@@ -37,7 +37,7 @@ const websiteSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
-  name: "Manantial Rey de Francia",
+  name: "Rey de Francia - Piscina y Hostal",
   description,
   ...(siteUrl ? { url: siteUrl } : {}),
   ...(imageUrl ? { image: imageUrl } : {}),
@@ -81,14 +81,17 @@ const localBusinessSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/webp" href="/assets/favicon.webp" />
-		<link rel="icon" href="/assets/favicon.webp" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="robots" content={robotsContent} />
-    <meta name="theme-color" content="#0e2e5d" />
-    <meta name="author" content="Manantial Rey de Francia" />
+    <meta name="theme-color" content="#0B1D3A" />
+    <meta name="author" content="Rey de Francia - Piscina y Hostal" />
 
     {pageUrl && <link rel="canonical" href={pageUrl} />}
 
@@ -96,15 +99,19 @@ const localBusinessSchema = {
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Manantial Rey de Francia" />
+    <meta property="og:site_name" content="Rey de Francia - Piscina y Hostal" />
     {pageUrl && <meta property="og:url" content={pageUrl} />}
     {imageUrl && <meta property="og:image" content={imageUrl} />}
-    <meta property="og:image:alt" content="Instalaciones de Manantial Rey de Francia en Quito" />
+    {imageUrl && <meta property="og:image:type" content="image/webp" />}
+    {imageUrl && <meta property="og:image:width" content="1200" />}
+    {imageUrl && <meta property="og:image:height" content="630" />}
+    <meta property="og:image:alt" content="Instalaciones de Rey de Francia - Piscina y Hostal en Quito" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+    <meta name="twitter:image:alt" content="Instalaciones de Rey de Francia - Piscina y Hostal en Quito" />
 
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
@@ -114,7 +121,7 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     
     <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -132,48 +139,93 @@ const localBusinessSchema = {
       }
 
       :root {
-        --color-blue-ribbon-50: #edf8ff;
-        --color-blue-ribbon-100: #d6efff;
-        --color-blue-ribbon-200: #b5e2ff;
-        --color-blue-ribbon-300: #83d2ff;
-        --color-blue-ribbon-400: #48b9ff;
-        --color-blue-ribbon-500: #1e9aff;
-        --color-blue-ribbon-600: #067eff;
-        --color-blue-ribbon-700: #006eff;
-        --color-blue-ribbon-800: #0854c5;
-        --color-blue-ribbon-900: #0d4a9b;
-        --color-blue-ribbon-950: #0e2e5d;
+        /* ── Brand Palette: Rey de Francia ── */
+        --color-pool:        #56B1E3;
+        --color-deep:        #0B1D3A;
+        --color-royal:       #1A3E7A;
+        --color-gold:        #CFA94B;
+        --color-gold-light:  #D8B859;
+        --color-gold-dark:   #A8832E;
+        --color-ivory:       #F5F2E8;
 
-        --color-primary: var(--color-blue-ribbon-900);
-        --color-primary-light: var(--color-blue-ribbon-800);
-        --color-accent: var(--color-blue-ribbon-600);
-        --color-accent-light: var(--color-blue-ribbon-500);
-        --color-accent-dark: var(--color-blue-ribbon-700);
-        --color-secondary: var(--color-blue-ribbon-400);
-        --color-secondary-light: var(--color-blue-ribbon-300);
-        --color-secondary-dark: var(--color-blue-ribbon-800);
-        --color-success: var(--color-blue-ribbon-600);
-        --color-success-light: var(--color-blue-ribbon-300);
-        --color-gray-900: #0e1a2b;
-        --color-gray-800: #233247;
-        --color-gray-700: #3a4c63;
-        --color-gray-600: #54657b;
-        --color-gray-500: #73859d;
-        --color-gray-400: #97a7bc;
-        --color-gray-300: #c4d1df;
-        --color-gray-200: #dce6ef;
-        --color-gray-100: #eef3f8;
-        --color-text: #123666;
-        --color-text-light: #355883;
-        --color-text-lighter: #5f7da1;
-        --color-border: #cfe0f5;
-        --color-bg: #f3f8ff;
-        --color-bg-secondary: #eaf2ff;
-        --color-white: #ffffff;
+        /* Blue scale (derived from brand) */
+        --color-primary-50:  #eef6fc;
+        --color-primary-100: #d4eaf8;
+        --color-primary-200: #a8d4f0;
+        --color-primary-300: #56B1E3;
+        --color-primary-400: #3a9fd9;
+        --color-primary-500: #1A3E7A;
+        --color-primary-600: #153266;
+        --color-primary-700: #112a55;
+        --color-primary-800: #0B1D3A;
+        --color-primary-900: #081528;
+        --color-primary-950: #040c18;
 
+        /* Neutrals */
+        --color-stone-50:  #F5F2E8;
+        --color-stone-100: #EDE9DF;
+        --color-stone-200: #E5E7EB;
+        --color-stone-300: #C8CDD4;
+        --color-stone-400: #8B939F;
+        --color-stone-500: #5B6472;
+        --color-stone-600: #4A5260;
+        --color-stone-700: #353C48;
+        --color-stone-800: #1A1F2B;
+        --color-stone-900: #12161E;
+
+        /* Gold scale */
+        --color-amber-50:  #FBF7EC;
+        --color-amber-100: #F5EDD4;
+        --color-amber-200: #EBD9A8;
+        --color-amber-300: #D8B859;
+        --color-amber-400: #CFA94B;
+        --color-amber-500: #B8943A;
+        --color-amber-600: #A8832E;
+        --color-amber-700: #8A6B24;
+        --color-amber-800: #6D541C;
+        --color-amber-900: #503E15;
+
+        /* WhatsApp Brand */
+        --color-whatsapp:       #25D366;
+        --color-whatsapp-dark:  #128C7E;
+        --color-whatsapp-light: #DCF8C6;
+        --gradient-whatsapp:    linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        --gradient-blue:        linear-gradient(135deg, #56B1E3 0%, #1A3E7A 100%);
+        --gradient-gold:        linear-gradient(135deg, #D8B859 0%, #A8832E 100%);
+
+        /* Semantic tokens */
+        --color-primary:        var(--color-deep);
+        --color-primary-light:  var(--color-royal);
+        --color-accent:         var(--color-pool);
+        --color-accent-light:   #7EC5EB;
+        --color-accent-dark:    var(--color-royal);
+        --color-secondary:      var(--color-gold);
+        --color-secondary-light: var(--color-gold-light);
+        --color-secondary-dark: var(--color-gold-dark);
+        --color-success:        var(--color-whatsapp);
+        --color-success-light:  var(--color-whatsapp-light);
+        --color-gray-900:       var(--color-stone-900);
+        --color-gray-800:       var(--color-stone-800);
+        --color-gray-700:       var(--color-stone-700);
+        --color-gray-600:       var(--color-stone-600);
+        --color-gray-500:       var(--color-stone-500);
+        --color-gray-400:       var(--color-stone-400);
+        --color-gray-300:       var(--color-stone-300);
+        --color-gray-200:       var(--color-stone-200);
+        --color-gray-100:       var(--color-stone-100);
+        --color-text:           var(--color-stone-800);
+        --color-text-light:     var(--color-stone-500);
+        --color-text-lighter:   var(--color-stone-400);
+        --color-border:         var(--color-stone-200);
+        --color-bg:             var(--color-ivory);
+        --color-bg-secondary:   #EDE9DF;
+        --color-white:          #FFFFFF;
+
+        /* Typography */
         --font-serif: "Cormorant Garamond", serif;
-        --font-sans: "Manrope", sans-serif;
+        --font-sans: "Outfit", sans-serif;
 
+        /* Spacing */
         --spacing-xs: 0.5rem;
         --spacing-sm: 1rem;
         --spacing-md: 1.5rem;
@@ -181,13 +233,18 @@ const localBusinessSchema = {
         --spacing-xl: 3rem;
         --spacing-2xl: 4rem;
 
+        /* Border Radius */
         --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
+        --radius-md: 0.625rem;
         --radius-lg: 1rem;
         --radius-xl: 1.5rem;
+        --radius-2xl: 2rem;
 
-        --shadow-soft: 0 18px 40px rgba(11, 31, 54, 0.1);
-        --shadow-elevated: 0 22px 54px rgba(11, 31, 54, 0.16);
+        /* Shadows */
+        --shadow-soft: 0 4px 24px rgba(11, 29, 58, 0.08);
+        --shadow-elevated: 0 12px 40px rgba(11, 29, 58, 0.14);
+        --shadow-green: 0 8px 28px rgba(37, 211, 102, 0.38);
+        --shadow-gold: 0 8px 24px rgba(207, 169, 75, 0.28);
         --transition-standard: 320ms cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -199,17 +256,7 @@ const localBusinessSchema = {
       body {
         font-family: var(--font-sans);
         color: var(--color-text);
-        background:
-          radial-gradient(1080px 640px at 100% -10%, rgba(72, 185, 255, 0.16), transparent),
-          radial-gradient(920px 680px at -10% 18%, rgba(6, 126, 255, 0.14), transparent),
-          repeating-linear-gradient(
-            -35deg,
-            rgba(255, 255, 255, 0.65) 0,
-            rgba(255, 255, 255, 0.65) 22px,
-            rgba(234, 241, 248, 0.55) 22px,
-            rgba(234, 241, 248, 0.55) 44px
-          ),
-          var(--color-white);
+        background: var(--color-bg);
         line-height: 1.6;
         text-rendering: optimizeLegibility;
         overflow-x: clip;
@@ -236,24 +283,21 @@ const localBusinessSchema = {
         font-family: var(--font-serif);
         font-weight: 700;
         line-height: 1.2;
+        color: var(--color-primary-900);
       }
 
-      h1 {
-        font-size: 3.5rem;
-      }
-
-      h2 {
-        font-size: 2.5rem;
-      }
-
-      h3 {
-        font-size: 1.875rem;
-      }
+      h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+      h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+      h3 { font-size: clamp(1.3rem, 3vw, 1.875rem); }
 
       a {
         color: inherit;
         text-decoration: none;
-        transition: color var(--transition-standard), transform var(--transition-standard), box-shadow var(--transition-standard);
+        transition: color var(--transition-standard), transform var(--transition-standard);
+      }
+
+      p, a, li, span, button, input, select, textarea, summary {
+        overflow-wrap: anywhere;
       }
 
       p,
@@ -272,22 +316,40 @@ const localBusinessSchema = {
         font-family: var(--font-sans);
         border: none;
         cursor: pointer;
-        transition: color var(--transition-standard), transform var(--transition-standard), box-shadow var(--transition-standard), background-color var(--transition-standard);
+        transition: all var(--transition-standard);
       }
 
       :focus-visible {
-        outline: 3px solid rgba(6, 126, 255, 0.35);
+        outline: 3px solid var(--color-primary-400);
         outline-offset: 2px;
+        border-radius: 4px;
       }
 
       ::selection {
-        background: rgba(72, 185, 255, 0.28);
+        background: rgba(86, 177, 227, 0.25);
+        color: var(--color-primary-900);
+      }
+
+      /* ── Shared WhatsApp button ── */
+      .btn-whatsapp {
+        background: var(--gradient-whatsapp);
+        color: #fff;
+        border: none;
+        box-shadow: var(--shadow-green);
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 40px rgba(37, 211, 102, 0.48);
+        filter: saturate(1.08);
+      }
+
+      .btn-whatsapp:active {
+        transform: translateY(0);
       }
 
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
@@ -295,92 +357,128 @@ const localBusinessSchema = {
         }
       }
 
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2.25rem;
-        }
+      /* Reveal */
+      .reveal-item { opacity: 1; transform: none; }
+      .reveal-item.is-visible { opacity: 1; transform: none; }
 
-        h2 {
-          font-size: 1.875rem;
-        }
-
-        h3 {
-          font-size: 1.5rem;
-        }
+      /* ── Floating WhatsApp Button ── */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        gap: 0;
       }
 
-      @media (max-width: 460px) {
-        h1 {
-          font-size: 1.86rem;
-        }
-
-        h2 {
-          font-size: 1.52rem;
-        }
-
-        h3 {
-          font-size: 1.24rem;
-        }
+      .wa-float-tooltip {
+        background: var(--color-deep);
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        padding: 0.55rem 1rem;
+        border-radius: 999px 0 0 999px;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(11, 29, 58, 0.28);
+        transform: translateX(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease;
+        letter-spacing: 0.02em;
+        border: 1px solid rgba(86, 177, 227, 0.25);
       }
 
-      @media (max-width: 260px) {
-        :root {
-          --spacing-sm: 0.7rem;
-          --spacing-md: 0.9rem;
-          --spacing-lg: 1rem;
-          --spacing-xl: 1.35rem;
-          --spacing-2xl: 1.75rem;
-        }
-
-        h1 {
-          font-size: 1.48rem;
-        }
-
-        h2 {
-          font-size: 1.28rem;
-        }
-
-        h3 {
-          font-size: 1.08rem;
-        }
-
-        body {
-          font-size: 13px;
-        }
-
-        p,
-        a,
-        span,
-        button,
-        input,
-        select,
-        textarea,
-        li {
-          overflow-wrap: anywhere;
-          word-break: break-word;
-        }
+      .wa-float-btn {
+        width: 62px;
+        height: 62px;
+        background: var(--gradient-whatsapp);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        box-shadow: var(--shadow-green);
+        cursor: pointer;
+        border: 3px solid rgba(255, 255, 255, 0.9);
+        position: relative;
+        transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease;
+        flex-shrink: 0;
+        animation: wa-pulse 2.8s ease-in-out infinite;
       }
 
-      .reveal-item {
+      .wa-float-btn::before {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid rgba(37, 211, 102, 0.35);
+        animation: wa-ring 2.8s ease-out infinite;
+      }
+
+      @keyframes wa-pulse {
+        0%, 100% { box-shadow: var(--shadow-green); }
+        50% { box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55); }
+      }
+
+      @keyframes wa-ring {
+        0% { transform: scale(1); opacity: 0.6; }
+        70%, 100% { transform: scale(1.35); opacity: 0; }
+      }
+
+      .wa-float-btn:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 16px 42px rgba(37, 211, 102, 0.52);
+        animation: none;
+      }
+
+      .wa-float-btn:active {
+        transform: scale(0.96);
+      }
+
+      .wa-float:hover .wa-float-tooltip,
+      .wa-float:focus-within .wa-float-tooltip {
+        transform: translateX(0);
         opacity: 1;
-        transform: none;
       }
 
-      .reveal-item.is-visible {
-        opacity: 1;
-        transform: none;
+      @media (max-width: 640px) {
+        .wa-float { bottom: 20px; right: 20px; }
+        .wa-float-btn { width: 56px; height: 56px; border-width: 2px; }
+        .wa-float-tooltip {
+          display: block;
+          position: absolute;
+          bottom: calc(100% + 10px);
+          right: 0;
+          border-radius: 999px;
+          transform: translateY(6px);
+          opacity: 1;
+          pointer-events: none;
+          font-size: 0.76rem;
+          padding: 0.4rem 0.75rem;
+        }
+        .wa-float:hover .wa-float-tooltip { transform: translateY(0); }
       }
     </style>
   </head>
   <body>
     <slot />
+
+    <!-- Floating WhatsApp CTA -->
+    <div class="wa-float" aria-label="Reservar por WhatsApp">
+      <span class="wa-float-tooltip">Reserva ahora</span>
+      <button class="wa-float-btn" id="wa-float-btn" aria-label="Abrir WhatsApp">
+        <i class="bi bi-whatsapp" style="font-size:30px; line-height:1;"></i>
+      </button>
+    </div>
+
     <script>
-      // Botón flotante de WhatsApp
-      const whatsappBtn = document.getElementById("whatsapp-btn");
-      if (whatsappBtn) {
-        whatsappBtn.addEventListener("click", () => {
-          const message = encodeURIComponent("Hola, me gustaría hacer una reserva en Manantial Rey de Francia");
-          window.open(`https://wa.me/593992577409?text=${message}`, "_blank");
+      // Floating WhatsApp
+      const waFloatBtn = document.getElementById("wa-float-btn");
+      if (waFloatBtn) {
+        waFloatBtn.addEventListener("click", () => {
+          const msg = encodeURIComponent("Hola, me gustaría hacer una reserva en Rey de Francia - Piscina y Hostal. ¿Podrían ayudarme con la disponibilidad y los precios? ¡Gracias!");
+          window.open(`https://wa.me/593992577409?text=${msg}`, "_blank");
         });
       }
 
@@ -391,14 +489,10 @@ const localBusinessSchema = {
           if (href && href !== "#") {
             e.preventDefault();
             const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth" });
-            }
+            if (target) target.scrollIntoView({ behavior: "smooth" });
           }
         });
       });
-
-      // Animaciones de reveal desactivadas para evitar efecto de "recarga" al cambiar de sección.
     </script>
   </body>
 </html>

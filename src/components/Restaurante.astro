@@ -8,7 +8,7 @@ import Icono from "./Icono.astro";
       <div class="restaurante-imagen">
         <img
           src="/assets/images/restaurante.webp"
-          alt="Restaurante principal del Manantial Rey de Francia"
+          alt="Restaurante principal del Rey de Francia - Piscina y Hostal"
           loading="lazy"
         />
       </div>
@@ -65,7 +65,13 @@ import Icono from "./Icono.astro";
 </section>
 
 <style>
-  .restaurante { padding: var(--spacing-2xl) var(--spacing-lg); background: linear-gradient(135deg, #f1f5f9 0%, #e0f2fe 100%); }
+  .restaurante {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background:
+      radial-gradient(600px 340px at 8% 30%, rgba(207, 169, 75, 0.08), transparent),
+      radial-gradient(700px 380px at 92% 70%, rgba(86, 177, 227, 0.1), transparent),
+      var(--color-bg);
+  }
   .container { max-width: 1520px; margin: 0 auto; padding: 0 clamp(1rem, 2.5vw, 2rem); }
   .restaurante-content {
     display: grid;
@@ -89,7 +95,7 @@ import Icono from "./Icono.astro";
     transition: all 0.3s ease;
   }
 
-  .category:hover { transform: translateX(8px); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2); }
+  .category:hover { transform: translateX(8px); box-shadow: 0 4px 12px rgba(86, 177, 227, 0.2); }
 
   .category-header {
     display: flex;
@@ -139,7 +145,7 @@ import Icono from "./Icono.astro";
 
   .restaurant-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
 
-  .highlight { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); background: rgba(14, 165, 233, 0.05); border-radius: var(--radius-md); }
+  .highlight { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); background: rgba(207, 169, 75, 0.08); border-radius: var(--radius-md); border-left: 3px solid var(--color-gold); }
   .highlight :global(svg) { color: var(--color-accent); flex-shrink: 0; }
   .highlight span { color: var(--color-text); font-weight: 500; }
 
