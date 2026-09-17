@@ -1,10 +1,11 @@
 ---
 import Icono from "./Icono.astro";
 
-// Componente: Testimonios - Reseñas de Google
+// Componente: Testimonios - Opiniones de clientes
 // TODO: reemplazar los textos de abajo por las reseñas reales copiadas desde
-// https://maps.app.goo.gl/z8J8EPYUiVJvBUS26 (nombre, fecha, texto). El diseño,
-// el badge "Publicado en Google" y el schema Review ya están listos.
+// https://maps.app.goo.gl/z8J8EPYUiVJvBUS26 (nombre, fecha, texto).
+// NOTA: no publicar schema Review/AggregateRating ni sello "Publicado en Google"
+// hasta tener el contenido verificado.
 interface Testimonial {
   name: string;
   role: string;
@@ -85,11 +86,6 @@ const testimonials: Testimonial[] = [
       {
         testimonials.map((testimonial) => (
           <article class="testimonial-card">
-            <div class="review-source">
-              <span class="g-badge" aria-hidden="true">G</span>
-              <span>Publicado en Google</span>
-              {testimonial.date && <span class="review-date">· {testimonial.date}</span>}
-            </div>
             <div class="rating" role="img" aria-label={`Calificación: ${testimonial.rating} de 5 estrellas`}>
               {Array.from({ length: testimonial.rating }).map(() => (
                 <Icono name="estrella" size="16" />
@@ -114,24 +110,6 @@ const testimonials: Testimonial[] = [
       </a>
     </div>
   </div>
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    name: "Rey de Francia - Piscina y Hostal",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: testimonials.length.toString(),
-      bestRating: "5",
-    },
-    review: testimonials.map((t) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: t.name },
-      reviewRating: { "@type": "Rating", ratingValue: t.rating.toString(), bestRating: "5" },
-      reviewBody: t.comment,
-      ...(t.date ? { datePublished: t.date } : {}),
-    })),
-  })} />
 </section>
 
 <style>
@@ -164,15 +142,6 @@ const testimonials: Testimonial[] = [
     color: var(--color-text-light);
   }
 
-  .reviews-link {
-    color: var(--color-royal);
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .reviews-link:hover { color: var(--color-gold-dark); }
-
   .testimonios-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -200,33 +169,6 @@ const testimonials: Testimonial[] = [
     gap: 4px;
     color: var(--color-gold);
   }
-
-  .review-source {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--color-text-light);
-    margin-bottom: 0.6rem;
-  }
-
-  .g-badge {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    color: #4285f4;
-    font-weight: 800;
-    font-size: 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .review-date { font-weight: 500; color: var(--color-text-lighter); }
 
   .testimonios-cta { text-align: center; margin-top: var(--spacing-xl); }
 

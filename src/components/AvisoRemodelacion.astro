@@ -63,23 +63,49 @@ const WA_REAPERTURA = "https://wa.me/593992577409?text=Hola%2C%20quisiera%20cons
 
 <script>
   const overlay = document.getElementById("aviso-overlay");
-  const closeBtn = document.getElementById("aviso-close");
-  const enterBtn = document.getElementById("aviso-enter");
+  const closeBtn = document.getElementById("aviso-close") as HTMLButtonElement | null;
+  const enterBtn = document.getElementById("aviso-enter") as HTMLButtonElement | null;
+
+  // Guarda el foco previo para restaurarlo al cerrar
+  const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
   // Bloquea el scroll mientras el aviso cubre el contenido
   document.body.style.overflow = "hidden";
 
+  // Mueve el foco inicial al diálogo
+  closeBtn?.focus();
+
   const dismiss = () => {
     overlay?.setAttribute("hidden", "");
     document.body.style.overflow = "";
+    previousFocus?.focus?.();
+  };
+
+  // Contención de Tab dentro del diálogo (focus trap)
+  const trapTab = (e: KeyboardEvent) => {
+    if (e.key !== "Tab" || !overlay || overlay.hasAttribute("hidden")) return;
+    const focusables = Array.from(
+      overlay.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    ).filter((el) => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   };
 
   closeBtn?.addEventListener("click", dismiss);
   enterBtn?.addEventListener("click", dismiss);
 
-  // Cerrar con Escape
   document.addEventListener("keydown", (e) => {
+    // Cerrar con Escape
     if (e.key === "Escape" && !overlay?.hasAttribute("hidden")) dismiss();
+    trapTab(e);
   });
 </script>
 
