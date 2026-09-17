@@ -32,9 +32,6 @@ public/*.png
 public/*.jpeg
 
 # PWA / favicon icons (must be tracked for deploy)
-!public/favicon.png
+!public/RDF-original-*.png
 !public/apple-touch-icon.png
-!public/favicon-32x32.png
-!public/icon-192.png
-!public/icon-512.png
 !public/maskable-512.png

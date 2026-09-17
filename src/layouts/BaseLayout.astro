@@ -93,9 +93,9 @@ const localBusinessSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/RDF-original-dorado-transparente-16px.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/RDF-original-dorado-transparente-32px.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/RDF-original-dorado-transparente-48px.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
@@ -134,9 +134,9 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- Google Fonts -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Icon Font: Bootstrap Icons -->
     <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -314,18 +314,6 @@ const localBusinessSchema = {
         overflow-wrap: anywhere;
       }
 
-      p,
-      a,
-      li,
-      span,
-      button,
-      input,
-      select,
-      textarea,
-      summary {
-        overflow-wrap: anywhere;
-      }
-
       button {
         font-family: var(--font-sans);
         border: none;
@@ -344,24 +332,6 @@ const localBusinessSchema = {
         color: var(--color-primary-900);
       }
 
-      /* ── Shared WhatsApp button ── */
-      .btn-whatsapp {
-        background: var(--gradient-whatsapp);
-        color: #fff;
-        border: none;
-        box-shadow: var(--shadow-green);
-      }
-
-      .btn-whatsapp:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 40px rgba(37, 211, 102, 0.48);
-        filter: saturate(1.08);
-      }
-
-      .btn-whatsapp:active {
-        transform: translateY(0);
-      }
-
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
           animation-duration: 0.01ms !important;
@@ -370,10 +340,6 @@ const localBusinessSchema = {
           scroll-behavior: auto !important;
         }
       }
-
-      /* Reveal */
-      .reveal-item { opacity: 1; transform: none; }
-      .reveal-item.is-visible { opacity: 1; transform: none; }
 
       /* ── Floating WhatsApp Button ── */
       .wa-float {
