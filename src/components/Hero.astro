@@ -20,22 +20,24 @@
 
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-number">7+</span>
+          <span class="stat-number">9</span>
           <span class="stat-label">Servicios de relajación</span>
         </div>
         <div class="stat">
-          <span class="stat-number">4.8/5</span>
-          <span class="stat-label">Valoración de clientes</span>
+          <a class="stat-link" href="https://maps.app.goo.gl/z8J8EPYUiVJvBUS26" target="_blank" rel="noopener noreferrer" aria-label="Ver reseñas de 5 estrellas en Google Maps">
+            <span class="stat-number">5/5</span>
+            <span class="stat-label">Valoración en Google</span>
+          </a>
         </div>
         <div class="stat">
-          <span class="stat-number">365</span>
-          <span class="stat-label">Días de asesoría por WhatsApp</span>
+          <span class="stat-number">J–D</span>
+          <span class="stat-label">Abierto jueves a domingo</span>
         </div>
       </div>
 
       <div class="hero-ctas">
         <a
-          href="https://wa.me/593992577409?text=Hola,%20me%20gustaría%20reservar%20en%20Manantial%20Rey%20de%20Francia"
+          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-whatsapp btn-lg"
@@ -61,8 +63,11 @@
         <div class="image-frame">
           <img
             src="/assets/images/piscina.webp"
-            alt="Vista principal de Rey de Francia - Piscina y Hostal"
-            loading="eager"
+            alt="Piscina temperada de Rey de Francia - Piscina y Hostal en Chillogallo, Quito"
+            width="900"
+            height="1600"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
         <div class="hero-floating-card">
@@ -212,6 +217,17 @@
   }
 
   .stat:last-child { border-right: none; }
+
+  .stat-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: underline;
+    text-decoration-color: rgba(26, 62, 122, 0.25);
+    text-underline-offset: 3px;
+  }
+
+  .stat-link:hover .stat-number { color: var(--color-gold-dark); }
 
   .stat-number {
     font-size: 1.75rem;

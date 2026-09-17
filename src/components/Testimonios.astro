@@ -1,14 +1,20 @@
 ---
 import Icono from "./Icono.astro";
 
-// Componente: Testimonios - Opiniones de clientes
+// Componente: Testimonios - Reseñas de Google
+// TODO: reemplazar los textos de abajo por las reseñas reales copiadas desde
+// https://maps.app.goo.gl/z8J8EPYUiVJvBUS26 (nombre, fecha, texto). El diseño,
+// el badge "Publicado en Google" y el schema Review ya están listos.
 interface Testimonial {
   name: string;
   role: string;
   comment: string;
   rating: number;
+  date: string;
   avatarChar: string;
 }
+
+const REVIEWS_URL = "https://maps.app.goo.gl/z8J8EPYUiVJvBUS26";
 
 const testimonials: Testimonial[] = [
   {
@@ -17,6 +23,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Nos encantó porque todo fue claro desde la reserva. Llegamos, disfrutamos la habitación y el tiempo se aprovechó al máximo.",
     rating: 5,
+    date: "",
     avatarChar: "A",
   },
   {
@@ -25,6 +32,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Fuimos con niños y adultos, y todos encontraron algo para disfrutar. El lugar está bien organizado y la atención fue muy amable.",
     rating: 5,
+    date: "",
     avatarChar: "C",
   },
   {
@@ -33,6 +41,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Lo mejor es que las tarifas son claras y justas. Siempre sé cuánto voy a pagar y el servicio mantiene buena calidad.",
     rating: 5,
+    date: "",
     avatarChar: "P",
   },
   {
@@ -41,6 +50,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Tomamos un combo para pareja y valió totalmente la pena. El ambiente fue cómodo, privado y perfecto para desconectarnos.",
     rating: 5,
+    date: "",
     avatarChar: "L",
   },
   {
@@ -49,6 +59,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Reservamos por aniversario y todo salió excelente. La decoración y los detalles hicieron que fuera un momento inolvidable.",
     rating: 5,
+    date: "",
     avatarChar: "V",
   },
   {
@@ -57,6 +68,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Me gustó que no hubo sorpresas: horarios, tiempos y condiciones bien explicados. Eso da mucha confianza para volver.",
     rating: 5,
+    date: "",
     avatarChar: "R",
   },
 ];
@@ -65,32 +77,61 @@ const testimonials: Testimonial[] = [
 <section class="testimonios">
   <div class="container">
     <div class="section-header">
+      <span class="section-kicker">Opiniones</span>
       <h2>Clientes que ya lo vivieron</h2>
-      <p>Experiencias reales para complementar lo que viste en servicios, combos y tarifas.</p>
     </div>
 
     <div class="testimonios-grid">
       {
         testimonials.map((testimonial) => (
-          <div class="testimonial-card">
-            <div class="rating">
+          <article class="testimonial-card">
+            <div class="review-source">
+              <span class="g-badge" aria-hidden="true">G</span>
+              <span>Publicado en Google</span>
+              {testimonial.date && <span class="review-date">· {testimonial.date}</span>}
+            </div>
+            <div class="rating" role="img" aria-label={`Calificación: ${testimonial.rating} de 5 estrellas`}>
               {Array.from({ length: testimonial.rating }).map(() => (
                 <Icono name="estrella" size="16" />
               ))}
             </div>
             <p class="comment">"{testimonial.comment}"</p>
             <div class="author">
-              <div class="avatar">{testimonial.avatarChar}</div>
+              <div class="avatar" aria-hidden="true">{testimonial.avatarChar}</div>
               <div>
                 <h4>{testimonial.name}</h4>
                 <p class="role">{testimonial.role}</p>
               </div>
             </div>
-          </div>
+          </article>
         ))
       }
     </div>
+
+    <div class="testimonios-cta">
+      <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" class="btn-review">
+        <Icono name="estrella" size="18" /> Déjanos tu reseña en Google
+      </a>
+    </div>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    name: "Rey de Francia - Piscina y Hostal",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: testimonials.length.toString(),
+      bestRating: "5",
+    },
+    review: testimonials.map((t) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: t.name },
+      reviewRating: { "@type": "Rating", ratingValue: t.rating.toString(), bestRating: "5" },
+      reviewBody: t.comment,
+      ...(t.date ? { datePublished: t.date } : {}),
+    })),
+  })} />
 </section>
 
 <style>
@@ -123,6 +164,15 @@ const testimonials: Testimonial[] = [
     color: var(--color-text-light);
   }
 
+  .reviews-link {
+    color: var(--color-royal);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .reviews-link:hover { color: var(--color-gold-dark); }
+
   .testimonios-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -149,6 +199,57 @@ const testimonials: Testimonial[] = [
     display: flex;
     gap: 4px;
     color: var(--color-gold);
+  }
+
+  .review-source {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .g-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    color: #4285f4;
+    font-weight: 800;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .review-date { font-weight: 500; color: var(--color-text-lighter); }
+
+  .testimonios-cta { text-align: center; margin-top: var(--spacing-xl); }
+
+  .btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-white);
+    color: var(--color-royal);
+    font-weight: 700;
+    padding: 0.9rem 1.75rem;
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(26, 62, 122, 0.2);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+  }
+
+  .btn-review:hover {
+    transform: translateY(-3px);
+    background: var(--gradient-blue);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 14px 32px rgba(26, 62, 122, 0.28);
   }
 
   .comment {

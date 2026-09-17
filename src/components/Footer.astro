@@ -7,7 +7,7 @@ import Icono from "./Icono.astro";
     <div class="footer-content">
       <div class="footer-section footer-brand">
         <div class="footer-logo">
-          <img src="/favicon.png" alt="Rey de Francia" width="52" height="52" />
+          <img src="/favicon.png" alt="Logo Rey de Francia - Piscina y Hostal en Quito" width="52" height="52" loading="lazy" />
           <div>
             <h4>Rey de Francia</h4>
             <span class="footer-tagline">Piscinas - Hostal</span>
@@ -31,7 +31,7 @@ import Icono from "./Icono.astro";
           <a href="https://wa.me/593992577409" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
             <Icono name="whatsapp" size="20" />
           </a>
-          <a href="https://maps.app.goo.gl/RonmVdkj88GZvvw57" target="_blank" rel="noopener noreferrer" aria-label="Maps" title="Maps">
+          <a href="https://maps.app.goo.gl/z8J8EPYUiVJvBUS26" target="_blank" rel="noopener noreferrer" aria-label="Maps" title="Maps">
             <Icono name="ubicacion" size="20" />
           </a>
         </div>
@@ -41,9 +41,12 @@ import Icono from "./Icono.astro";
         <h4>Navegación</h4>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#instalaciones">Instalaciones</a></li>
+          <li><a href="#restaurante">Restaurante</a></li>
           <li><a href="#combos">Combos</a></li>
           <li><a href="#tarifas">Tarifas</a></li>
           <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#horarios">Horarios</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
@@ -57,23 +60,13 @@ import Icono from "./Icono.astro";
         </ul>
       </div>
 
-      <div class="footer-section">
-        <h4>Ingreso y recomendaciones</h4>
-        <p>Para mayor seguridad y comodidad: terno de baño de licra, gorro de cabello y sandalias.</p>
-        <a
-          href="https://maps.app.goo.gl/RonmVdkj88GZvvw57"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-ubicacion"
-        >Ver ubicación en Google Maps</a>
-      </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Rey de Francia - Piscina y Hostal. Bienestar, hospitalidad y calidad en cada visita.</p>
+      <p>&copy; {new Date().getFullYear()} Rey de Francia - Piscina y Hostal. Bienestar, hospitalidad y calidad en cada visita.</p>
       <div class="footer-links">
-        <a href="#">Política de privacidad</a>
-        <a href="#">Términos y condiciones</a>
+        <a href="#faq">Preguntas frecuentes</a>
+        <a href="#reservas">Reservas</a>
       </div>
     </div>
   </div>
@@ -117,17 +110,12 @@ import Icono from "./Icono.astro";
   .footer-tagline {
     margin: 0;
     display: block;
-    color: var(--color-gold-light);
-    font-size: 0.9rem;
-    line-height: 1;
-  }
-
-  .footer-tagline {
     font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-gold-light);
     font-weight: 700;
+    line-height: 1;
   }
 
   .footer-section h4 { color: var(--color-gold-light); font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: var(--spacing-md); }
@@ -165,20 +153,6 @@ import Icono from "./Icono.astro";
     border-color: var(--color-gold);
     color: var(--color-white);
   }
-
-  .btn-ubicacion {
-    display: inline-block;
-    background: var(--gradient-gold);
-    color: var(--color-deep);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-top: var(--spacing-md);
-    box-shadow: var(--shadow-gold);
-  }
-
-  .btn-ubicacion:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(207, 169, 75, 0.38); color: var(--color-deep); }
 
   .footer-bottom {
     display: flex;

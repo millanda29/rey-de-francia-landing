@@ -16,7 +16,7 @@ import Icono from "./Icono.astro";
       <div class="contact-cards">
         <!-- Hero WhatsApp CTA Card -->
         <a
-          href="https://wa.me/593992577409?text=Hola,%20me%20gustaría%20hacer%20una%20reserva%20en%20Manantial%20Rey%20de%20Francia"
+          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20una%20reserva%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
           target="_blank"
           rel="noopener noreferrer"
           class="card-whatsapp"
@@ -59,7 +59,7 @@ import Icono from "./Icono.astro";
           </a>
 
           <a
-            href="https://maps.app.goo.gl/RonmVdkj88GZvvw57"
+            href="https://maps.app.goo.gl/z8J8EPYUiVJvBUS26"
             target="_blank"
             rel="noopener noreferrer"
             class="card-secondary"
@@ -96,6 +96,7 @@ import Icono from "./Icono.astro";
           </div>
 
           <form id="reserva-form" class="form" novalidate>
+            <div id="form-error-summary" class="form-error-summary" role="alert" hidden></div>
             <!-- Row: Nombre + Teléfono -->
             <div class="form-row">
               <div class="form-group has-icon">
@@ -108,9 +109,12 @@ import Icono from "./Icono.astro";
                   id="nombre"
                   name="nombre"
                   required
+                  minlength="3"
                   placeholder="Ej: Andrea Pérez"
                   autocomplete="name"
+                  aria-describedby="err-nombre"
                 />
+                <p id="err-nombre" class="field-error" hidden></p>
               </div>
               <div class="form-group has-icon">
                 <label for="telefono">
@@ -122,9 +126,12 @@ import Icono from "./Icono.astro";
                   id="telefono"
                   name="telefono"
                   required
-                  placeholder="Ej: 0992 577 409"
+                  inputmode="tel"
+                  placeholder="Ej: 0992577409"
                   autocomplete="tel"
+                  aria-describedby="err-telefono"
                 />
+                <p id="err-telefono" class="field-error" hidden></p>
               </div>
             </div>
 
@@ -135,7 +142,7 @@ import Icono from "./Icono.astro";
                   <i class="bi bi-hand-index-thumb-fill"></i>
                   Servicio o combo
                 </label>
-                <select id="combo" name="combo" required>
+                <select id="combo" name="combo" required aria-describedby="err-combo">
                   <option value="" disabled selected>— Selecciona —</option>
                   <option value="entrada-general">Entrada General ($7.00)</option>
                   <option value="tarifa-preferencial">Tarifa Preferencial ($4.00)</option>
@@ -144,6 +151,7 @@ import Icono from "./Icono.astro";
                   <option value="combo-2-completo">Combo Completo parejas ($37.00)</option>
                   <option value="combo-decoracion">Combo Decoración (desde $35.00)</option>
                 </select>
+                <p id="err-combo" class="field-error" hidden></p>
               </div>
               <div class="form-group has-icon">
                 <label for="personas">
@@ -158,7 +166,9 @@ import Icono from "./Icono.astro";
                   max="20"
                   required
                   placeholder="Ej: 4"
+                  aria-describedby="err-personas"
                 />
+                <p id="err-personas" class="field-error" hidden></p>
               </div>
             </div>
 
@@ -168,7 +178,9 @@ import Icono from "./Icono.astro";
                 <i class="bi bi-calendar3-event-fill"></i>
                 Fecha deseada
               </label>
-              <input type="date" id="fecha" name="fecha" required />
+              <input type="date" id="fecha" name="fecha" required aria-describedby="err-fecha" />
+              <p id="err-fecha" class="field-error" hidden></p>
+              <p class="field-hint">Atendemos jueves a domingo y feriados.</p>
             </div>
 
             <!-- Notas -->
@@ -575,6 +587,37 @@ import Icono from "./Icono.astro";
 
   .form-group textarea { resize: vertical; }
 
+  .field-error {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #b91c1c;
+  }
+
+  .field-hint {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--color-text-lighter);
+  }
+
+  .form-error-summary {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #dc2626;
+    color: #7f1d1d;
+    border-radius: var(--radius-md);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  input[aria-invalid="true"],
+  select[aria-invalid="true"] {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12) !important;
+    background: #fff7f7 !important;
+  }
+
   /* ── WhatsApp Submit ── */
   .form-actions {
     display: flex;
@@ -672,40 +715,105 @@ import Icono from "./Icono.astro";
 <script>
   const form = document.getElementById("reserva-form") as HTMLFormElement | null;
   const submitBtn = form?.querySelector(".btn-whatsapp-submit") as HTMLButtonElement | null;
+  const summary = document.getElementById("form-error-summary");
+  const submitBtnOriginal = submitBtn?.innerHTML;
 
-  // Date: set min = today
+  // Date: min = today
   const fechaInput = document.getElementById("fecha") as HTMLInputElement | null;
   if (fechaInput) {
     const today = new Date().toISOString().split("T")[0];
     fechaInput.setAttribute("min", today);
   }
 
-  if (form) {
-    // Validate before submit
-    const validate = () => {
-      const nombre = (form.querySelector("#nombre") as HTMLInputElement).value.trim();
-      const telefono = (form.querySelector("#telefono") as HTMLInputElement).value.trim();
-      const combo = (form.querySelector("#combo") as HTMLSelectElement).value;
-      const fecha = (form.querySelector("#fecha") as HTMLInputElement).value;
-      const personas = (form.querySelector("#personas") as HTMLInputElement).value;
-      return nombre && telefono && combo && fecha && personas;
-    };
+  const setError = (id: string, input: HTMLElement | null, message: string) => {
+    const err = document.getElementById(id);
+    if (err) {
+      err.textContent = message;
+      err.hidden = !message;
+    }
+    if (input) input.setAttribute("aria-invalid", message ? "true" : "false");
+  };
 
+  const isValidEcuadorPhone = (raw: string) => {
+    const digits = raw.replace(/\D/g, "");
+    // Móvil EC: 09XXXXXXXX (10 dígitos) o fijo Quito 02XXXXXXX; aceptamos 7-10 dígitos
+    if (/^09\d{8}$/.test(digits)) return true;
+    if (/^02\d{7}$/.test(digits)) return true;
+    if (/^5939\d{8}$/.test(digits)) return true;
+    return false;
+  };
+
+  const isOpenDay = (isoDate: string) => {
+    // Atendemos jue-dom + feriados. Lun(1)-Mié(3) cerrado.
+    const d = new Date(`${isoDate}T12:00:00`);
+    const day = d.getDay();
+    return day === 0 || day >= 4;
+  };
+
+  if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!validate()) return;
-
-      const nombre = (form.querySelector("#nombre") as HTMLInputElement).value.trim();
-      const telefono = (form.querySelector("#telefono") as HTMLInputElement).value.trim();
+      const nombreEl = form.querySelector("#nombre") as HTMLInputElement;
+      const telefonoEl = form.querySelector("#telefono") as HTMLInputElement;
       const comboEl = form.querySelector("#combo") as HTMLSelectElement;
+      const fechaEl = form.querySelector("#fecha") as HTMLInputElement;
+      const personasEl = form.querySelector("#personas") as HTMLInputElement;
+      const notasEl = form.querySelector("#notas") as HTMLTextAreaElement;
+
+      const nombre = nombreEl.value.trim();
+      const telefono = telefonoEl.value.trim();
       const combo = comboEl.value;
+      const fecha = fechaEl.value;
+      const personasNum = parseInt(personasEl.value, 10);
+
+      const errors: string[] = [];
+
+      if (nombre.length < 3) {
+        errors.push("Escribe tu nombre completo.");
+        setError("err-nombre", nombreEl, "Escribe tu nombre completo (mín. 3 letras).");
+      } else setError("err-nombre", nombreEl, "");
+
+      if (!isValidEcuadorPhone(telefono)) {
+        errors.push("Revisa el teléfono: usa un móvil válido (ej. 0992577409).");
+        setError("err-telefono", telefonoEl, "Usa un número válido de Ecuador (ej. 0992577409).");
+      } else setError("err-telefono", telefonoEl, "");
+
+      if (!combo) {
+        errors.push("Selecciona un servicio o combo.");
+        setError("err-combo", comboEl, "Selecciona un servicio o combo.");
+      } else setError("err-combo", comboEl, "");
+
+      if (!fecha) {
+        errors.push("Elige la fecha deseada.");
+        setError("err-fecha", fechaEl, "Elige la fecha deseada.");
+      } else if (!isOpenDay(fecha)) {
+        errors.push("Atendemos de jueves a domingo. Elige un día dentro de ese horario.");
+        setError("err-fecha", fechaEl, "Cerrado lun-mié. Atendemos de jueves a domingo y feriados.");
+      } else setError("err-fecha", fechaEl, "");
+
+      if (!personasEl.value || isNaN(personasNum) || personasNum < 1 || personasNum > 20) {
+        errors.push("Indica el número de personas (1 a 20). Para grupos mayores, escríbenos.");
+        setError("err-personas", personasEl, "De 1 a 20 personas. Grupos mayores por WhatsApp.");
+      } else setError("err-personas", personasEl, "");
+
+      if (summary) {
+        if (errors.length) {
+          summary.hidden = false;
+          summary.innerHTML = "<strong>Revisa estos datos:</strong><br>• " + errors.join("<br>• ");
+          const firstInvalid = form.querySelector('[aria-invalid="true"]') as HTMLElement | null;
+          firstInvalid?.focus();
+          return;
+        }
+        summary.hidden = true;
+        summary.innerHTML = "";
+      } else if (errors.length) return;
+
       const comboLabel = comboEl.options[comboEl.selectedIndex]?.text || combo;
-      const fecha = (form.querySelector("#fecha") as HTMLInputElement).value;
-      const personas = (form.querySelector("#personas") as HTMLInputElement).value;
-      const notas = (form.querySelector("#notas") as HTMLTextAreaElement).value.trim();
+      const personas = personasEl.value;
+      const notas = notasEl.value.trim();
 
       const fechaFormateada = fecha
-        ? new Date(`${fecha}T00:00:00`).toLocaleDateString("es-EC", {
+        ? new Date(`${fecha}T12:00:00`).toLocaleDateString("es-EC", {
             weekday: "long",
             day: "2-digit",
             month: "long",
@@ -726,14 +834,29 @@ import Icono from "./Icono.astro";
         `• ${notas || "Sin notas adicionales"}`
       );
 
-      if (submitBtn) {
-        submitBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Enviando…!';
-        submitBtn.disabled = true;
-      }
+      // Apertura síncrona para evitar bloqueo de popups
+      window.open(`https://wa.me/593992577409?text=${msg}`, "_blank", "noopener");
 
-      setTimeout(() => {
-        window.open(`https://wa.me/593992577409?text=${msg}`, "_blank");
-      }, 400);
+      if (submitBtn && submitBtnOriginal) {
+        submitBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Abriendo WhatsApp…!';
+        submitBtn.disabled = true;
+        setTimeout(() => {
+          submitBtn.innerHTML = submitBtnOriginal;
+          submitBtn.disabled = false;
+        }, 3000);
+      }
+    });
+
+    // Limpia errores al escribir
+    form.querySelectorAll("input, select").forEach((el) => {
+      el.addEventListener("input", () => {
+        el.setAttribute("aria-invalid", "false");
+        const described = el.getAttribute("aria-describedby");
+        if (described) {
+          const errEl = document.getElementById(described);
+          if (errEl) errEl.hidden = true;
+        }
+      });
     });
   }
 </script>

@@ -43,17 +43,29 @@ const localBusinessSchema = {
   ...(imageUrl ? { image: imageUrl } : {}),
   telephone: ["+593223035551", "+593992577409"],
   priceRange: "$$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "Cash, Bank Transfer",
+  hasMap: "https://maps.app.goo.gl/z8J8EPYUiVJvBUS26",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Calle Rafael Garcia S33-239 y Ramon Cabrera, Chillogallo",
     addressLocality: "Quito",
+    addressRegion: "Pichincha",
     addressCountry: "EC",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "-0.291044",
-    longitude: "-78.554826",
+    latitude: -0.291044,
+    longitude: -78.554826,
   },
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Piscina temperada" },
+    { "@type": "LocationFeatureSpecification", name: "Sauna" },
+    { "@type": "LocationFeatureSpecification", name: "Turco" },
+    { "@type": "LocationFeatureSpecification", name: "Hidromasaje" },
+    { "@type": "LocationFeatureSpecification", name: "Restaurante" },
+    { "@type": "LocationFeatureSpecification", name: "Parqueadero" },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -77,7 +89,7 @@ const localBusinessSchema = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-EC">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -119,15 +131,17 @@ const localBusinessSchema = {
     <!-- Preconnect para mejor rendimiento -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    
-    <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Icon Font: Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" /></noscript>
     
     <style is:global>
 
@@ -465,31 +479,36 @@ const localBusinessSchema = {
     <slot />
 
     <!-- Floating WhatsApp CTA -->
-    <div class="wa-float" aria-label="Reservar por WhatsApp">
-      <span class="wa-float-tooltip">Reserva ahora</span>
-      <button class="wa-float-btn" id="wa-float-btn" aria-label="Abrir WhatsApp">
-        <i class="bi bi-whatsapp" style="font-size:30px; line-height:1;"></i>
-      </button>
+    <div class="wa-float">
+      <span class="wa-float-tooltip" aria-hidden="true">Reserva ahora</span>
+      <a
+        class="wa-float-btn"
+        href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20una%20reserva%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFPodr%C3%ADan%20ayudarme%20con%20la%20disponibilidad%20y%20los%20precios%3F%20%C2%A1Gracias!"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Reservar por WhatsApp"
+      >
+        <i class="bi bi-whatsapp" style="font-size:30px; line-height:1;" aria-hidden="true"></i>
+      </a>
     </div>
 
     <script>
-      // Floating WhatsApp
-      const waFloatBtn = document.getElementById("wa-float-btn");
-      if (waFloatBtn) {
-        waFloatBtn.addEventListener("click", () => {
-          const msg = encodeURIComponent("Hola, me gustaría hacer una reserva en Rey de Francia - Piscina y Hostal. ¿Podrían ayudarme con la disponibilidad y los precios? ¡Gracias!");
-          window.open(`https://wa.me/593992577409?text=${msg}`, "_blank");
-        });
-      }
-
-      // Smooth scroll para links internos
+      // Smooth scroll para links internos (respeta reduced-motion y mueve el foco por a11y)
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (e) => {
           const href = anchor.getAttribute("href");
-          if (href && href !== "#") {
-            e.preventDefault();
+          if (href && href.length > 1) {
             const target = document.querySelector(href);
-            if (target) target.scrollIntoView({ behavior: "smooth" });
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+              if (target instanceof HTMLElement) {
+                target.setAttribute("tabindex", "-1");
+                target.focus({ preventScroll: true });
+              }
+              history.replaceState(null, "", href);
+            }
           }
         });
       });

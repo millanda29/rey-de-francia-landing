@@ -31,7 +31,7 @@ const faqs: FAQ[] = [
   },
   {
     question: "¿Qué formas de pago aceptan?",
-    answer: "Aceptamos efectivo, transferencias bancarias para tu comodidad, próximamente habilitaremos pagos con tarjetas y plataformas digitales.",
+    answer: "Aceptamos efectivo y transferencias bancarias. Para grupos o celebraciones, consúltanos por WhatsApp y te asesoramos.",
   },
   {
     question: "¿Los servicios son privados o compartidos?",
@@ -57,7 +57,7 @@ const faqs: FAQ[] = [
           <details class="faq-item" open={index === 0}>
             <summary class="faq-question">
               <span>{faq.question}</span>
-              <span class="icon">+</span>
+              <span class="icon" aria-hidden="true">+</span>
             </summary>
             <div class="faq-answer">
               <p>{faq.answer}</p>
@@ -67,6 +67,15 @@ const faqs: FAQ[] = [
       }
     </div>
   </div>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  })} />
 </section>
 
 <style>
@@ -118,14 +127,14 @@ const faqs: FAQ[] = [
 </style>
 
 <script>
-  const details = document.querySelectorAll("details");
-  details.forEach((detail) => {
-    detail.addEventListener("click", () => {
-      details.forEach((otherDetail) => {
-        if (otherDetail !== detail) {
-          otherDetail.removeAttribute("open");
-        }
-      });
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if ((item as HTMLDetailsElement).open) {
+        faqItems.forEach((other) => {
+          if (other !== item) (other as HTMLDetailsElement).open = false;
+        });
+      }
     });
   });
 </script>

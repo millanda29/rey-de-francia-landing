@@ -1,9 +1,10 @@
 {
-  "name": "Manantial Rey de Francia",
+  "name": "Rey de Francia - Piscina y Hostal",
   "short_name": "Rey de Francia",
   "description": "Piscina temperada, sauna, turco, hidromasaje y hospedaje en Chillogallo, Quito. Reservas por WhatsApp.",
-  "lang": "es",
+  "lang": "es-EC",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#F5F2E8",
   "theme_color": "#0B1D3A",
@@ -17,6 +18,22 @@
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/favicon.svg",
