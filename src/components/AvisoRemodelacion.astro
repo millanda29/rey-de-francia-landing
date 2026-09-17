@@ -1,0 +1,361 @@
+---
+import Icono from "./Icono.astro";
+
+const socials = [
+  { name: "facebook", label: "Facebook", href: "https://www.facebook.com/hostalreydefrancia" },
+  { name: "instagram", label: "Instagram", href: "https://www.instagram.com/manantialreydefrancia" },
+  { name: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@manantialreydefra" },
+];
+
+const WA_REAPERTURA = "https://wa.me/593992577409?text=Hola%2C%20quisiera%20consultar%20sobre%20la%20reapertura%20de%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%A1Gracias!";
+---
+
+<div class="aviso-overlay" id="aviso-overlay" role="alertdialog" aria-modal="true" aria-labelledby="aviso-titulo">
+  <div class="aviso-diagonal">
+    <div class="hazard" aria-hidden="true"></div>
+
+    <button class="aviso-close" id="aviso-close" aria-label="Cerrar aviso y explorar el sitio">
+      <Icono name="cerrar" size="20" />
+    </button>
+
+    <div class="aviso-body">
+      <div class="status-pill">
+        <span class="status-dot" aria-hidden="true">
+          <span class="status-ping"></span>
+          <span class="status-core"></span>
+        </span>
+        Estado: instalaciones en obras de mejora
+      </div>
+
+      <p class="aviso-kicker">Aviso oficial a clientes</p>
+      <h2 id="aviso-titulo">Estamos en<br /><span class="grad">Remodelación</span></h2>
+      <div class="stamp">¡Volvemos pronto!</div>
+
+      <p class="aviso-desc">
+        En <strong>Rey de Francia - Piscina y Hostal</strong> renovamos piscina, áreas húmedas e
+        hidromasaje para elevar tu descanso a un nuevo nivel de confort en el sur de Quito.
+        <strong>Próxima reapertura.</strong> Síguenos en nuestras redes para informarte de la
+        remodelación y la reapertura.
+      </p>
+
+      <a class="wa-btn" href={WA_REAPERTURA} target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        Consultar reapertura
+      </a>
+
+      <div class="aviso-redes" aria-label="Nuestras redes sociales">
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer" class="red-btn" aria-label={s.label} title={s.label}>
+            <Icono name={s.name} size="18" />
+            <span>{s.label}</span>
+          </a>
+        ))}
+      </div>
+
+      <button class="aviso-enter" id="aviso-enter">Explorar el sitio</button>
+
+      <p class="aviso-foot">Mantenimiento de las instalaciones • Quito - Ecuador</p>
+    </div>
+
+    <div class="hazard" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("aviso-overlay");
+  const closeBtn = document.getElementById("aviso-close") as HTMLButtonElement | null;
+  const enterBtn = document.getElementById("aviso-enter") as HTMLButtonElement | null;
+
+  // Guarda el foco previo para restaurarlo al cerrar
+  const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+  // Bloquea el scroll mientras el aviso cubre el contenido
+  document.body.style.overflow = "hidden";
+
+  // Mueve el foco inicial al diálogo
+  closeBtn?.focus();
+
+  const dismiss = () => {
+    overlay?.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+    previousFocus?.focus?.();
+  };
+
+  // Contención de Tab dentro del diálogo (focus trap)
+  const trapTab = (e: KeyboardEvent) => {
+    if (e.key !== "Tab" || !overlay || overlay.hasAttribute("hidden")) return;
+    const focusables = Array.from(
+      overlay.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    ).filter((el) => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
+  closeBtn?.addEventListener("click", dismiss);
+  enterBtn?.addEventListener("click", dismiss);
+
+  document.addEventListener("keydown", (e) => {
+    // Cerrar con Escape
+    if (e.key === "Escape" && !overlay?.hasAttribute("hidden")) dismiss();
+    trapTab(e);
+  });
+</script>
+
+<style>
+  .aviso-overlay {
+    --av-yellow: #FACC15;
+    --av-amber: #F59E0B;
+    --av-dark: #0B0F17;
+    --av-surface: #111827;
+    --av-border: #2A364E;
+    --av-display: "Chakra Petch", "Outfit", sans-serif;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(4, 8, 16, 0.82);
+    backdrop-filter: blur(8px);
+    overflow-y: auto;
+    overflow-x: clip;
+    padding: 3rem 0;
+  }
+
+  .aviso-overlay[hidden] { display: none; }
+
+  /* Franja diagonal a todo ancho */
+  .aviso-diagonal {
+    position: relative;
+    width: 106vw;
+    max-width: none;
+    margin-left: -3vw;
+    transform: rotate(-1.5deg);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(250, 204, 21, 0.1) 1px, transparent 0),
+      linear-gradient(180deg, var(--av-surface) 0%, var(--av-dark) 100%);
+    background-size: 28px 28px, cover;
+    border-top: 2px solid rgba(250, 204, 21, 0.55);
+    border-bottom: 2px solid rgba(250, 204, 21, 0.55);
+    box-shadow: 0 0 45px -5px rgba(250, 204, 21, 0.35), 0 30px 80px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    animation: aviso-in 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes aviso-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .hazard {
+    height: 16px;
+    background: repeating-linear-gradient(-45deg, #FACC15, #FACC15 16px, #0F172A 16px, #0F172A 32px);
+  }
+
+  .aviso-close {
+    position: absolute;
+    top: 28px;
+    right: max(14px, calc(50% - 430px));
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--av-border);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .aviso-close:hover { border-color: var(--av-yellow); color: var(--av-yellow); }
+
+  .aviso-body {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.25rem 1.5rem 2rem;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(250, 204, 21, 0.08);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    color: var(--av-yellow);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .status-dot { position: relative; display: inline-flex; width: 10px; height: 10px; }
+
+  .status-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--av-yellow);
+    opacity: 0.75;
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .status-core {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--av-yellow);
+  }
+
+  @keyframes ping {
+    0% { transform: scale(1); opacity: 0.75; }
+    80%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  .aviso-kicker {
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .aviso-diagonal h2 {
+    font-family: var(--av-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #fff;
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    line-height: 1.05;
+    margin: 0 0 0.85rem;
+  }
+
+  .aviso-diagonal h2 .grad {
+    background: linear-gradient(90deg, var(--av-yellow), #FDE68A, var(--av-amber));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stamp {
+    display: inline-block;
+    font-family: var(--av-display);
+    font-weight: 800;
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    color: var(--av-dark);
+    background: var(--av-yellow);
+    padding: 0.4rem 1.5rem;
+    border-radius: 10px;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 8px 24px rgba(250, 204, 21, 0.35);
+    margin-bottom: 1.1rem;
+  }
+
+  .aviso-desc {
+    margin: 0 auto 1.35rem;
+    max-width: 640px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    line-height: 1.7;
+  }
+
+  .aviso-desc strong { color: #fff; }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--av-yellow);
+    color: var(--av-dark);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.95rem 1.9rem;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 0 20px -5px rgba(250, 204, 21, 0.5);
+    transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+  }
+
+  .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px -5px rgba(250, 204, 21, 0.65); }
+  .wa-btn i { font-size: 1.3rem; }
+
+  .aviso-redes {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+  }
+
+  .red-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--av-border);
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.55rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color var(--transition-standard), color var(--transition-standard), transform var(--transition-standard);
+  }
+
+  .red-btn:hover { border-color: var(--av-yellow); color: var(--av-yellow); transform: translateY(-2px); }
+
+  .aviso-enter {
+    display: block;
+    margin: 1.2rem auto 0;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+
+  .aviso-enter:hover { color: var(--av-yellow); }
+
+  .aviso-foot {
+    margin: 1rem 0 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  @media (max-width: 560px) {
+    .aviso-diagonal { transform: none; width: 100%; margin-left: 0; }
+    .aviso-body { padding: 1.75rem 1.1rem 1.5rem; }
+    .red-btn span { display: none; }
+    .red-btn { padding: 0.65rem; border-radius: 50%; }
+    .aviso-close { right: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aviso-diagonal { animation: none; }
+    .status-ping { animation: none; opacity: 0.75; }
+  }
+</style>

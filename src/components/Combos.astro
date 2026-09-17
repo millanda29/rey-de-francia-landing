@@ -68,7 +68,7 @@ export const combos: Combo[] = [
     <div class="section-header">
       <span class="section-kicker">Combos recomendados</span>
       <h2>Planes listos para elegir y disfrutar</h2>
-      <p>Opciones para parejas y celebraciones, con alternativas desde $35. Reserva en minutos.</p>
+      <p>Opciones para parejas y celebraciones, con planes desde $15. Reserva en minutos.</p>
     </div>
 
     <div class="combos-grid">
@@ -87,7 +87,12 @@ export const combos: Combo[] = [
                 </li>
               ))}
             </ul>
-            <a href="#reservas" class="btn-combo">Reserva tu visita</a>
+            <a
+              href={`https://wa.me/593992577409?text=${encodeURIComponent(`Hola, me gustaría reservar ${combo.name} (${combo.price}) en Rey de Francia. ¿Me confirman disponibilidad y horarios? ¡Gracias!`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-combo"
+            >Reserva tu visita</a>
           </article>
         ))
       }

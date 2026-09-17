@@ -1,6 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-pool: #56b1e3;
+  --color-deep: #0b1d3a;
+  --color-royal: #1a3e7a;
+  --color-gold: #cfa94b;
+  --color-gold-light: #d8b859;
+  --color-gold-dark: #a8832e;
+  --color-ivory: #f5f2e8;
+  --color-whatsapp: #25d366;
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+}
 
 /* ── Rey de Francia Brand System ──
    Psicología: Azul Piscina = relajación · Azul Profundo = confianza

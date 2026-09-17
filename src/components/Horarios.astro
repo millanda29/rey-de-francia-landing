@@ -4,7 +4,8 @@ import Icono from "./Icono.astro";
 
 <section class="horarios" id="horarios">
   <div class="container">
-    <h2>Estamos listos para recibirte</h2>
+    <h2>Nuestros horarios habituales</h2>
+    <p class="nota-remodelacion">Estamos en remodelación: estos horarios aplicarán desde la reapertura. Confirma la fecha en nuestras redes o por WhatsApp.</p>
 
     <div class="horarios-grid">
       <div class="card horarios-card">
@@ -15,9 +16,9 @@ import Icono from "./Icono.astro";
           <span class="hora">10:00 a 18:00</span>
         </div>
 
-        <div class="promo-horario" role="note" aria-label="Promocion vigente entre semana">
-          <p class="promo-horario-title">Promocion entre semana: 2x1 en entradas de adultos</p>
-          <p class="promo-horario-copy">Valida unicamente jueves y viernes. No aplica en feriados, dias festivos ni fines de semana.</p>
+        <div class="promo-horario" role="note" aria-label="Promoción vigente entre semana">
+          <p class="promo-horario-title">Promoción entre semana: 2x1 en entradas de adultos</p>
+          <p class="promo-horario-copy">Válida únicamente jueves y viernes. No aplica en feriados, días festivos ni fines de semana.</p>
         </div>
 
         <div class="horario-item festivo">
@@ -43,7 +44,7 @@ import Icono from "./Icono.astro";
           <Icono name="maps" size="24" />
           <div>
             <p class="label">Cómo llegar</p>
-            <a href="https://maps.app.goo.gl/RonmVdkj88GZvvw57" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+            <a href="https://maps.app.goo.gl/z8J8EPYUiVJvBUS26" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
           </div>
         </div>
 
@@ -51,7 +52,7 @@ import Icono from "./Icono.astro";
           <Icono name="telefono" size="24" />
           <div>
             <p class="label">Llámanos</p>
-            <p class="valor">(02)303 5551 / 0992 577 409</p>
+            <p class="valor"><a href="tel:+593223035551">(02) 303 5551</a> / <a href="tel:+593992577409">0992 577 409</a></p>
           </div>
         </div>
 
@@ -59,7 +60,7 @@ import Icono from "./Icono.astro";
           <Icono name="whatsapp" size="24" />
           <div>
             <p class="label">WhatsApp</p>
-            <p class="valor">0992 577 409</p>
+            <p class="valor"><a href="https://wa.me/593992577409" target="_blank" rel="noopener noreferrer">0992 577 409</a></p>
           </div>
         </div>
       </div>
@@ -96,9 +97,23 @@ import Icono from "./Icono.astro";
       var(--color-white);
   }
   .container { max-width: 1280px; margin: 0 auto; }
-  .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-2xl); }
+  .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-md); }
 
-  .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--spacing-xl); }
+  .nota-remodelacion {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto var(--spacing-2xl);
+    padding: 0.65rem 0.9rem;
+    border-radius: var(--radius-md);
+    background: var(--color-amber-50);
+    color: var(--color-gold-dark);
+    border-left: 4px solid var(--color-gold);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-xl); }
 
   .card {
     background: var(--color-white);
