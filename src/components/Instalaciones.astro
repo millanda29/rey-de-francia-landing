@@ -4,63 +4,61 @@
 
 <section class="carrusel-section" id="instalaciones">
   <div class="container">
-    <h2>Conoce nuestros espacios</h2>
-    <p class="subtitle">Mira el ambiente que te espera en tu próxima visita.</p>
+    <div class="galley-header">
+      <span class="section-kicker">Instalaciones</span>
+      <h2>Conoce nuestros espacios</h2>
+      <p class="subtitle">Piscina temperada, sauna, habitaciones y más — desliza y mira el ambiente que te espera en tu próxima visita.</p>
+    </div>
     
     <div class="carrusel-wrapper">
       <div class="carrusel">
         <div class="slide">
-          <img src="/assets/images/piscina.webp" alt="Piscina recreativa de Rey de Francia" loading="lazy" />
+          <img src="/assets/images/piscina.webp" alt="Piscina temperada de Rey de Francia" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Piscina temperada para toda la familia</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/habitaciones.webp" alt="Habitaciones de confort" loading="lazy" />
+          <img src="/assets/images/habitaciones.webp" alt="Habitaciones de confort" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Habitaciones cómodas para tu descanso</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/sauna.webp" alt="Sauna de calor seco" loading="lazy" />
+          <img src="/assets/images/sauna.webp" alt="Sauna de calor seco" width="720" height="1280" loading="lazy" decoding="async" />
           <p class="slide-caption">Sauna para soltar tensión</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/turco.webp" alt="Turco de vapor húmedo" loading="lazy" />
+          <img src="/assets/images/turco.webp" alt="Turco de vapor húmedo" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Turco para renovar energía</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/chorros.webp" alt="Chorros de agua" loading="lazy" />
+          <img src="/assets/images/chorros.webp" alt="Chorros de agua" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Chorros de agua para relajación</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/hidromasaje.webp" alt="Hidromasaje" loading="lazy" />
+          <img src="/assets/images/hidromasaje.webp" alt="Hidromasaje" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Hidromasaje para aliviar el estrés</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/fachada.webp" alt="Fachada principal de Rey de Francia - Piscina y Hostal" loading="lazy" />
+          <img src="/assets/images/fachada.webp" alt="Fachada principal de Rey de Francia - Piscina y Hostal" width="1200" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Fachada principal y acceso</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/piscina.webp" alt="Área de piscina para descanso" loading="lazy" />
-          <p class="slide-caption">Más espacio para disfrutar el agua</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/habitaciones2.webp" alt="Área de habitaciones para huéspedes" loading="lazy" />
+          <img src="/assets/images/habitaciones2.webp" alt="Área de habitaciones para huéspedes" width="900" height="1600" loading="lazy" decoding="async" />
           <p class="slide-caption">Opciones adicionales de hospedaje</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/bdc.webp" alt="Baños de cajón" loading="lazy" />
+          <img src="/assets/images/bdc.webp" alt="Baños de cajón" width="1200" height="900" loading="lazy" decoding="async" />
           <p class="slide-caption">Baños de cajón y contraste</p>
         </div>
 
         <div class="slide">
-          <img src="/assets/images/restaurante.webp" alt="Área de relajación" loading="lazy" />
+          <img src="/assets/images/restaurante.webp" alt="Restaurante de Rey de Francia con platos variados" width="1024" height="1536" loading="lazy" decoding="async" />
           <p class="slide-caption">Menú de platos variados</p>
         </div>
       </div>
@@ -79,7 +77,6 @@
         <button class="dot" aria-label="Slide 8"></button>
         <button class="dot" aria-label="Slide 9"></button>
         <button class="dot" aria-label="Slide 10"></button>
-        <button class="dot" aria-label="Slide 11"></button>
       </div>
     </div>
   </div>
@@ -102,8 +99,15 @@
     font-size: 2.5rem;
     color: var(--color-primary);
     text-align: center;
-    margin-bottom: var(--spacing-md);
+    margin: var(--spacing-md) 0;
   }
+
+  .galley-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .galley-header .section-kicker { margin-bottom: 0; }
 
   .subtitle {
     text-align: center;
@@ -444,33 +448,30 @@
 </style>
 
 <script>
-  const carrusel = document.querySelector('.carrusel') as HTMLElement;
+  const carrusel = document.querySelector('.carrusel') as HTMLElement | null;
+  const wrapper = document.querySelector('.carrusel-wrapper') as HTMLElement | null;
   const slides = document.querySelectorAll('.slide');
   const slideImages = document.querySelectorAll('.slide img') as NodeListOf<HTMLImageElement>;
   const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.carrusel-btn.prev') as HTMLButtonElement;
-  const nextBtn = document.querySelector('.carrusel-btn.next') as HTMLButtonElement;
+  const prevBtn = document.querySelector('.carrusel-btn.prev') as HTMLButtonElement | null;
+  const nextBtn = document.querySelector('.carrusel-btn.next') as HTMLButtonElement | null;
 
   let currentIndex = 0;
+  let autoPlay: ReturnType<typeof setInterval> | null = null;
 
   function updateCarrusel() {
+    if (!carrusel) return;
     const offset = -currentIndex * 100;
     carrusel.style.transform = `translateX(${offset}%)`;
 
     slides.forEach((slide, index) => {
-      if (index === currentIndex) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
+      slide.classList.toggle('active', index === currentIndex);
     });
-    
+
     dots.forEach((dot, index) => {
-      if (index === currentIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
+      dot.classList.toggle('active', index === currentIndex);
+      if (index === currentIndex) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
     });
   }
 
@@ -484,8 +485,46 @@
     updateCarrusel();
   }
 
-  prevBtn?.addEventListener('click', prevSlide);
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlay = setInterval(nextSlide, 6000);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlay) clearInterval(autoPlay);
+    autoPlay = null;
+  }
+
+  prevBtn?.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
   nextBtn?.addEventListener('click', nextSlide);
+
+  // Soporte teclado
+  wrapper?.setAttribute('tabindex', '0');
+  wrapper?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // Pausa en hover / foco para no pelear con el usuario
+  wrapper?.addEventListener('mouseenter', stopAutoPlay);
+  wrapper?.addEventListener('mouseleave', startAutoPlay);
+  wrapper?.addEventListener('focusin', stopAutoPlay);
+  wrapper?.addEventListener('focusout', startAutoPlay);
+
+  // Swipe táctil
+  let touchStartX = 0;
+  wrapper?.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    stopAutoPlay();
+  }, { passive: true });
+  wrapper?.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) nextSlide();
+      else prevSlide();
+    }
+    startAutoPlay();
+  }, { passive: true });
 
   // Ajusta automaticamente imagenes verticales para evitar recortes agresivos.
   slideImages.forEach((img) => {
@@ -508,14 +547,11 @@
     dot.addEventListener('click', () => {
       currentIndex = index;
       updateCarrusel();
+      startAutoPlay();
     });
   });
 
   updateCarrusel();
-
-  // Auto-play
-  setInterval(() => {
-    nextSlide();
-  }, 5000);
+  startAutoPlay();
 </script>
 

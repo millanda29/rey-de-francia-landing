@@ -12,11 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.2.1",
-    "leaflet": "^1.9.4"
+    "astro": "^7.3.3"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.2.2",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2"

@@ -2,13 +2,20 @@
 import Icono from "./Icono.astro";
 
 // Componente: Testimonios - Opiniones de clientes
+// TODO: reemplazar los textos de abajo por las reseñas reales copiadas desde
+// https://maps.app.goo.gl/z8J8EPYUiVJvBUS26 (nombre, fecha, texto).
+// NOTA: no publicar schema Review/AggregateRating ni sello "Publicado en Google"
+// hasta tener el contenido verificado.
 interface Testimonial {
   name: string;
   role: string;
   comment: string;
   rating: number;
+  date: string;
   avatarChar: string;
 }
+
+const REVIEWS_URL = "https://maps.app.goo.gl/z8J8EPYUiVJvBUS26";
 
 const testimonials: Testimonial[] = [
   {
@@ -17,6 +24,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Nos encantó porque todo fue claro desde la reserva. Llegamos, disfrutamos la habitación y el tiempo se aprovechó al máximo.",
     rating: 5,
+    date: "",
     avatarChar: "A",
   },
   {
@@ -25,6 +33,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Fuimos con niños y adultos, y todos encontraron algo para disfrutar. El lugar está bien organizado y la atención fue muy amable.",
     rating: 5,
+    date: "",
     avatarChar: "C",
   },
   {
@@ -33,6 +42,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Lo mejor es que las tarifas son claras y justas. Siempre sé cuánto voy a pagar y el servicio mantiene buena calidad.",
     rating: 5,
+    date: "",
     avatarChar: "P",
   },
   {
@@ -41,6 +51,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Tomamos un combo para pareja y valió totalmente la pena. El ambiente fue cómodo, privado y perfecto para desconectarnos.",
     rating: 5,
+    date: "",
     avatarChar: "L",
   },
   {
@@ -49,6 +60,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Reservamos por aniversario y todo salió excelente. La decoración y los detalles hicieron que fuera un momento inolvidable.",
     rating: 5,
+    date: "",
     avatarChar: "V",
   },
   {
@@ -57,6 +69,7 @@ const testimonials: Testimonial[] = [
     comment:
       "Me gustó que no hubo sorpresas: horarios, tiempos y condiciones bien explicados. Eso da mucha confianza para volver.",
     rating: 5,
+    date: "",
     avatarChar: "R",
   },
 ];
@@ -65,30 +78,36 @@ const testimonials: Testimonial[] = [
 <section class="testimonios">
   <div class="container">
     <div class="section-header">
+      <span class="section-kicker">Opiniones</span>
       <h2>Clientes que ya lo vivieron</h2>
-      <p>Experiencias reales para complementar lo que viste en servicios, combos y tarifas.</p>
     </div>
 
     <div class="testimonios-grid">
       {
         testimonials.map((testimonial) => (
-          <div class="testimonial-card">
-            <div class="rating">
+          <article class="testimonial-card">
+            <div class="rating" role="img" aria-label={`Calificación: ${testimonial.rating} de 5 estrellas`}>
               {Array.from({ length: testimonial.rating }).map(() => (
                 <Icono name="estrella" size="16" />
               ))}
             </div>
             <p class="comment">"{testimonial.comment}"</p>
             <div class="author">
-              <div class="avatar">{testimonial.avatarChar}</div>
+              <div class="avatar" aria-hidden="true">{testimonial.avatarChar}</div>
               <div>
                 <h4>{testimonial.name}</h4>
                 <p class="role">{testimonial.role}</p>
               </div>
             </div>
-          </div>
+          </article>
         ))
       }
+    </div>
+
+    <div class="testimonios-cta">
+      <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" class="btn-review">
+        <Icono name="estrella" size="18" /> Déjanos tu reseña en Google
+      </a>
     </div>
   </div>
 </section>
@@ -149,6 +168,30 @@ const testimonials: Testimonial[] = [
     display: flex;
     gap: 4px;
     color: var(--color-gold);
+  }
+
+  .testimonios-cta { text-align: center; margin-top: var(--spacing-xl); }
+
+  .btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-white);
+    color: var(--color-royal);
+    font-weight: 700;
+    padding: 0.9rem 1.75rem;
+    border-radius: var(--radius-lg);
+    border: 2px solid rgba(26, 62, 122, 0.2);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+  }
+
+  .btn-review:hover {
+    transform: translateY(-3px);
+    background: var(--gradient-blue);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 14px 32px rgba(26, 62, 122, 0.28);
   }
 
   .comment {
