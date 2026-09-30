@@ -1,0 +1,982 @@
+---
+import Icono from "./Icono.astro";
+
+const socials = [
+  { name: "facebook", label: "Facebook", href: "https://www.facebook.com/hostalreydefrancia" },
+  { name: "instagram", label: "Instagram", href: "https://www.instagram.com/manantialreydefrancia" },
+  { name: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@manantialreydefra" },
+];
+
+const WA_REINAUGURACION = "https://wa.me/593992577409?text=" + encodeURIComponent("¡Hola! Quisiera reservar con las promociones de reinauguración en Manantial Rey de Francia. ¿Me confirman disponibilidad? ¡Gracias!");
+---
+
+<!-- ── Barra fija superior compacta ── -->
+<aside class="bar-reinauguracion" id="bar-reinauguracion" aria-label="Aviso de reinauguración">
+  <div class="bar-container">
+    <div class="bar-text">
+      <span class="bar-tag">🎉 ¡REINAUGURACIÓN!</span>
+      <span class="bar-copy">
+        Abrimos este <strong>jueves 1 de octubre</strong> • 🔥 <strong>2x1</strong> jue-vie • Combo hab. <strong>$20</strong> (1-4 oct)
+      </span>
+    </div>
+
+    <div class="bar-timer" id="bar-timer-wrap">
+      <span class="bar-timer-label">Apertura en:</span>
+      <span class="bar-timer-digits" id="bar-timer">00d 00h 00m 00s</span>
+    </div>
+
+    <div class="bar-actions">
+      <button type="button" class="bar-btn-info" id="bar-btn-open">
+        Ver detalles y sorpresas
+      </button>
+      <a href={WA_REINAUGURACION} target="_blank" rel="noopener noreferrer" class="bar-btn-wa">
+        <i class="bi bi-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- ── Diálogo a ancho completo (Full Width Banner) ── -->
+<div class="aviso-overlay" id="aviso-overlay" role="alertdialog" aria-modal="true" aria-labelledby="aviso-titulo">
+  <div class="aviso-fullwidth">
+    <!-- Hazard decorative stripe top -->
+    <div class="festive-stripe" aria-hidden="true"></div>
+
+    <button class="aviso-close" id="aviso-close" aria-label="Cerrar aviso y navegar en el sitio">
+      <Icono name="cerrar" size="22" />
+    </button>
+
+    <div class="aviso-body">
+      <!-- Header de Reinauguración (MÁXIMO PROTAGONISMO) -->
+      <div class="header-highlight">
+        <div class="status-pill">
+          <span class="status-dot" aria-hidden="true">
+            <span class="status-ping"></span>
+            <span class="status-core"></span>
+          </span>
+          Manantial Rey de Francia • Piscina &amp; Hostal
+        </div>
+
+        <h2 id="aviso-titulo" class="aviso-title">
+          🎉 ¡YA TENEMOS FECHA DE <span class="grad-gold">REINAUGURACIÓN</span>! 🎉
+        </h2>
+
+        <p class="aviso-date-badge">
+          Este <strong>jueves 1 de octubre</strong> volvemos a abrir nuestras puertas. 🥳💦
+        </p>
+      </div>
+
+      <!-- CONTADOR GIGANTE (PROTAGONISTA) -->
+      <div class="big-countdown-container">
+        <p class="countdown-eyebrow">Cuenta regresiva para la reapertura oficial</p>
+        <div class="countdown-clock" id="countdown-grid">
+          <div class="clock-card">
+            <span class="clock-val" id="cd-days">00</span>
+            <span class="clock-lbl">Días</span>
+          </div>
+          <span class="clock-divider">:</span>
+          <div class="clock-card">
+            <span class="clock-val" id="cd-hours">00</span>
+            <span class="clock-lbl">Horas</span>
+          </div>
+          <span class="clock-divider">:</span>
+          <div class="clock-card">
+            <span class="clock-val" id="cd-minutes">00</span>
+            <span class="clock-lbl">Minutos</span>
+          </div>
+          <span class="clock-divider">:</span>
+          <div class="clock-card">
+            <span class="clock-val" id="cd-seconds">00</span>
+            <span class="clock-lbl">Segundos</span>
+          </div>
+        </div>
+        <p class="clock-live-note" id="cd-status" hidden>
+          ✨ ¡Las puertas ya están abiertas! Te esperamos hoy con todas las promociones activas.
+        </p>
+      </div>
+
+      <!-- SORPRESAS (A TODO LO ANCHO EN 4 COLUMNAS COMPACTAS) -->
+      <div class="sorpresas-section">
+        <div class="sorpresas-title-wrap">
+          <i class="bi bi-gift-fill"></i>
+          <span>Y por reinauguración tenemos sorpresas:</span>
+        </div>
+
+        <div class="sorpresas-row">
+          <div class="sorpresa-item">
+            <div class="item-badge gold">Exclusivo</div>
+            <div class="item-icon">✨</div>
+            <div class="item-info">
+              <h4>Primeros 10 clientes</h4>
+              <p>Entrada <strong>GRATIS</strong> para piscina, válida el sábado 3 de octubre.</p>
+            </div>
+          </div>
+
+          <div class="sorpresa-item">
+            <div class="item-badge red">Imperdible</div>
+            <div class="item-icon">🔥</div>
+            <div class="item-info">
+              <h4>Jueves y viernes</h4>
+              <p>¡<strong>2x1</strong> en entradas de adultos! Piscina, sauna, turco e hidromasaje.</p>
+            </div>
+          </div>
+
+          <div class="sorpresa-item">
+            <div class="item-badge amber">Del 1 al 4 de Octubre</div>
+            <div class="item-icon">❤️</div>
+            <div class="item-info">
+              <h4>Combo con habitación</h4>
+              <p>Solo por estos días en <strong>$20.00</strong> <span class="old-price">antes $25.00</span>. ¡Relax total!</p>
+            </div>
+          </div>
+
+          <div class="sorpresa-item">
+            <div class="item-badge teal">Bienestar</div>
+            <div class="item-icon">🧖‍♀️</div>
+            <div class="item-info">
+              <h4>Baños de cajón</h4>
+              <p>Disfruta de nuestros tradicionales <strong>baños de cajón</strong> y áreas húmedas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÓN WHATSAPP Y ENLACES COMPACTOS -->
+      <div class="action-footer">
+        <a class="wa-action-btn" href={WA_REINAUGURACION} target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-whatsapp"></i>
+          <span>📲 Reserva exclusivamente por WhatsApp: 099 257 7409</span>
+        </a>
+        <p class="action-caption">Cupos y promociones limitadas • Atención inmediata</p>
+
+        <div class="footer-links-row">
+          <div class="social-pills">
+            {socials.map((s) => (
+              <a href={s.href} target="_blank" rel="noopener noreferrer" class="social-pill" aria-label={s.label}>
+                <Icono name={s.name} size="16" />
+                <span>{s.label}</span>
+              </a>
+            ))}
+          </div>
+
+          <button type="button" class="btn-explore" id="aviso-enter">
+            Explorar el sitio web y ver instalaciones
+          </button>
+        </div>
+
+        <p class="final-tagline">¡Te esperamos en Manantial Rey de Francia! ✨ Chillogallo, Quito - Ecuador</p>
+      </div>
+    </div>
+
+    <!-- Hazard decorative stripe bottom -->
+    <div class="festive-stripe" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+  // ── Fechas y cuenta regresiva ──
+  // Reopening: Jueves 1 de Octubre de 2026 a las 10:00 AM (GMT-5 Ecuador)
+  const TARGET_TIME = new Date("2026-10-01T10:00:00-05:00").getTime();
+
+  const daysEl = document.getElementById("cd-days");
+  const hoursEl = document.getElementById("cd-hours");
+  const minutesEl = document.getElementById("cd-minutes");
+  const secondsEl = document.getElementById("cd-seconds");
+  const statusEl = document.getElementById("cd-status");
+  const barTimerEl = document.getElementById("bar-timer");
+
+  const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
+
+  const updateCountdown = () => {
+    const now = Date.now();
+    const diff = TARGET_TIME - now;
+
+    if (diff <= 0) {
+      if (daysEl) daysEl.textContent = "00";
+      if (hoursEl) hoursEl.textContent = "00";
+      if (minutesEl) minutesEl.textContent = "00";
+      if (secondsEl) secondsEl.textContent = "00";
+      if (statusEl) statusEl.hidden = false;
+      if (barTimerEl) barTimerEl.textContent = "¡Puertas Abiertas!";
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (daysEl) daysEl.textContent = pad(d);
+    if (hoursEl) hoursEl.textContent = pad(h);
+    if (minutesEl) minutesEl.textContent = pad(m);
+    if (secondsEl) secondsEl.textContent = pad(s);
+
+    if (barTimerEl) {
+      barTimerEl.textContent = `${d}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+  };
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── Manejo de Apertura y Cierre del Diálogo Modal ──
+  const overlay = document.getElementById("aviso-overlay");
+  const closeBtn = document.getElementById("aviso-close") as HTMLButtonElement | null;
+  const enterBtn = document.getElementById("aviso-enter") as HTMLButtonElement | null;
+  const barOpenBtn = document.getElementById("bar-btn-open") as HTMLButtonElement | null;
+
+  const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+  const isHidden = overlay?.hasAttribute("hidden");
+  if (!isHidden) {
+    document.body.style.overflow = "hidden";
+    closeBtn?.focus();
+  }
+
+  const dismiss = () => {
+    overlay?.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+    previousFocus?.focus?.();
+  };
+
+  const showModal = () => {
+    overlay?.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+    closeBtn?.focus();
+  };
+
+  closeBtn?.addEventListener("click", dismiss);
+  enterBtn?.addEventListener("click", dismiss);
+  barOpenBtn?.addEventListener("click", showModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !overlay?.hasAttribute("hidden")) {
+      dismiss();
+      return;
+    }
+
+    if (e.key === "Tab" && overlay && !overlay.hasAttribute("hidden")) {
+      const focusables = Array.from(
+        overlay.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      ).filter((el) => el.offsetParent !== null);
+
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>
+
+<style>
+  /* ── BARRA SUPERIOR FIJA ── */
+  .bar-reinauguracion {
+    position: relative;
+    z-index: 999;
+    background: linear-gradient(90deg, #091730 0%, #153261 50%, #0a1b38 100%);
+    border-bottom: 2px solid #F59E0B;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 0.88rem;
+    padding: 0.45rem 1rem;
+  }
+
+  .bar-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .bar-text {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex: 1 1 auto;
+    min-width: 270px;
+  }
+
+  .bar-tag {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #081120;
+    font-weight: 800;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .bar-copy {
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.35;
+  }
+
+  .bar-copy strong {
+    color: #FDE68A;
+  }
+
+  .bar-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-family: monospace, monospace;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .bar-timer-label {
+    color: #93C5FD;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+  }
+
+  .bar-timer-digits {
+    font-weight: 700;
+    color: #FBBF24;
+  }
+
+  .bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .bar-btn-info {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bar-btn-info:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: #F59E0B;
+    color: #FDE68A;
+  }
+
+  .bar-btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #25D366;
+    color: #081120;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .bar-btn-wa:hover {
+    background: #22c55e;
+  }
+
+  /* ── OVERLAY CON FONDO VISIBLE ARRIBA Y ABAJO ── */
+  .aviso-overlay {
+    --gold: #F59E0B;
+    --gold-light: #FDE68A;
+    --dark: #070e1b;
+    --surface: #0e1e3b;
+    --border: #213c6b;
+    --pool: #38bdf8;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    background: rgba(3, 7, 16, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow-y: auto;
+    overflow-x: clip;
+    padding: clamp(2rem, 4vh, 3.5rem) 0;
+  }
+
+  .aviso-overlay[hidden] {
+    display: none;
+  }
+
+  /* FRANJA A TODO EL ANCHO CON PEQUEÑA INCLINACIÓN DINÁMICA */
+  .aviso-fullwidth {
+    position: relative;
+    width: 106vw;
+    max-width: none;
+    margin-left: -3vw;
+    min-height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: rotate(-1.4deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 20%, rgba(56, 189, 248, 0.14), transparent),
+      radial-gradient(circle 500px at 10% 80%, rgba(245, 158, 11, 0.1), transparent),
+      linear-gradient(180deg, #0a172e 0%, #060d1a 100%);
+    border-top: 2.5px solid rgba(245, 158, 11, 0.75);
+    border-bottom: 2.5px solid rgba(245, 158, 11, 0.75);
+    box-shadow: 0 0 50px rgba(245, 158, 11, 0.25), 0 25px 60px rgba(0, 0, 0, 0.85);
+    animation: fullwidth-fade 350ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  @keyframes fullwidth-fade {
+    from {
+      opacity: 0;
+      transform: rotate(-1.4deg) translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-1.4deg) translateY(0);
+    }
+  }
+
+  .festive-stripe {
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      #F59E0B,
+      #F59E0B 16px,
+      #38BDF8 16px,
+      #38BDF8 32px,
+      #091A38 32px,
+      #091A38 48px
+    );
+  }
+
+  .aviso-close {
+    position: absolute;
+    top: 20px;
+    right: max(24px, calc(50% - 680px));
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+  }
+
+  .aviso-close:hover {
+    background: rgba(245, 158, 11, 0.3);
+    border-color: #F59E0B;
+    color: #FDE68A;
+    transform: rotate(90deg);
+  }
+
+  .aviso-body {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: clamp(1.2rem, 2.2vh, 2rem) clamp(1rem, 3.5vw, 3rem);
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* ── ENCABEZADO ── */
+  .header-highlight {
+    margin-bottom: clamp(0.7rem, 1.4vh, 1.15rem);
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #FDE68A;
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.95rem;
+    border-radius: 999px;
+    margin-bottom: 0.45rem;
+  }
+
+  .status-dot {
+    position: relative;
+    display: inline-flex;
+    width: 9px;
+    height: 9px;
+  }
+
+  .status-ping {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #F59E0B;
+    opacity: 0.8;
+    animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .status-core {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #F59E0B;
+  }
+
+  @keyframes ping {
+    0% { transform: scale(1); opacity: 0.8; }
+    80%, 100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  .aviso-title {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    line-height: 1.12;
+    margin: 0 0 0.4rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .grad-gold {
+    background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 45%, #FBBF24 70%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .aviso-date-badge {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    color: #F3F4F6;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+
+  .aviso-date-badge strong {
+    color: #FDE68A;
+    background: rgba(245, 158, 11, 0.15);
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    border-bottom: 2px solid #F59E0B;
+  }
+
+  /* ── CONTADOR GIGANTE (PROTAGONISTA) ── */
+  .big-countdown-container {
+    background: linear-gradient(180deg, rgba(14, 30, 60, 0.75) 0%, rgba(8, 17, 34, 0.95) 100%);
+    border: 2px solid rgba(245, 158, 11, 0.45);
+    box-shadow:
+      0 0 35px -10px rgba(245, 158, 11, 0.3),
+      inset 0 2px 14px rgba(0, 0, 0, 0.6);
+    border-radius: 18px;
+    padding: clamp(0.75rem, 1.5vh, 1.25rem) clamp(0.8rem, 2vw, 2rem);
+    margin: 0 auto clamp(0.75rem, 1.5vh, 1.25rem);
+    max-width: 1080px;
+  }
+
+  .countdown-eyebrow {
+    font-size: clamp(0.75rem, 1.1vw, 0.88rem);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #93C5FD;
+    margin: 0 0 clamp(0.45rem, 1vh, 0.75rem);
+  }
+
+  .countdown-clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.4rem, 1.5vw, 1.4rem);
+  }
+
+  .clock-card {
+    background: linear-gradient(180deg, #13274e 0%, #0b172f 100%);
+    border: 2px solid rgba(56, 189, 248, 0.35);
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.5),
+      0 0 15px rgba(245, 158, 11, 0.15);
+    border-radius: 14px;
+    padding: clamp(0.5rem, 1vh, 0.85rem) clamp(0.75rem, 1.6vw, 1.5rem);
+    min-width: clamp(65px, 11vw, 130px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .clock-card:hover {
+    border-color: #F59E0B;
+    transform: translateY(-2px);
+  }
+
+  .clock-val {
+    display: block;
+    font-size: clamp(2.3rem, 5.2vw, 4rem);
+    font-weight: 900;
+    font-family: "Outfit", monospace, monospace;
+    line-height: 1;
+    color: #FBBF24;
+    text-shadow:
+      0 2px 10px rgba(245, 158, 11, 0.6),
+      0 0 20px rgba(245, 158, 11, 0.25);
+    letter-spacing: -0.02em;
+  }
+
+  .clock-lbl {
+    display: block;
+    font-size: clamp(0.65rem, 1vw, 0.85rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #93C5FD;
+    margin-top: 0.25rem;
+  }
+
+  .clock-divider {
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: rgba(245, 158, 11, 0.7);
+    line-height: 1;
+    margin-top: -0.5rem;
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+  }
+
+  .clock-live-note {
+    margin: 0.65rem 0 0;
+    color: #34D399;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+
+  /* ── SORPRESAS (FILA HORIZONTAL ELEGANTE) ── */
+  .sorpresas-section {
+    margin-bottom: clamp(0.65rem, 1.4vh, 1.15rem);
+  }
+
+  .sorpresas-title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: clamp(0.92rem, 1.4vw, 1.1rem);
+    font-weight: 700;
+    color: #FDE68A;
+    margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
+  }
+
+  .sorpresas-title-wrap i {
+    color: #F59E0B;
+    font-size: 1.15rem;
+  }
+
+  .sorpresas-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.5rem, 1vw, 0.95rem);
+  }
+
+  .sorpresa-item {
+    position: relative;
+    background: rgba(14, 30, 58, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 12px;
+    padding: 0.75rem 0.75rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .sorpresa-item:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(19, 41, 78, 0.75);
+    transform: translateY(-2px);
+  }
+
+  .item-badge {
+    position: absolute;
+    top: -8px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .item-badge.gold {
+    background: #F59E0B;
+    color: #081120;
+  }
+
+  .item-badge.red {
+    background: #EF4444;
+    color: #ffffff;
+  }
+
+  .item-badge.amber {
+    background: #F59E0B;
+    color: #081120;
+  }
+
+  .item-badge.teal {
+    background: #10B981;
+    color: #ffffff;
+  }
+
+  .item-icon {
+    font-size: 1.45rem;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    margin-top: 0.15rem;
+  }
+
+  .item-info h4 {
+    margin: 0 0 0.2rem;
+    font-size: 0.92rem;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .item-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.35;
+  }
+
+  .item-info strong {
+    color: #FDE68A;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.76rem;
+    margin-left: 0.2rem;
+  }
+
+  /* ── BOTÓN Y ACCIONES ── */
+  .action-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wa-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    background: linear-gradient(135deg, #25D366 0%, #1ea550 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+    letter-spacing: 0.02em;
+    padding: clamp(0.65rem, 1.2vh, 0.85rem) clamp(1.25rem, 2.5vw, 2.2rem);
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow:
+      0 6px 22px rgba(37, 211, 102, 0.4),
+      0 0 12px rgba(37, 211, 102, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 100%;
+  }
+
+  .wa-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.6);
+  }
+
+  .wa-action-btn i {
+    font-size: 1.35rem;
+  }
+
+  .action-caption {
+    margin: 0.35rem 0 0;
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .footer-links-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-top: 0.65rem;
+  }
+
+  .social-pills {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .social-pill:hover {
+    border-color: #F59E0B;
+    color: #FDE68A;
+  }
+
+  .btn-explore {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .btn-explore:hover {
+    color: #FDE68A;
+  }
+
+  .final-tagline {
+    margin: 0.5rem 0 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .sorpresas-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aviso-fullwidth {
+      min-height: auto;
+    }
+
+    .aviso-body {
+      padding: 2rem 1rem 1.75rem;
+    }
+
+    .countdown-clock {
+      gap: 0.5rem;
+    }
+
+    .clock-card {
+      min-width: 60px;
+      padding: 0.65rem 0.5rem;
+    }
+
+    .clock-divider {
+      font-size: 1.8rem;
+      margin-top: -0.5rem;
+    }
+
+    .bar-timer {
+      display: none;
+    }
+
+    .footer-links-row {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .aviso-fullwidth {
+      transform: none;
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .sorpresas-row {
+      grid-template-columns: 1fr;
+    }
+
+    .clock-divider {
+      display: none;
+    }
+
+    .countdown-clock {
+      gap: 0.4rem;
+    }
+
+    .clock-card {
+      min-width: 52px;
+      padding: 0.5rem 0.4rem;
+    }
+
+    .wa-action-btn {
+      font-size: 0.88rem;
+      padding: 0.85rem 1.15rem;
+    }
+
+    .social-pill span {
+      display: none;
+    }
+
+    .social-pill {
+      padding: 0.45rem;
+      border-radius: 50%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aviso-fullwidth {
+      animation: none;
+    }
+    .status-ping {
+      animation: none;
+      opacity: 0.8;
+    }
+  }
+</style>
