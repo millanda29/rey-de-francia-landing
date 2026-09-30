@@ -4,6 +4,8 @@ import Icono from "./Icono.astro";
 export interface Combo {
   name: string;
   price: string;
+  originalPrice?: string;
+  promoBadge?: string;
   iconName: string;
   featured?: boolean;
   features: string[];
@@ -24,15 +26,18 @@ export const combos: Combo[] = [
   }, 
   {
     name: "Combo 1: Habitación + piscina",
-    price: "$25.00",
+    price: "$20.00",
+    originalPrice: "$25.00",
+    promoBadge: "Promo Reinauguración (1 al 4 oct)",
     iconName: "pareja",
     featured: true,
     features: [
+      "¡Precio especial de reinauguración del 1 al 4 de octubre!",
       "Plan para parejas",
       "Habitación privada + acceso a piscina",
       "Servicios compartidos: piscina, sauna, turco, hidromasaje y chorros",
       "Tiempo de uso: 4 horas 30 minutos",
-      "Reserva con al menos 2 días de anticipación",
+      "Reserva exclusivamente por WhatsApp",
     ],
   },
   {
@@ -75,10 +80,17 @@ export const combos: Combo[] = [
       {
         combos.map((combo) => (
           <article class:list={["combo-card", { featured: combo.featured }]}>
-            {combo.featured && <div class="badge">Más solicitado</div>}
+            {combo.promoBadge ? (
+              <div class="badge promo-reinauguracion">{combo.promoBadge}</div>
+            ) : combo.featured && (
+              <div class="badge">Más solicitado</div>
+            )}
             <div class="combo-icon"><Icono name={combo.iconName} size="40" /></div>
             <h3>{combo.name}</h3>
-            <div class="combo-price">{combo.price}</div>
+            <div class="combo-price-wrap">
+              <span class="combo-price">{combo.price}</span>
+              {combo.originalPrice && <span class="combo-old-price">{combo.originalPrice}</span>}
+            </div>
             <ul class="features">
               {combo.features.map((feature) => (
                 <li>
@@ -88,7 +100,7 @@ export const combos: Combo[] = [
               ))}
             </ul>
             <a
-              href={`https://wa.me/593992577409?text=${encodeURIComponent(`Hola, me gustaría reservar ${combo.name} (${combo.price}) en Rey de Francia. ¿Me confirman disponibilidad y horarios? ¡Gracias!`)}`}
+              href={`https://wa.me/593992577409?text=${encodeURIComponent(`¡Hola! Me gustaría reservar ${combo.name} (${combo.price}${combo.originalPrice ? ` - promo antes ${combo.originalPrice}` : ""}) en Manantial Rey de Francia. ¿Me confirman disponibilidad? ¡Muchas gracias!`)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="btn-combo"
@@ -154,6 +166,18 @@ export const combos: Combo[] = [
     border-radius: 999px;
     font-weight: 700;
     font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .badge.promo-reinauguracion {
+    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    animation: pulse-badge 2s infinite ease-in-out;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.04); }
   }
 
   .combo-icon {
@@ -170,7 +194,19 @@ export const combos: Combo[] = [
   }
 
   .combo-card h3 { color: var(--color-primary); margin-bottom: var(--spacing-md); font-size: 1.32rem; }
-  .combo-price { font-family: var(--font-serif); font-size: 2rem; color: var(--color-gold-dark); font-weight: 700; margin-bottom: var(--spacing-md); }
+  .combo-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .combo-price { font-family: var(--font-serif); font-size: 2rem; color: var(--color-gold-dark); font-weight: 700; }
+  .combo-old-price {
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    text-decoration: line-through;
+    opacity: 0.75;
+  }
 
   .features { list-style: none; margin-bottom: var(--spacing-lg); flex-grow: 1; }
   .features li { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); color: var(--color-text-light); line-height: 1.6; }

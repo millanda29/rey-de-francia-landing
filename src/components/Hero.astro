@@ -5,9 +5,9 @@
 
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">
-        <img src="/assets/favicon.webp" alt="" class="hero-badge-logo" width="28" height="28" aria-hidden="true" />
-        Piscina temperada y hostal en el sur de Quito
+      <div class="hero-badge hero-badge-reopening">
+        <span class="hero-reopening-pulse" aria-hidden="true"></span>
+        🎉 ¡Gran Reinauguración: Jueves 1 de Octubre!
       </div>
 
       <h1 class="hero-title">
@@ -37,7 +37,7 @@
 
       <div class="hero-ctas">
         <a
-          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
+          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20con%20las%20promociones%20de%20reinauguraci%C3%B3n%20en%20Manantial%20Rey%20de%20Francia.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-whatsapp btn-lg"
@@ -171,6 +171,29 @@
     font-weight: 600;
     border: 1px solid rgba(207, 169, 75, 0.3);
     width: fit-content;
+  }
+
+  .hero-badge-reopening {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(26, 62, 122, 0.08) 100%);
+    border-color: rgba(245, 158, 11, 0.6);
+    color: var(--color-deep);
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+  }
+
+  .hero-reopening-pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #f59e0b;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    animation: pulse-dot 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+  }
+
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
   }
 
   .hero-badge-logo {
