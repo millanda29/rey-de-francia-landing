@@ -62,7 +62,7 @@ const { currentPage = "inicio" } = Astro.props;
     <a href="#faq">FAQ</a>
     <a href="#reservas" class="nav-secondary-link">Formulario de reserva</a>
     <a
-      href="https://wa.me/593992577409?text=Hola,%20me%20gustaría%20reservar%20en%20Rey%20de%20Francia"
+      href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Estuve viendo su página web y quisiera consultar información y disponibilidad para visitar Manantial Rey de Francia. ¡Muchas gracias!")}`}
       target="_blank"
       rel="noopener noreferrer"
       class="cta-link"

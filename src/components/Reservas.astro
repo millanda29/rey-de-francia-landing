@@ -8,7 +8,7 @@ import Icono from "./Icono.astro";
     <div class="section-header">
       <span class="section-kicker">Reserva en minutos</span>
       <h2>Agenda fácil y confirma rápido</h2>
-      <p>🎉 ¡Gran reinauguración este <strong>jueves 1 de octubre</strong>! Reserva con anticipación para asegurar tu cupo y promociones especiales.</p>
+      <p>Completa el formulario o escríbenos directo por WhatsApp. Te respondemos con disponibilidad y confirmación en el menor tiempo posible.</p>
     </div>
 
     <div class="reservas-grid">
@@ -16,7 +16,7 @@ import Icono from "./Icono.astro";
       <div class="contact-cards">
         <!-- Hero WhatsApp CTA Card -->
         <a
-          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20una%20reserva%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
+          href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Estoy interesado/a en visitar Manantial Rey de Francia y quisiera consultar disponibilidad para reservar. ¿Me podrían ayudar con la información? ¡Muchas gracias!")}`}
           target="_blank"
           rel="noopener noreferrer"
           class="card-whatsapp"
@@ -144,10 +144,10 @@ import Icono from "./Icono.astro";
                 </label>
                 <select id="combo" name="combo" required aria-describedby="err-combo">
                   <option value="" disabled selected>— Selecciona —</option>
-                  <option value="entrada-general">Entrada General ($7.00 - 2x1 jue y vie)</option>
+                  <option value="entrada-general">Entrada General ($7.00)</option>
                   <option value="tarifa-preferencial">Tarifa Preferencial ($4.00)</option>
                   <option value="combo-bano-cajon">Combo baño de cajón ($15.00)</option>
-                  <option value="combo-1-parejas">Combo 1: Habitación + piscina (🔥 $20.00 Promo 1-4 Oct · Antes $25)</option>
+                  <option value="combo-1-parejas">Combo 1: Habitación + piscina ($25.00)</option>
                   <option value="combo-2-completo">Combo Completo parejas ($37.00)</option>
                   <option value="combo-decoracion">Combo Decoración (desde $35.00)</option>
                 </select>
@@ -206,7 +206,7 @@ import Icono from "./Icono.astro";
               </button>
               <p class="form-note">
                 <i class="bi bi-lightning-charge-fill"></i>
-                Atención rápida · Promociones de reinauguración activas
+                Confirmación rápida · Sin costo de reserva
               </p>
             </div>
           </form>
@@ -822,16 +822,16 @@ import Icono from "./Icono.astro";
         : "No especificada";
 
       const msg = encodeURIComponent(
-        `*🎉 Solicitud de Reserva - Reinauguración Manantial Rey de Francia*\n\n` +
-        `*1) Datos de contacto*\n` +
-        `• Nombre: ${nombre}\n` +
-        `• Teléfono: ${telefono}\n\n` +
-        `*2) Detalles de reserva*\n` +
-        `• Servicio/Combo: ${comboLabel}\n` +
-        `• Fecha deseada: ${fechaFormateada}\n` +
-        `• Número de personas: ${personas}\n\n` +
-        `*3) Comentarios*\n` +
-        `• ${notas || "Sin notas adicionales"}`
+        `👋 *¡Hola! Estoy interesado/a en reservar en Manantial Rey de Francia*\n\n` +
+        `📋 *DATOS DE MI VISITA*\n` +
+        `• 👤 *Nombre:* ${nombre}\n` +
+        `• 📱 *Teléfono:* ${telefono}\n` +
+        `• 🎯 *Servicio o Combo:* ${comboLabel}\n` +
+        `• 📅 *Fecha estimada:* ${fechaFormateada}\n` +
+        `• 👥 *Personas:* ${personas} persona${Number(personas) > 1 ? "s" : ""}\n\n` +
+        `💬 *Detalles o consultas:* \n` +
+        `• ${notas || "Ninguna adicional"}\n\n` +
+        `✨ *¿Me confirman disponibilidad para esta fecha y cómo asegurar mi cupo? ¡Muchas gracias!*`
       );
 
       // Apertura síncrona para evitar bloqueo de popups
