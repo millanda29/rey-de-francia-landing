@@ -4,8 +4,7 @@ import Icono from "./Icono.astro";
 
 <section class="horarios" id="horarios">
   <div class="container">
-    <h2>Nuestros horarios de atención</h2>
-    <p class="nota-remodelacion">🎉 ¡Abrimos nuestras puertas este <strong>jueves 1 de octubre</strong>! Te esperamos en nuestros horarios habituales para disfrutar de la piscina, áreas húmedas y baños de cajón.</p>
+    <h2>Estamos listos para recibirte</h2>
 
     <div class="horarios-grid">
       <div class="card horarios-card">
@@ -60,7 +59,7 @@ import Icono from "./Icono.astro";
           <Icono name="whatsapp" size="24" />
           <div>
             <p class="label">WhatsApp</p>
-            <p class="valor"><a href="https://wa.me/593992577409" target="_blank" rel="noopener noreferrer">0992 577 409</a></p>
+            <p class="valor"><a href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Quisiera consultar sobre los horarios de atención y cómo llegar a Manantial Rey de Francia en Chillogallo. ¡Muchas gracias!")}`} target="_blank" rel="noopener noreferrer">0992 577 409</a></p>
           </div>
         </div>
       </div>
@@ -97,21 +96,7 @@ import Icono from "./Icono.astro";
       var(--color-white);
   }
   .container { max-width: 1280px; margin: 0 auto; }
-  .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-md); }
-
-  .nota-remodelacion {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto var(--spacing-2xl);
-    padding: 0.65rem 0.9rem;
-    border-radius: var(--radius-md);
-    background: var(--color-amber-50);
-    color: var(--color-gold-dark);
-    border-left: 4px solid var(--color-gold);
-    font-size: 0.92rem;
-    font-weight: 600;
-    line-height: 1.55;
-  }
+  .horarios h2 { font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: var(--spacing-2xl); }
 
   .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-xl); }
 
