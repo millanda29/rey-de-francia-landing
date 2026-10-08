@@ -134,9 +134,9 @@ const localBusinessSchema = {
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- Google Fonts -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700;800&display=swap" rel="stylesheet" /></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Icon Font: Bootstrap Icons -->
     <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -449,7 +449,7 @@ const localBusinessSchema = {
       <span class="wa-float-tooltip" aria-hidden="true">Reserva ahora</span>
       <a
         class="wa-float-btn"
-        href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20hacer%20una%20reserva%20en%20Rey%20de%20Francia%20-%20Piscina%20y%20Hostal.%20%C2%BFPodr%C3%ADan%20ayudarme%20con%20la%20disponibilidad%20y%20los%20precios%3F%20%C2%A1Gracias!"
+        href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Estuve viendo su página web y me gustaría consultar disponibilidad e información para visitar Manantial Rey de Francia. ¡Muchas gracias!")}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Reservar por WhatsApp"

@@ -18,7 +18,7 @@ const services: ServiceBenefit[] = [
     subtitle: "Un espacio ideal para disfrutar, relajarte y compartir momentos agradables en un ambiente seguro.",
     image: "/assets/images/piscina.webp",
     alt: "Piscina temperada en Rey de Francia - Piscina y Hostal",
-    width: 900, height: 1600,
+    width: 1200, height: 1600,
     points: [
       "Temperatura ideal para relajarte en cualquier momento del día.",
       "Ambiente seguro y cómodo para todas las edades.",
@@ -35,7 +35,7 @@ const services: ServiceBenefit[] = [
     subtitle: "Perfecto para soltar tensiones y regalarte una pausa de bienestar después de la rutina.",
     image: "/assets/images/sauna.webp",
     alt: "Zona de sauna en Rey de Francia - Piscina y Hostal",
-    width: 720, height: 1280,
+    width: 900, height: 1600,
     points: [
       "Relaja profundamente los músculos tensos.",
       "Ayuda a liberar el estrés acumulado.",
@@ -69,7 +69,7 @@ const services: ServiceBenefit[] = [
     subtitle: "Chorros de agua diseñados para brindarte una experiencia profunda de relajación y descanso.",
     image: "/assets/images/hidromasaje.webp",
     alt: "Zona de hidromasaje en Rey de Francia - Piscina y Hostal",
-    width: 900, height: 1600,
+    width: 1200, height: 1600,
     points: [
       "Masajea el cuerpo con chorros de agua a presión.",
       "Reduce tensión muscular acumulada.",
@@ -86,7 +86,7 @@ const services: ServiceBenefit[] = [
     subtitle: "Estimula tu cuerpo con cambios de temperatura que revitalizan y activan tu energía.",
     image: "/assets/images/chorros.webp",
     alt: "Chorros de agua en Rey de Francia - Piscina y Hostal",
-    width: 900, height: 1600,
+    width: 1200, height: 1600,
     points: [
       "Activa la circulación con cambios de temperatura.",
       "Genera sensación de energía inmediata.",
@@ -364,11 +364,7 @@ const services: ServiceBenefit[] = [
     box-shadow: 0 0 0 4px rgba(86, 177, 227, 0.16);
   }
 
-  @media (max-width: 768px) {
-    .beneficios-detallados {
-      padding: var(--spacing-xl) var(--spacing-md);
-    }
-
+  @media (max-width: 900px) {
     .beneficio-card,
     .beneficio-card.reverse {
       grid-template-columns: 1fr;
@@ -379,18 +375,40 @@ const services: ServiceBenefit[] = [
       order: initial;
     }
 
+    /* En tablets: encuadre cuadrado (1:1) */
     .beneficio-imagen {
-      min-height: 260px;
-      height: 360px;
+      min-height: unset;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      max-height: 520px;
     }
 
     .beneficio-imagen::after,
     .beneficio-card.reverse .beneficio-imagen::after {
-      background: linear-gradient(180deg, rgba(13, 31, 53, 0.08) 0%, rgba(13, 31, 53, 0.46) 100%);
+      background: linear-gradient(180deg, rgba(13, 31, 53, 0.04) 0%, rgba(13, 31, 53, 0.44) 100%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .beneficios-detallados {
+      padding: var(--spacing-xl) 1rem;
+    }
+
+    /* En celulares: encuadre vertical (4:5) para aprovechar las fotos en portrait */
+    .beneficio-imagen {
+      aspect-ratio: 4 / 5;
+      max-height: unset;
     }
 
     .section-header h2 {
       font-size: 1.95rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    /* En celulares muy compactos: encuadre cuadrado */
+    .beneficio-imagen {
+      aspect-ratio: 1 / 1;
     }
   }
 </style>

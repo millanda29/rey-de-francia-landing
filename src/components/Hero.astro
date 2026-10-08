@@ -5,55 +5,55 @@
 
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge hero-badge-reopening">
-        <span class="hero-reopening-pulse" aria-hidden="true"></span>
-        🎉 ¡Gran Reinauguración: Jueves 1 de Octubre!
+      <div class="hero-badge">
+        <img src="/assets/favicon.webp" alt="" class="hero-badge-logo" width="26" height="26" aria-hidden="true" />
+        <span>Piscina temperada y hostal en el sur de Quito</span>
       </div>
 
       <h1 class="hero-title">
-        Tu escape ideal de fin de semana empieza en <span class="title-highlight">Rey de Francia - Piscina y Hostal</span>
+        Tu escape ideal de relajación empieza en <span class="title-highlight">Rey de Francia</span>
       </h1>
 
       <p class="hero-subtitle">
-        Disfruta piscina temperada, sauna, turco, hidromasaje y habitaciones confortables en un ambiente seguro, limpio y con atención cercana para toda la familia.
+        Ven y disfruta en familia o en pareja de un día inolvidable de descanso. Relájate en nuestra piscina temperada a <strong>28°C - 32°C todo el año</strong>, sauna finlandés, turco de eucalipto, hidromasaje y habitaciones confortables en Chillogallo.
       </p>
 
       <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">28°–32°C</span>
+          <span class="stat-label">Piscina temperada todo el año</span>
+        </div>
         <div class="stat">
           <span class="stat-number">9</span>
           <span class="stat-label">Servicios de relajación</span>
         </div>
         <div class="stat">
           <a class="stat-link" href="https://maps.app.goo.gl/z8J8EPYUiVJvBUS26" target="_blank" rel="noopener noreferrer" aria-label="Ver reseñas de 5 estrellas en Google Maps">
-            <span class="stat-number">5/5</span>
+            <span class="stat-number">5/5 <i class="bi bi-star-fill text-gold"></i></span>
             <span class="stat-label">Valoración en Google</span>
           </a>
-        </div>
-        <div class="stat">
-          <span class="stat-number">J–D</span>
-          <span class="stat-label">Abierto jueves a domingo</span>
         </div>
       </div>
 
       <div class="hero-ctas">
         <a
-          href="https://wa.me/593992577409?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20con%20las%20promociones%20de%20reinauguraci%C3%B3n%20en%20Manantial%20Rey%20de%20Francia.%20%C2%BFMe%20confirman%20disponibilidad%3F%20%C2%A1Gracias!"
+          href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Vi su página web y me gustaría recibir información sobre disponibilidad y horarios para visitar Manantial Rey de Francia. ¡Muchas gracias!")}`}
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-whatsapp btn-lg"
         >
           <i class="bi bi-whatsapp"></i>
-          Reserva por WhatsApp
+          <span>Reserva por WhatsApp</span>
         </a>
-        <a href="#reservas" class="btn btn-secondary">
-          <i class="bi bi-calendar-check"></i>
-          Ver formulario
+        <a href="#instalaciones" class="btn btn-secondary">
+          <i class="bi bi-images"></i>
+          <span>Ver instalaciones</span>
         </a>
       </div>
 
       <p class="hero-trust">
-        <span><i class="bi bi-shield-check"></i> Higiene garantizada</span>
-        <span><i class="bi bi-people"></i> Atención familiar</span>
+        <span><i class="bi bi-heart-fill text-gold"></i> Planes para parejas y familias</span>
+        <span><i class="bi bi-shield-check"></i> Higiene y agua limpia garantizada</span>
         <span><i class="bi bi-calendar-week"></i> Jueves a domingo</span>
       </p>
     </div>
@@ -63,25 +63,26 @@
         <div class="image-frame">
           <img
             src="/assets/images/piscina.webp"
-            alt="Piscina temperada de Rey de Francia - Piscina y Hostal en Chillogallo, Quito"
+            alt="Piscina temperada techada en Rey de Francia, Chillogallo, Quito"
             width="900"
             height="1600"
             fetchpriority="high"
             decoding="async"
           />
         </div>
+
         <div class="hero-floating-card">
           <i class="bi bi-whatsapp"></i>
           <div>
-            <strong>Respuesta rápida</strong>
-            <span>Confirmamos tu reserva en minutos</span>
+            <strong>Respuesta inmediata</strong>
+            <span>Consulta disponibilidad hoy</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <a href="#servicios" class="scroll-indicator">
+  <a href="#servicios" class="scroll-indicator" aria-label="Explorar servicios">
     <span>Descubre todos nuestros servicios</span>
     <i class="bi bi-chevron-down"></i>
   </a>
@@ -165,35 +166,12 @@
     gap: 0.55rem;
     background: rgba(26, 62, 122, 0.08);
     color: var(--color-royal);
-    padding: 0.48rem 1rem 0.48rem 0.65rem;
+    padding: 0.45rem 1rem 0.45rem 0.75rem;
     border-radius: 999px;
     font-size: 0.86rem;
     font-weight: 600;
-    border: 1px solid rgba(207, 169, 75, 0.3);
+    border: 1px solid rgba(207, 169, 75, 0.35);
     width: fit-content;
-  }
-
-  .hero-badge-reopening {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(26, 62, 122, 0.08) 100%);
-    border-color: rgba(245, 158, 11, 0.6);
-    color: var(--color-deep);
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
-  }
-
-  .hero-reopening-pulse {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #f59e0b;
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
-    animation: pulse-dot 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
-  }
-
-  @keyframes pulse-dot {
-    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-    70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
   }
 
   .hero-badge-logo {
@@ -204,10 +182,11 @@
   }
 
   .hero-title {
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
     color: var(--color-deep);
-    line-height: 1.12;
+    line-height: 1.15;
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   .title-highlight {
@@ -219,9 +198,14 @@
 
   .hero-subtitle {
     font-size: 1.08rem;
-    color: var(--color-stone-500);
-    line-height: 1.78;
-    max-width: 540px;
+    color: var(--color-stone-600);
+    line-height: 1.75;
+    max-width: 550px;
+  }
+
+  .hero-subtitle strong {
+    color: var(--color-royal);
+    font-weight: 700;
   }
 
   .hero-stats {
@@ -235,11 +219,11 @@
     flex-direction: column;
     gap: 0.2rem;
     min-width: 0;
-    padding-right: clamp(0.5rem, 2vw, 1.5rem);
+    padding-right: clamp(0.5rem, 2vw, 1.25rem);
     border-right: 1px solid var(--color-stone-200);
   }
 
-  .stat:last-child { border-right: none; }
+  .stat:last-child { border-right: none; padding-right: 0; }
 
   .stat-link {
     display: flex;
@@ -252,11 +236,20 @@
 
   .stat-link:hover .stat-number { color: var(--color-gold-dark); }
 
+  .text-gold {
+    color: var(--color-gold);
+    font-size: 1rem;
+    vertical-align: middle;
+  }
+
   .stat-number {
     font-size: 1.75rem;
     color: var(--color-royal);
     font-weight: 700;
     font-family: var(--font-serif);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
   .stat-label {
@@ -270,6 +263,7 @@
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .btn {
@@ -309,7 +303,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--color-stone-600);
     line-height: 1.5;
   }
@@ -354,7 +348,7 @@
   }
 
   .hero-image-wrapper:hover .image-frame img {
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 
   .hero-floating-card {
@@ -371,6 +365,7 @@
     padding: 0.85rem 1.1rem;
     box-shadow: var(--shadow-green);
     max-width: 260px;
+    z-index: 2;
   }
 
   .hero-floating-card i {
@@ -383,7 +378,6 @@
     display: block;
     font-size: 0.88rem;
     color: var(--color-deep);
-    font-family: var(--font-sans);
     font-weight: 700;
   }
 
@@ -446,11 +440,26 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem;
     }
+    .image-frame {
+      aspect-ratio: 1 / 1;
+      height: auto;
+      max-height: 520px;
+    }
   }
 
   @media (max-width: 520px) {
     .hero-stats { grid-template-columns: 1fr 1fr; }
     .stat:nth-child(3) { grid-column: 1 / -1; }
-    .image-frame { aspect-ratio: 4 / 3; border-radius: var(--radius-xl); }
+    .image-frame {
+      aspect-ratio: 4 / 5;
+      height: auto;
+      border-radius: var(--radius-xl);
+    }
+  }
+
+  @media (max-width: 360px) {
+    .image-frame {
+      aspect-ratio: 1 / 1;
+    }
   }
 </style>
