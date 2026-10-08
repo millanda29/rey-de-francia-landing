@@ -1,82 +1,172 @@
 ---
-// Componente: Carrusel de imágenes
+// Componente: Carrusel de instalaciones con fotos actualizadas y encuadre responsive vertical/cuadrado
+interface InstalacionSlide {
+  image: string;
+  alt: string;
+  caption: string;
+  tag: string;
+  width: number;
+  height: number;
+}
+
+const instalaciones: InstalacionSlide[] = [
+  {
+    image: "/assets/images/piscina.webp",
+    alt: "Piscina temperada techada en Manantial Rey de Francia",
+    caption: "Piscina temperada techada para toda la familia",
+    tag: "Piscina",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/piscinaposterior.webp",
+    alt: "Piscina temperada con área de descanso y asoleadoras",
+    caption: "Piscina amplia con zona de descanso y asoleadoras",
+    tag: "Área Recreativa",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/hidromasaje.webp",
+    alt: "Hidromasaje con hidrojets y agua temperada",
+    caption: "Hidromasaje con hidrojets para relajación total",
+    tag: "Hidromasaje",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/sauna.webp",
+    alt: "Sauna finlandés de calor seco renovado con iluminación cálida",
+    caption: "Sauna finlandés renovado con iluminación cálida",
+    tag: "Sauna",
+    width: 900,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/chorrofrio.webp",
+    alt: "Chorros de contraste térmico revitalizante",
+    caption: "Chorros de contraste térmico para reactivar el cuerpo",
+    tag: "Chorros de Contraste",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/chorrocaliente2.webp",
+    alt: "Chorros de agua relajante para alivio muscular",
+    caption: "Chorros térmicos para relajación muscular",
+    tag: "Chorros Térmicos",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/turco.webp",
+    alt: "Turco de vapor húmedo para bienestar y desintoxicación",
+    caption: "Turco de vapor húmedo para renovar energía",
+    tag: "Turco",
+    width: 900,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/bdc.webp",
+    alt: "Baños de cajón tradicionales terapéuticos",
+    caption: "Baños de cajón y bienestar tradicional",
+    tag: "Baños de Cajón",
+    width: 1200,
+    height: 900,
+  },
+  {
+    image: "/assets/images/habitaciones.webp",
+    alt: "Habitaciones cómodas para descanso o estadía",
+    caption: "Habitaciones privadas y confortables",
+    tag: "Hospedaje",
+    width: 900,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/habitaciones2.webp",
+    alt: "Opciones adicionales de hospedaje para huéspedes",
+    caption: "Espacios tranquilos para tu estadía",
+    tag: "Habitaciones",
+    width: 900,
+    height: 1600,
+  },
+  {
+    image: "/assets/images/restaurante.webp",
+    alt: "Restaurante de Rey de Francia con menú variado",
+    caption: "Restaurante con menú y platos variados",
+    tag: "Restaurante",
+    width: 1024,
+    height: 1536,
+  },
+  {
+    image: "/assets/images/fachada.webp",
+    alt: "Fachada principal y acceso en Chillogallo Quito",
+    caption: "Fachada principal y fácil acceso",
+    tag: "Instalaciones",
+    width: 1200,
+    height: 1600,
+  },
+];
 ---
 
 <section class="carrusel-section" id="instalaciones">
   <div class="container">
     <div class="galley-header">
-      <span class="section-kicker">Instalaciones</span>
+      <span class="section-kicker">Instalaciones renovadas</span>
       <h2>Conoce nuestros espacios</h2>
-      <p class="subtitle">Piscina temperada, sauna, habitaciones y más — desliza y mira el ambiente que te espera en tu próxima visita.</p>
+      <p class="subtitle">Piscina temperada, nuevo sauna, hidromasaje, chorros térmicos y habitaciones — desliza y descubre todo lo que te espera en tu visita.</p>
     </div>
     
-    <div class="carrusel-wrapper">
+    <div class="carrusel-wrapper" aria-roledescription="carousel" aria-label="Galería de instalaciones de Manantial Rey de Francia">
       <div class="carrusel">
-        <div class="slide">
-          <img src="/assets/images/piscina.webp" alt="Piscina temperada de Rey de Francia" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Piscina temperada para toda la familia</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/habitaciones.webp" alt="Habitaciones de confort" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Habitaciones cómodas para tu descanso</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/sauna.webp" alt="Sauna de calor seco" width="720" height="1280" loading="lazy" decoding="async" />
-          <p class="slide-caption">Sauna para soltar tensión</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/turco.webp" alt="Turco de vapor húmedo" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Turco para renovar energía</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/chorros.webp" alt="Chorros de agua" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Chorros de agua para relajación</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/hidromasaje.webp" alt="Hidromasaje" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Hidromasaje para aliviar el estrés</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/fachada.webp" alt="Fachada principal de Rey de Francia - Piscina y Hostal" width="1200" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Fachada principal y acceso</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/habitaciones2.webp" alt="Área de habitaciones para huéspedes" width="900" height="1600" loading="lazy" decoding="async" />
-          <p class="slide-caption">Opciones adicionales de hospedaje</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/bdc.webp" alt="Baños de cajón" width="1200" height="900" loading="lazy" decoding="async" />
-          <p class="slide-caption">Baños de cajón y contraste</p>
-        </div>
-
-        <div class="slide">
-          <img src="/assets/images/restaurante.webp" alt="Restaurante de Rey de Francia con platos variados" width="1024" height="1536" loading="lazy" decoding="async" />
-          <p class="slide-caption">Menú de platos variados</p>
-        </div>
+        {
+          instalaciones.map((slide, index) => (
+            <div
+              class:list={["slide", { active: index === 0 }]}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Instalación ${index + 1} de ${instalaciones.length}: ${slide.caption}`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                width={slide.width}
+                height={slide.height}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <div class="slide-overlay">
+                <span class="slide-tag">{slide.tag}</span>
+                <p class="slide-caption">{slide.caption}</p>
+              </div>
+            </div>
+          ))
+        }
       </div>
       
-      <button class="carrusel-btn prev" aria-label="Anterior">‹</button>
-      <button class="carrusel-btn next" aria-label="Siguiente">›</button>
+      <button class="carrusel-btn prev" aria-label="Ver imagen anterior">
+        <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="carrusel-btn next" aria-label="Ver imagen siguiente">
+        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+      </button>
       
-      <div class="carrusel-dots">
-        <button class="dot active" aria-label="Slide 1"></button>
-        <button class="dot" aria-label="Slide 2"></button>
-        <button class="dot" aria-label="Slide 3"></button>
-        <button class="dot" aria-label="Slide 4"></button>
-        <button class="dot" aria-label="Slide 5"></button>
-        <button class="dot" aria-label="Slide 6"></button>
-        <button class="dot" aria-label="Slide 7"></button>
-        <button class="dot" aria-label="Slide 8"></button>
-        <button class="dot" aria-label="Slide 9"></button>
-        <button class="dot" aria-label="Slide 10"></button>
+      <div class="carrusel-dots" role="tablist" aria-label="Controles del carrusel">
+        {
+          instalaciones.map((slide, index) => (
+            <button
+              class:list={["dot", { active: index === 0 }]}
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+              aria-label={`Ir a la foto ${index + 1}: ${slide.tag}`}
+              data-index={index}
+            ></button>
+          ))
+        }
+      </div>
+
+      <div class="carrusel-counter" aria-live="polite">
+        <span class="counter-current">1</span> / <span class="counter-total">{instalaciones.length}</span>
       </div>
     </div>
   </div>
@@ -86,7 +176,8 @@
   .carrusel-section {
     padding: var(--spacing-2xl) var(--spacing-lg);
     background:
-      radial-gradient(600px 320px at 90% 10%, rgba(86, 177, 227, 0.1), transparent),
+      radial-gradient(700px 360px at 90% 10%, rgba(86, 177, 227, 0.12), transparent),
+      radial-gradient(600px 320px at 10% 90%, rgba(207, 169, 75, 0.08), transparent),
       var(--color-white);
   }
 
@@ -95,74 +186,68 @@
     margin: 0 auto;
   }
 
-  .carrusel-section h2 {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    text-align: center;
-    margin: var(--spacing-md) 0;
-  }
-
   .galley-header {
     text-align: center;
     margin-bottom: var(--spacing-2xl);
   }
 
-  .galley-header .section-kicker { margin-bottom: 0; }
+  .galley-header .section-kicker {
+    margin-bottom: 0.4rem;
+  }
+
+  .carrusel-section h2 {
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    color: var(--color-primary);
+    margin: var(--spacing-sm) 0 var(--spacing-md);
+  }
 
   .subtitle {
     text-align: center;
     font-size: 1.1rem;
     color: var(--color-text-light);
-    margin-bottom: var(--spacing-2xl);
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.65;
   }
 
+  /* ── Contenedor del Carrusel: Encuadre centrado, vertical y cuadrado responsive ── */
   .carrusel-wrapper {
     position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    border-radius: var(--radius-2xl);
     overflow: hidden;
-    border-radius: var(--radius-xl);
-    background-color: #1e3266;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%231e3266'%3e%3c/rect%3e%3cpath d='M1536 560L0 560 L0 321.75Q77 278.75%2c 120 355.74Q127.23 290.97%2c 192 298.19Q243.19 229.38%2c 312 280.57Q361.93 258.5%2c 384 308.43Q471.63 276.06%2c 504 363.68Q522.62 310.3%2c 576 328.91Q628.88 261.79%2c 696 314.67Q777.69 276.37%2c 816 358.06Q884.33 306.39%2c 936 374.72Q980.9 299.62%2c 1056 344.52Q1089.46 257.98%2c 1176 291.44Q1242.94 238.38%2c 1296 305.33Q1376.41 265.75%2c 1416 346.16Q1449.26 259.42%2c 1536 292.68z' fill='%23182f5d'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 400.8Q65.44 346.24%2c 120 411.68Q193.56 365.24%2c 240 438.8Q294.38 373.19%2c 360 427.57Q372.11 367.68%2c 432 379.79Q504.69 332.48%2c 552 405.16Q602.46 383.62%2c 624 434.08Q646.25 336.32%2c 744 358.57Q785.91 328.49%2c 816 370.4Q908.59 342.99%2c 936 435.57Q966.13 393.69%2c 1008 423.82Q1023.84 367.65%2c 1080 383.49Q1101.28 332.76%2c 1152 354.04Q1193.79 323.83%2c 1224 365.61Q1293.32 314.93%2c 1344 384.25Q1405.59 373.84%2c 1416 435.43Q1462.44 361.88%2c 1536 408.32z' fill='%2325467d'%3e%3c/path%3e%3cpath d='M1464 560L0 560 L0 462.84Q72.23 415.07%2c 120 487.3Q129.82 425.12%2c 192 434.94Q235.04 405.98%2c 264 449.01Q355.88 420.89%2c 384 512.77Q420.87 429.64%2c 504 466.51Q548.78 439.29%2c 576 484.08Q628.37 464.45%2c 648 516.82Q661.97 458.79%2c 720 472.76Q754.04 386.81%2c 840 420.85Q908.1 368.95%2c 960 437.04Q1018.19 423.24%2c 1032 481.43Q1107.2 436.63%2c 1152 511.83Q1154.44 442.27%2c 1224 444.72Q1289.74 390.46%2c 1344 456.2Q1424.19 416.39%2c 1464 496.59z' fill='%23356cb1'%3e%3c/path%3e%3cpath d='M1464 560L0 560 L0 526.4Q58.45 512.85%2c 72 571.29Q99.34 526.63%2c 144 553.96Q195.43 533.39%2c 216 584.82Q223.99 520.81%2c 288 528.8Q340.43 461.23%2c 408 513.67Q498.55 484.22%2c 528 574.78Q555.82 530.6%2c 600 558.41Q642.6 481.01%2c 720 523.61Q785.24 468.85%2c 840 534.08Q855.31 477.39%2c 912 492.71Q977.45 438.16%2c 1032 503.62Q1118.95 470.58%2c 1152 557.53Q1191.39 476.92%2c 1272 516.32Q1314.9 487.23%2c 1344 530.13Q1388.81 454.93%2c 1464 499.74z' fill='white'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
+    background: #0b1d3a;
+    box-shadow:
+      0 24px 60px -15px rgba(11, 29, 58, 0.25),
+      0 12px 28px -8px rgba(207, 169, 75, 0.18);
+    border: 3px solid rgba(255, 255, 255, 0.85);
     isolation: isolate;
-  }
-
-  .carrusel-wrapper::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(115deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 38%);
-    transform: translateX(-120%);
-    animation: sheen 9s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 1;
   }
 
   .carrusel {
     display: flex;
-    transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     scroll-behavior: smooth;
     will-change: transform;
   }
 
+  /* 
+    Encuadre responsive de las imágenes:
+    - Desktop: cuadrado adaptativo (1:1 con tope de altura a 600px)
+    - Tablet: cuadrado perfecto (1:1)
+    - Móvil: vertical elegante (4:5)
+  */
   .slide {
     min-width: 100%;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    aspect-ratio: 3 / 2;
     position: relative;
-  }
-
-  .slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(2, 6, 23, 0.58) 0%, rgba(2, 6, 23, 0.1) 42%, rgba(2, 6, 23, 0) 70%);
-    z-index: 1;
-    pointer-events: none;
+    aspect-ratio: 1 / 1;
+    max-height: 620px;
+    overflow: hidden;
+    background: #0b1d3a;
   }
 
   .slide img {
@@ -171,278 +256,236 @@
     object-fit: cover;
     object-position: center;
     display: block;
-    transform: scale(1.01);
-    filter: saturate(0.95) contrast(1.02);
-    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 520ms ease;
-  }
-
-  .slide img.portrait {
-    object-fit: contain;
-    background: transparent;
+    transform: scale(1.005);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
   }
 
   .slide.active img {
-    transform: scale(1.08);
-    filter: saturate(1.08) contrast(1.05);
+    transform: scale(1.04);
+  }
+
+  /* Gradiente protector para garantizar legibilidad de la información */
+  .slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(11, 29, 58, 0.88) 0%,
+      rgba(11, 29, 58, 0.42) 32%,
+      rgba(11, 29, 58, 0) 65%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .slide-tag {
+    display: inline-flex;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--gradient-gold);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(207, 169, 75, 0.35);
   }
 
   .slide-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(6, 15, 30, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(8px);
-    color: white;
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    font-weight: 500;
-    white-space: nowrap;
-    z-index: 2;
-    box-shadow: 0 16px 28px rgba(2, 6, 23, 0.35);
-    opacity: 0.86;
-    transition: transform 450ms ease, opacity 450ms ease, box-shadow 450ms ease;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.35;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
 
-  .slide.active .slide-caption {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-4px);
-    box-shadow: 0 18px 34px rgba(2, 6, 23, 0.46);
-  }
-
+  /* ── Botones de navegación (Flechas) ── */
   .carrusel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 3;
-    background: rgba(255, 255, 255, 0.84);
-    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
     color: var(--color-primary);
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.22);
+    box-shadow: 0 8px 24px rgba(11, 29, 58, 0.28);
   }
 
   .carrusel-btn:hover {
-    background: var(--color-accent);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.3);
+    background: var(--color-gold);
+    color: #fff;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 12px 30px rgba(207, 169, 75, 0.4);
+  }
+
+  .carrusel-btn:active {
+    transform: translateY(-50%) scale(0.96);
   }
 
   .carrusel-btn.prev {
-    left: 20px;
+    left: 18px;
   }
 
   .carrusel-btn.next {
-    right: 20px;
+    right: 18px;
   }
 
+  /* ── Puntos indicadores (Dots) ── */
   .carrusel-dots {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 24px;
+    right: 24px;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 7px;
     z-index: 3;
   }
 
   .dot {
-    width: 12px;
-    height: 12px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.95);
-    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: transform 0.3s ease, width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    padding: 0;
+    transition: width 0.3s ease, background 0.3s ease, transform 0.3s ease;
   }
 
   .dot.active {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: scale(1.1);
-    width: 26px;
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    width: 22px;
     border-radius: 999px;
+    transform: scale(1.05);
   }
 
-  .dot:hover {
-    background: rgba(255, 255, 255, 0.5);
+  /* ── Contador numérico superior para contexto rápido ── */
+  .carrusel-counter {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: rgba(11, 29, 58, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    z-index: 3;
+    pointer-events: none;
+    letter-spacing: 0.04em;
   }
 
-  @keyframes sheen {
-    0%,
-    18% {
-      transform: translateX(-120%);
+  /* ── MEDIA QUERIES: Adaptación vertical y cuadrada ── */
+  @media (max-width: 900px) {
+    .carrusel-wrapper {
+      max-width: 100%;
+      border-radius: var(--radius-xl);
     }
-    28%,
-    100% {
-      transform: translateX(120%);
+
+    .slide {
+      aspect-ratio: 1 / 1; /* Cuadrado perfecto en tablets */
+      max-height: 540px;
+    }
+
+    .carrusel-btn {
+      width: 42px;
+      height: 42px;
+      font-size: 1.1rem;
+    }
+
+    .carrusel-btn.prev { left: 12px; }
+    .carrusel-btn.next { right: 12px; }
+  }
+
+  @media (max-width: 640px) {
+    .carrusel-section {
+      padding: var(--spacing-xl) 1rem;
+    }
+
+    /* En celulares: encuadre vertical (4:5) que maximiza el impacto de fotos en portrait */
+    .slide {
+      aspect-ratio: 4 / 5;
+      max-height: unset;
+      min-height: 440px;
+    }
+
+    .slide-overlay {
+      bottom: 18px;
+      left: 16px;
+      right: 16px;
+    }
+
+    .slide-caption {
+      font-size: 1.05rem;
+    }
+
+    .carrusel-btn {
+      width: 38px;
+      height: 38px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .carrusel-btn.prev { left: 8px; }
+    .carrusel-btn.next { right: 8px; }
+
+    .carrusel-dots {
+      display: none; /* En pantallas móviles el contador superior y swipe táctil bastan para evitar saturar */
+    }
+
+    .carrusel-counter {
+      top: 14px;
+      right: 14px;
+      font-size: 0.78rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .slide {
+      aspect-ratio: 1 / 1; /* Cuadrado en teléfonos extra pequeños */
+      min-height: 320px;
+    }
+
+    .slide-caption {
+      font-size: 0.95rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .carrusel-wrapper::before,
     .slide img,
-    .slide-caption,
     .carrusel,
     .dot,
     .carrusel-btn {
-      animation: none !important;
       transition: none !important;
-      transform: none !important;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .carrusel-section h2 {
-      font-size: 1.875rem;
-    }
-
-    .carrusel {
-      width: 100%;
-      min-width: 0;
-    }
-
-    .slide {
-      width: 100%;
-      min-width: 100%;
-      aspect-ratio: auto;
-      overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      min-height: clamp(250px, 64vw, 430px);
-      padding: 0.6rem 0.6rem 4rem;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      object-position: center;
-      transform: scale(1);
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 0.8rem;
-    }
-
-    .slide.active img {
-      transform: scale(1.02);
-    }
-
-    .slide-caption {
-      font-size: 0.9rem;
-      padding: var(--spacing-md);
-      white-space: normal;
-      text-align: center;
-      max-width: 86%;
-    }
-
-    .carrusel-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-    }
-
-    .carrusel-btn.prev {
-      left: 10px;
-    }
-
-    .carrusel-btn.next {
-      right: 10px;
-    }
-  }
-
-  @media (max-width: 460px) {
-    .carrusel-section {
-      padding: var(--spacing-xl) 0.8rem;
-    }
-
-    .subtitle {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .slide {
-      min-height: clamp(220px, 72vw, 360px);
-      padding: 0.5rem 0.5rem 3.5rem;
-    }
-
-    .slide-caption {
-      font-size: 0.8rem;
-      bottom: 10px;
-      max-width: 90%;
-      padding: 0.45rem 0.6rem;
-      border-radius: 0.5rem;
-    }
-
-    .slide img {
-      border-radius: 0.65rem;
-    }
-
-    .carrusel-btn {
-      width: 34px;
-      height: 34px;
-      font-size: 1.2rem;
-    }
-
-    .carrusel-dots {
-      bottom: 8px;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-    }
-  }
-
-  @media (max-width: 260px) {
-    .carrusel-section {
-      padding: var(--spacing-lg) 0.5rem;
-    }
-
-    .carrusel-section h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .subtitle {
-      font-size: 0.78rem;
-      margin-bottom: 0.65rem;
-      line-height: 1.35;
-    }
-
-    .slide-caption {
-      font-size: 0.7rem;
-      max-width: 94%;
-      padding: 0.34rem 0.45rem;
-      bottom: 6px;
-    }
-
-    .carrusel-btn {
-      width: 28px;
-      height: 28px;
-      font-size: 1rem;
-    }
-
-    .carrusel-btn.prev {
-      left: 5px;
-    }
-
-    .carrusel-btn.next {
-      right: 5px;
+      animation: none !important;
     }
   }
 </style>
@@ -451,8 +494,8 @@
   const carrusel = document.querySelector('.carrusel') as HTMLElement | null;
   const wrapper = document.querySelector('.carrusel-wrapper') as HTMLElement | null;
   const slides = document.querySelectorAll('.slide');
-  const slideImages = document.querySelectorAll('.slide img') as NodeListOf<HTMLImageElement>;
   const dots = document.querySelectorAll('.dot');
+  const counterCurrent = document.querySelector('.counter-current') as HTMLElement | null;
   const prevBtn = document.querySelector('.carrusel-btn.prev') as HTMLButtonElement | null;
   const nextBtn = document.querySelector('.carrusel-btn.next') as HTMLButtonElement | null;
 
@@ -469,25 +512,31 @@
     });
 
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-      if (index === currentIndex) dot.setAttribute('aria-current', 'true');
-      else dot.removeAttribute('aria-current');
+      const isActive = index === currentIndex;
+      dot.classList.toggle('active', isActive);
+      dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
+
+    if (counterCurrent) {
+      counterCurrent.textContent = String(currentIndex + 1);
+    }
   }
 
   function nextSlide() {
+    if (slides.length === 0) return;
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarrusel();
   }
 
   function prevSlide() {
+    if (slides.length === 0) return;
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarrusel();
   }
 
   function startAutoPlay() {
     stopAutoPlay();
-    autoPlay = setInterval(nextSlide, 6000);
+    autoPlay = setInterval(nextSlide, 5500);
   }
 
   function stopAutoPlay() {
@@ -496,27 +545,28 @@
   }
 
   prevBtn?.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
-  nextBtn?.addEventListener('click', nextSlide);
+  nextBtn?.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
 
   // Soporte teclado
   wrapper?.setAttribute('tabindex', '0');
   wrapper?.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') { nextSlide(); startAutoPlay(); }
+    if (e.key === 'ArrowLeft') { prevSlide(); startAutoPlay(); }
   });
 
-  // Pausa en hover / foco para no pelear con el usuario
+  // Pausa en hover / foco para una navegación cómoda
   wrapper?.addEventListener('mouseenter', stopAutoPlay);
   wrapper?.addEventListener('mouseleave', startAutoPlay);
   wrapper?.addEventListener('focusin', stopAutoPlay);
   wrapper?.addEventListener('focusout', startAutoPlay);
 
-  // Swipe táctil
+  // Swipe táctil en móviles
   let touchStartX = 0;
   wrapper?.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     stopAutoPlay();
   }, { passive: true });
+
   wrapper?.addEventListener('touchend', (e) => {
     const dx = e.changedTouches[0].clientX - touchStartX;
     if (Math.abs(dx) > 40) {
@@ -526,32 +576,18 @@
     startAutoPlay();
   }, { passive: true });
 
-  // Ajusta automaticamente imagenes verticales para evitar recortes agresivos.
-  slideImages.forEach((img) => {
-    const setOrientationClass = () => {
-      if (img.naturalHeight > img.naturalWidth) {
-        img.classList.add('portrait');
-      } else {
-        img.classList.remove('portrait');
+  dots.forEach((dot) => {
+    dot.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const idx = Number(target.dataset.index);
+      if (!isNaN(idx)) {
+        currentIndex = idx;
+        updateCarrusel();
+        startAutoPlay();
       }
-    };
-
-    if (img.complete) {
-      setOrientationClass();
-    } else {
-      img.addEventListener('load', setOrientationClass, { once: true });
-    }
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentIndex = index;
-      updateCarrusel();
-      startAutoPlay();
     });
   });
 
   updateCarrusel();
   startAutoPlay();
 </script>
-

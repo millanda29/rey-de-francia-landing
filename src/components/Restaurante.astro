@@ -58,11 +58,14 @@ import Icono from "./Icono.astro";
   .highlight :global(svg) { color: var(--color-accent); flex-shrink: 0; }
   .highlight span { color: var(--color-text); font-weight: 500; }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .restaurante-content { grid-template-columns: 1fr; }
-    .restaurante-imagen { min-height: 300px; }
+    .restaurante-imagen { min-height: unset; aspect-ratio: 1 / 1; max-height: 480px; }
     .restaurante-info h2 { font-size: 1.875rem; }
     .restaurant-highlights { grid-template-columns: 1fr; }
   }
-</style>
 
+  @media (max-width: 600px) {
+    .restaurante-imagen { aspect-ratio: 4 / 5; max-height: unset; }
+  }
+</style>

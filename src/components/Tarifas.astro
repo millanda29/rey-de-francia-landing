@@ -6,16 +6,11 @@ import Icono from "./Icono.astro";
   <div class="container">
     <span class="section-kicker">Tarifas transparentes</span>
     <h2>Precios claros para que reserves con confianza</h2>
-    <p class="subtitle">¡Reapertura oficial este jueves 1 de octubre! Disfruta de nuestras tarifas y promociones especiales.</p>
+    <p class="subtitle">Elige la opción ideal para tu visita y disfruta sin sorpresas.</p>
 
     <div class="promo-banner" role="note">
-      <div class="promo-banner-title">🎉 ¡Grandes Sorpresas de Reinauguración!</div>
-      <ul class="promo-list">
-        <li>🔥 <strong>2x1 en adultos:</strong> Válido jueves y viernes de reinauguración.</li>
-        <li>✨ <strong>Primeros 10 clientes:</strong> Entrada <strong>GRATIS</strong> para piscina, válida el sábado 3 de octubre.</li>
-        <li>❤️ <strong>Combo con habitación:</strong> A solo <strong>$20.00</strong> (antes $25.00) del 1 al 4 de octubre.</li>
-      </ul>
-      <a href="#horarios">Ver horarios y cómo llegar</a>
+      <strong>2x1 entre semana:</strong> jueves y viernes, 2 entradas de adulto al precio de 1. No aplica feriados ni fines de semana.
+      <a href="#horarios">Ver horarios</a>
     </div>
 
     <div class="tarifas-grid">
@@ -40,7 +35,7 @@ import Icono from "./Icono.astro";
         </ul>
 
         <a
-          href={`https://wa.me/593992577409?text=${encodeURIComponent("Hola, me gustaría reservar la Entrada General ($7.00 por persona) en Rey de Francia. ¿Me confirman disponibilidad? ¡Gracias!")}`}
+          href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Deseo consultar disponibilidad para *Entrada General ($7.00 por persona)* en Manantial Rey de Francia. ¿Cuál es el mejor horario para disfrutar de las áreas húmedas? ¡Muchas gracias!")}`}
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-primary"
@@ -69,7 +64,7 @@ import Icono from "./Icono.astro";
         </div>
 
         <a
-          href={`https://wa.me/593992577409?text=${encodeURIComponent("Hola, me gustaría consultar disponibilidad de la Tarifa Preferencial ($4.00 por persona) en Rey de Francia. ¡Gracias!")}`}
+          href={`https://wa.me/593992577409?text=${encodeURIComponent("¡Hola! Quisiera consultar sobre la *Tarifa Preferencial ($4.00)* en Manantial Rey de Francia para mi grupo familiar. ¿Qué documentos se deben presentar en recepción? ¡Muchas gracias!")}`}
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-outline"
@@ -94,7 +89,7 @@ import Icono from "./Icono.astro";
   .promo-banner {
     max-width: 720px;
     margin: 0 auto var(--spacing-xl);
-    padding: 1rem 1.35rem;
+    padding: 0.8rem 1.1rem;
     border-radius: var(--radius-lg);
     background: linear-gradient(135deg, var(--color-amber-50) 0%, var(--color-amber-100) 100%);
     border: 1px solid rgba(207, 169, 75, 0.4);
@@ -102,33 +97,14 @@ import Icono from "./Icono.astro";
     color: var(--color-gold-dark);
     font-size: 0.95rem;
     line-height: 1.55;
-    text-align: left;
-  }
-
-  .promo-banner-title {
-    font-weight: 800;
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-deep);
-  }
-
-  .promo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0.75rem 0;
-  }
-
-  .promo-list li {
-    margin-bottom: 0.35rem;
-    color: var(--color-deep);
   }
 
   .promo-banner a {
+    color: var(--color-gold-dark);
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 3px;
     white-space: nowrap;
-    display: inline-block;
   }
 
   .promo-banner a:hover { color: var(--color-royal); }
